@@ -1,0 +1,15 @@
+# Top-level Git ignore file
+
+
+# The binary itself
+popsim
+
+
+# Build-generated files
+*.o
+*.d
+
+
+# Editor backups
+*~
+
