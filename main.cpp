@@ -6,6 +6,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
+//  Local headers.
+#include "DemoClass.hpp"
+
+
+//////////////////////////////////////////////////////////////////////////////
 //  Standard headers.
 #include <iostream>
 
@@ -24,6 +29,9 @@ int main(int argc, char* argv[])
 	(void) argv;
 	
 	std::cout << "Hello, Group Practical!" << std::endl;
+	
+	GroupPractical::DemoClass the_demo;
+	(void) the_demo;
 	
 	return 0;
 }
