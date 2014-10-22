@@ -10,6 +10,14 @@
 #include <iostream>
 
 
+//////////////////////////////////////////////////////////////////////////////
+/// @brief      Program entry point.
+///
+/// @details    Runs the simulation of puma and hare populations.
+///
+/// @param      argc Standard argument count.
+/// @param      argv Standard argument list.
+///
 int main(int argc, char* argv[])
 {
 	(void) argc;
