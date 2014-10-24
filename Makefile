@@ -13,7 +13,8 @@ BIN      = popsim
 #  Target-specific compiler options
 #--------------------------
 
-FLAGS             = -std=c++0x
+FLAGS             =
+
 release:  FLAGS  += -O3
 debug:    FLAGS  += -g -D_DEBUG
 
