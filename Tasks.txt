@@ -26,6 +26,7 @@ Build system:
 
 Test framework:
 	▪	UnitTest++ - using a test framework is okay.
+	▪	Directory structure - app, test, classes, doc, with classes built into a library which app and tests link in.
 	▪	Add UnitTest++ to source tree and build system.
 	▪	Test every public function on every class.
 	▪	Into makefiles as "make check".
