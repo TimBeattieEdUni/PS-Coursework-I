@@ -13,3 +13,6 @@ popsim
 # Editor backups
 *~
 
+
+# OS X fluff
+.DS_Store
