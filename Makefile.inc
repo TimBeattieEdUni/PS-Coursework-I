@@ -49,6 +49,5 @@ LIBS      =
 DOWNLOADDIR   = downloads
 TESTLIBZIP    = $(DOWNLOADDIR)/unittest-cpp-1.4.zip
 TESTLIBDIR    = UnitTest++
-TESTLIBFLAGS  = -LUnitTest++ -lUnitTest++
 
 
