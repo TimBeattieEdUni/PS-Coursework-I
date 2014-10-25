@@ -1,8 +1,10 @@
 # Top-level Git ignore file
 
 
-# The binary itself
-popsim
+# Built binaries
+app/popsim
+test/popsim-test
+classes/libpopsim.a
 
 
 # Build-generated files

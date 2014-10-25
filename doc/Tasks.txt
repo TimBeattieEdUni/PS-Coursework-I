@@ -16,13 +16,11 @@ Set up version control:
 	▪	Rules - only buildable, working, tested, commented code goes in, everyone updates every day, commit every day, make commits atomic, if you break it you fix it straight away, etc.
 
 Build system:
-	▪	Makefiles.
-	▪	Single build command, single test command.
-	▪	Easy process for adding new code - or makefiles which handle all code.
 	▪	Point is to turn the repository into the binary in one easy step.
-	▪	Compiler options - all warnings, warnings as errors, C++11.
+	▪	Compiler options - all warnings, warnings as errors.
 	▪	(Polish) Separate directories with recursive makefiles and intermediate libraries built.
 	▪	Build-from-clean tests so we know the prof can build it.
+	▪	Top-level make all should build everything and run tests - encourages everyone to test every time they build.  Make check should be a top-level target that just runs the binary.
 
 Test framework:
 	▪	UnitTest++ - using a test framework is okay.
