@@ -1,11 +1,12 @@
 ##############################################################################
 #  Top-level makefile for popsim.
 #
-#  Targets: all, all-debug, app, app-debug, test, test-debug, classes, classes-debug, clean
+#  Targets: release, debug, clean.
 #
-#  Default target is "all"
+#  Default target is "release"
 #
-#  To do: switching between release and debug builds requires a clean.
+#  To do: switching between release and debug builds requires a "make clean"
+#  first.
 
 
 
@@ -17,61 +18,47 @@ include Makefile.inc
 
 
 ##############################################################################
-#  Top-level target rules.
+#  Top-level targets.
 
-default: all
+default: release
 
-.PHONY: all
-all: app test
+.PHONY: release debug clean
 
-.PHONY: all-debug
-all-debug: app-debug test-debug 
+release: TARGET=release
+debug:   TARGET=debug
 
-.PHONY: clean
+release: app test
+debug:   app test
+
 clean:
-	make -C app clean
+	make -C app  clean
 	make -C test clean
 	make -C classes clean
-	make -C $(TESTLIBDIR) clean
-
+	rm -rf $(TESTLIBDIR)
+	
 
 
 ##############################################################################
-#  Subirectory target rules.
+#  Dependencies.
 
-.PHONY: app
+.PHONY: app test classes
+
 app: classes	
-	make -C app
+	make -C app $(TARGET)
 
-.PHONY: app-debug
-app-debug: classes-debug
-	make -C app debug
-
-.PHONY: test
 test: classes testlib
-	make -C test
-	test/$(TESTAPP)
+	make -C test $(TARGET)
 
-.PHONY: test-debug
-test-debug: classes-debug testlib
-	make -C test debug
-	test/$(TESTAPP)
-
-.PHONY: classes
 classes:
-	make -C classes
-
-.PHONY: classes-debug
-classes-debug:
-	make -C classes debug
-
+	make -C classes $(TARGET)
+	
 
 
 ##############################################################################
-#  3rd-party unit test library rules.
+#  3rd-party unit test library.
 
 testlib: $(TESTLIBDIR)
-	make -C UnitTest++
+	make -C $(TESTLIBDIR) 
 
 $(TESTLIBDIR): $(TESTLIBZIP)
 	rm -rf $(TESTLIBDIR)
