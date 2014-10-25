@@ -1,7 +1,7 @@
 ##############################################################################
 #  Top-level makefile for popsim.
 #
-#  Targets: release, debug, clean.
+#  Targets: release, debug, doc, clean.
 #
 #  Default target is "release"
 #
@@ -22,7 +22,7 @@ include Makefile.inc
 
 default: release
 
-.PHONY: release debug clean
+.PHONY: release debug clean doc
 
 release: TARGET=release
 debug:   TARGET=debug
@@ -30,12 +30,16 @@ debug:   TARGET=debug
 release: app test
 debug:   app test
 
+doc:
+	make -C doc
+
 clean:
-	make -C app  clean
-	make -C test clean
-	make -C classes clean
+	make -C app      clean
+	make -C test     clean
+	make -C classes  clean
+	make -C doc      clean
 	rm -rf $(TESTLIBDIR)
-	
+
 
 
 ##############################################################################
