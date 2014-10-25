@@ -1,9 +1,10 @@
 ##############################################################################
 #  Top-level makefile for popsim.
 #
-#  Targets: release, debug, doc, clean.
+#  Top-level targets: release, debug, clean.
+#  Low-level targets: app, doc, test. 
 #
-#  Default target is "release"
+#  Default target: release.
 #
 #  To do: switching between release and debug builds requires a "make clean"
 #  first.
@@ -27,11 +28,8 @@ default: release
 release: TARGET=release
 debug:   TARGET=debug
 
-release: app test
-debug:   app test
-
-doc:
-	make -C doc
+release: app doc test
+debug:   app doc test
 
 clean:
 	make -C app      clean
@@ -45,10 +43,13 @@ clean:
 ##############################################################################
 #  Dependencies.
 
-.PHONY: app test classes
+.PHONY: app doc test classes
 
 app: classes	
 	make -C app $(TARGET)
+
+doc:
+	make -C doc
 
 test: classes testlib
 	make -C test $(TARGET)
