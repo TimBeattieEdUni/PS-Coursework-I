@@ -1,0 +1,6 @@
+# Git ignore for directory "doc".
+
+# Doxygen output
+doxygen
+debug.txt
+doxygen.log
