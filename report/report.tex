@@ -1,0 +1,177 @@
+% courseword.tex 
+% 
+% MSc in High Performance Computing
+%
+% Programming Skills Coursework (in C++)
+%
+% Tim Beattie, David Canning, Marton Feigl, Max Sorantin
+%
+
+\title{Programming Skills Coursework}
+\author{Tim Beattie, David Canning, Marton Feigl, Max Sorantin}
+\date{\today}
+
+%
+% Preamble
+%
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{amsmath}
+
+%
+% The following defines an environment for including source with syntax hilighting.
+% (Copied from stackoverflow.com/questions/3175105/how-to-insert-code-%into-a-latex-doc) 
+% Could be useful if we want to include source code in the report. 
+%
+% To use a different language, overwrite the language paramter in the code. I.e. write: 
+%	\lstset{language=bash}
+% before the beginning of the listing. 
+
+% Then enter your code: 
+%	\begin{lstlisting}
+%		source code here ...
+%	\end{lstlisting}
+%
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=c++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,   
+  tabsize=3
+}
+
+
+%Start of the Document Proper
+
+\begin{document}
+
+%Create Title Page
+\maketitle
+\newpage
+
+%Number pages with Contents, Figure Table, etc. in Roman Numerals.
+\pagenumbering{roman}
+
+\tableofcontents
+%\listoffigures 	
+\newpage
+
+%Begin normal page numbering from first section. 
+\pagenumbering{arabic}
+
+%
+% Short Introduction
+%
+
+\section{Introduction}
+
+Here is an example of what the C++ source would look like using the listing: 
+ 
+\begin{lstlisting}
+#include<iostream> 
+
+int main (void)
+{
+	std::cout << "Hello, world!" << endl;
+
+	return 0; 
+}
+\end{lstlisting}
+
+Writing equations:  
+
+\begin{equation} 
+E_{tot} = m c^2 / \sqrt{1 - {v^2/c^2}}
+\label{equation:chunktime}
+\end{equation}
+
+We can then refer back to equation \ref{equation:chunktime} like so. 
+
+
+%
+% How you planned your work
+%
+
+\section{Planning}
+
+%
+% Brief Summary of what tasks each member of the group did
+%
+
+\section{Assignment of tasks to group members}
+
+%
+% Description of your design
+%
+
+\section{Design}
+
+%
+% Description of the programming language you used and how useful it was
+%
+
+\section{Programming Language}
+
+%
+% Description of the revision control ou used
+%
+
+\section{Revision Control}
+
+%
+% Description of the build tools you used and your views on the strengths and weaknesses of these
+%
+
+\section{Build Tools}
+
+%
+% Description of what testing you did and any test frameworks that were usedi
+%
+
+\section{Testing}
+
+%
+% Description of hw you did any debugging any any tools that were used       
+%
+
+\section{Debugging}
+
+%
+% Description of what testing you did and any test frameworks that were usedi
+%
+
+\section{Performance Tests and Analysis}
+
+%
+% Some brief conclusions 
+%
+
+\section{Conclusions}
+
+%
+% Ideas for further work or what you would have done if you had more time.
+%
+
+\section{Further Work}
+
+\end{document}
