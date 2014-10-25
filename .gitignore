@@ -1,6 +1,10 @@
 # Top-level Git ignore file
 
 
+# Unzipped unit test library directory
+UnitTest++
+
+
 # Built binaries
 app/popsim
 test/popsim-test
