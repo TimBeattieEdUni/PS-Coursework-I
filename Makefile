@@ -32,10 +32,10 @@ release: app doc test
 debug:   app doc test
 
 clean:
-	make -C app      clean
-	make -C test     clean
-	make -C classes  clean
-	make -C doc      clean
+	$(MAKE) -C app      clean
+	$(MAKE) -C test     clean
+	$(MAKE) -C classes  clean
+	$(MAKE) -C doc      clean
 	rm -rf $(TESTLIBDIR)
 
 
@@ -46,16 +46,16 @@ clean:
 .PHONY: app doc test classes
 
 app: classes	
-	make -C app $(TARGET)
+	$(MAKE) -C app $(TARGET)
 
 doc:
-	make -C doc
+	$(MAKE) -C doc
 
 test: classes testlib
-	make -C test $(TARGET)
+	$(MAKE) -C test $(TARGET)
 
 classes:
-	make -C classes $(TARGET)
+	$(MAKE) -C classes $(TARGET)
 	
 
 
@@ -63,7 +63,7 @@ classes:
 #  3rd-party unit test library.
 
 testlib: $(TESTLIBDIR)
-	make -C $(TESTLIBDIR) 
+	$(MAKE) -C $(TESTLIBDIR) 
 
 $(TESTLIBDIR): $(TESTLIBZIP)
 	rm -rf $(TESTLIBDIR)
