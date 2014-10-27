@@ -36,8 +36,8 @@ clean:
 	$(MAKE) -C test     clean
 	$(MAKE) -C classes  clean
 	$(MAKE) -C doc      clean
+	$(MAKE) -C report   clean
 	rm -rf $(TESTLIBDIR)
-
 
 
 ##############################################################################
@@ -50,6 +50,7 @@ app: classes
 
 doc:
 	$(MAKE) -C doc
+	$(MAKE) -C report
 
 test: classes testlib
 	$(MAKE) -C test $(TARGET)
