@@ -13,7 +13,8 @@
 
 BIN = pdflatex
 SRC = report.tex
-CLEANFILES = report.aux report.log report.pdf report.toc
+OUT = report.pdf
+CLEANFILES = $(OUT) report.aux report.log report.toc
 
 
 
@@ -24,7 +25,9 @@ default: report
 
 .PHONY: report clean
 
-report:
+report: $(OUT)
+
+$(OUT) : $(SRC)
 	$(BIN) $(SRC)
 
 clean:
