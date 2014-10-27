@@ -39,14 +39,14 @@ clean:
 
 
 ##############################################################################
-# Automatically generated header dependency files.
+#  Automatically generated header dependency files.
 
 -include $(DEPS)
 
 
 
 ##############################################################################
-# Build objects from source.
+#  Build objects from source.
 
 %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) $(WARNINGS) -MMD -o $@ $<
@@ -54,7 +54,7 @@ clean:
 
 
 ##############################################################################
-# Build library from objects.
+#  Build library from objects.
 
 $(CLASSLIB): $(OBJS)
 	$(AR) $(ARFLAGS) $(CLASSLIB) $(OBJS)

@@ -28,8 +28,8 @@ default: release
 release: TARGET=release
 debug:   TARGET=debug
 
-release: app doc test
-debug:   app doc test
+release: app test doc
+debug:   app test doc
 
 clean:
 	$(MAKE) -C app      clean
@@ -48,7 +48,7 @@ clean:
 app: classes	
 	$(MAKE) -C app $(TARGET)
 
-doc:
+doc: classes app test
 	$(MAKE) -C doc
 	$(MAKE) -C report
 

@@ -29,7 +29,9 @@ default: doc
 
 .PHONY: doc clean
 
-doc:
+doc: $(OUTDIR) 
+
+$(OUTDIR): $(CFG) ../app ../classes ../test
 	$(BIN) $(CFG) > $(LOG) 2>&1
 
 clean:
