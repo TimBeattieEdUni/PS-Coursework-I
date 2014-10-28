@@ -24,18 +24,18 @@ namespace GroupPractical
 	class AppArgs
 	{
 		public:
-			AppArgs(int argc, char** argv);   ///< Constructor.
-			~AppArgs();                                         ///< Destructor.
+			AppArgs(int argc, char** argv);           ///< Constructor.
+			~AppArgs();                               ///< Destructor.
 		
-			std::string CfgFilename() const;                    ///< Getter.
+			std::string CfgFilename() const;          ///< Getter.
 
 		private:
-			AppArgs();                                          ///< Default constructor.
-			AppArgs(AppArgs const& rhs);                        ///< Copy constructor.
-			AppArgs& operator=(AppArgs const& rhs);             ///< Assignment operator.
+			AppArgs();                                ///< Default constructor.
+			AppArgs(AppArgs const& rhs);              ///< Copy constructor.
+			AppArgs& operator=(AppArgs const& rhs);   ///< Assignment operator.
 
-			static const int s_num_args = 2;                    ///< Required arguments including exe name.
-			std::string m_cfg_filename;                         ///< Configuration file name.
+			static const int s_num_args = 2;          ///< Required arguments including exe name.
+			std::string m_cfg_filename;               ///< Configuration file name.
 	};
 
 }   //  namespace GroupPractical
