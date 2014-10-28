@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //  Local headers.
 #include "DemoClass.hpp"
+#include "AppArgs.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -25,13 +26,20 @@
 ///
 int main(int argc, char* argv[])
 {
-	(void) argc;
-	(void) argv;
-	
-	std::cout << "Hello, Group Practical!" << std::endl;
-	
-	GroupPractical::DemoClass the_demo;
-	(void) the_demo;
+	try 
+	{
+		std::cout << "Hello, Group Practical!" << std::endl;
+
+		GroupPractical::AppArgs args(argc, argv);
+		std::cout << "loading config from \"" << args.CfgFilename() << "\"" << std::endl;
+		
+		GroupPractical::DemoClass the_demo;
+		(void) the_demo;
+	}
+	catch (std::exception const& e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
 	
 	return 0;
 }
