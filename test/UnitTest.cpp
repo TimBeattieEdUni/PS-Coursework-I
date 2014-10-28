@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file     test/UnitTest.cpp
 ///
-/// @brief    Unit test for STIBIS protocol classes.
+/// @brief    Unit test for Programming Skills Group Coursework classes.
 ///
 
 

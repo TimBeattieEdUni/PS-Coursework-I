@@ -15,6 +15,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //  Class test headers.
 #include "DemoClass-Test.hpp"
+#include "AppArgs-Test.hpp"
 
 
 #endif  //  #ndef GROUP_PRACTICAL_UNIT_TEST_HEADERS_H
