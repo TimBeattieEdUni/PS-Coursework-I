@@ -6,10 +6,10 @@
 ##############################################################################
 #  Binary names.
 
-APP           = popsim
-TESTAPP       = popsim-test
-CLASSLIB      = libpopsim-classes.a
-CLASSLIBFLAG  = -L../classes -lpopsim-classes
+APP            = popsim
+TESTAPP        = popsim-test
+CLASSLIB       = libpopsim-classes.a
+CLASSLIBFLAGS  = -L../classes -lpopsim-classes
 
 
 ##############################################################################

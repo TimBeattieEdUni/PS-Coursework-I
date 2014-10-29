@@ -66,4 +66,4 @@ clean:
 #  Build executable from objects.
 
 $(APP): $(OBJS)
-	$(CXX) -o $(APP) $(OBJS) $(CLASSLIBFLAG) $(LIBS)
+	$(CXX) -o $(APP) $(OBJS) $(CLASSLIBFLAGS	) $(LIBS)
