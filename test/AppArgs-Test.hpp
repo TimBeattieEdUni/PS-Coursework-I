@@ -5,8 +5,8 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_APPARGS_TEST_HPP
-#define GROUP_PRACTICAL_APPARGS_TEST_HPP
+#ifndef PSCOURSEWORKI_APPARGS_TEST_HPP
+#define PSCOURSEWORKI_APPARGS_TEST_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -20,14 +20,14 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
-/// @brief  First test for class AppArgs.
+/// @brief  Tests successful construction.
 ///
 /// @test   AppArgs can be constructed from valid arguments.
 /// @test   Arguments are stored and retrieved correctly.
 ///
 TEST(AppArgsConstruct)
 {
-	using GroupPractical::AppArgs;
+	using PsCourseworkI::AppArgs;
 	
 	int const argc = 2;
 	
@@ -51,14 +51,13 @@ TEST(AppArgsConstruct)
 
 
 //////////////////////////////////////////////////////////////////////////////
-/// @brief  First test for class AppArgs.
+/// @brief  Tests construction failure.
 ///
-/// @test   AppArgs can be constructed from valid arguments.
-/// @test   Arguments are stored and retrieved correctly.
+/// @test   AppArgs throws on invalid number of arguments.
 ///
 TEST(AppArgsThrowOnInvalidArgs)
 {
-	using GroupPractical::AppArgs;
+	using PsCourseworkI::AppArgs;
 	
 	int const argc = 3;
 	
@@ -73,4 +72,4 @@ TEST(AppArgsThrowOnInvalidArgs)
 }
 
 
-#endif  //  #ndef GROUP_PRACTICAL_APPARGS_TEST_HPP
+#endif  //  #ndef PSCOURSEWORKI_APPARGS_TEST_HPP

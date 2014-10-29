@@ -18,7 +18,7 @@
 #include <string>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details
@@ -113,5 +113,5 @@ namespace GroupPractical
 
 	}
 	
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 

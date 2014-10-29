@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////////////////
-/// @file     Landscape.cpp
+/// @file     Cell.cpp
 ///
-/// @brief    Implementation of class Landscape.
+/// @brief    Implementation of class Cell.
 ///
 
 
 //////////////////////////////////////////////////////////////////////////////
 //  This class's header.
-#include "Landscape.hpp"
+#include "Cell.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -26,24 +26,7 @@ namespace PsCourseworkI
 	///
 	/// @exception  List exceptions this function may throw here.
 	///
-	Landscape::Landscape(AppConfig const& cfg)
-	{
-		(void) cfg;
-		
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object initialisation here.
-	///
-	/// @param      Describe parameters here, one line each.
-	///
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape()
+	Cell::Cell()
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
@@ -59,17 +42,9 @@ namespace PsCourseworkI
 	///
 	/// @exception  None; this is a destructor.
 	///
-	Landscape::~Landscape()
+	Cell::~Cell()
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
-	}
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Advances the simulation by one time step.
-	///
-	void Landscape::DoStep()
-	{
-		std::cout << "time step" << std::endl;
 	}
 
 
@@ -83,7 +58,7 @@ namespace PsCourseworkI
 	///
 	/// @exception  List exceptions this function may throw here.
 	///
-	Landscape::Landscape(Landscape const& rhs)
+	Cell::Cell(Cell const& rhs)
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 
@@ -102,7 +77,7 @@ namespace PsCourseworkI
 	///
 	/// @exception  List exceptions this function may throw here.
 	///
-	Landscape& Landscape::operator=(Landscape const& rhs)
+	Cell& Cell::operator=(Cell const& rhs)
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 

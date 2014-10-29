@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	int nx = 0;
 	int ny = 0;
 	
-	GroupPractical::FileIO read;
+	PsCourseworkI::FileIO read;
 	(void) read;
 	
 	read.GetDimensions("small.dat", &nx, &ny);

@@ -28,8 +28,8 @@ default: release
 release: TARGET=release
 debug:   TARGET=debug
 
-release: app test doc
-debug:   app test doc
+release: doc app test
+debug:   doc app test
 
 clean:
 	$(MAKE) -C app      clean
@@ -43,7 +43,7 @@ clean:
 ##############################################################################
 #  Dependencies.
 
-.PHONY: app doc test classes
+.PHONY: doc classes app test
 
 app: classes	
 	$(MAKE) -C app $(TARGET)
@@ -68,5 +68,5 @@ testlib: $(TESTLIBDIR)
 
 $(TESTLIBDIR): $(TESTLIBZIP)
 	rm -rf $(TESTLIBDIR)
-	unzip $(TESTLIBZIP)
-	touch $(TESTLIBDIR)
+	unzip  $(TESTLIBZIP)
+	touch  $(TESTLIBDIR)

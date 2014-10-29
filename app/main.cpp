@@ -18,7 +18,7 @@
 #include <iostream>
 
 
-//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////	////////////////////////////////////
 /// @brief      Program entry point.
 ///
 /// @details    Runs the simulation of puma and hare populations.
@@ -28,19 +28,31 @@
 ///
 int main(int argc, char* argv[])
 {
-	using namespace GroupPractical;
+	using namespace PsCourseworkI;
 	
 	try 
 	{
+		//  parse command line
 		AppArgs args(argc, argv);
 
+		//  load configuration from file
 		AppConfig cfg(args.CfgFilename());
 		
-		Landscape landscape(cfg);
+		//  initialise the landscape
+		Landscape landscape(cfg);  //  include pgm arrays for land/water and initial population densities
+
+        for (int i=0; i<cfg.GetTT(); ++i)
+        {
+			landscape.DoStep();
+			
+			if (0 == i % cfg.GetT())
+			{
+				//  write regular output here.
+			}
+        }
 		
-		DemoClass the_demo;
-		(void) the_demo;
-	}
+		//  do final output here.
+    }
 	catch (std::exception const& e) 
 	{
 		std::cout << e.what() << std::endl;

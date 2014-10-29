@@ -5,14 +5,14 @@
 ///
 
 
-//#ifndef GROUP_PRACTICAL_DEMOCLASS_HPP
-//#define GROUP_PRACTICAL_DEMOCLASS_HPP
+//#ifndef PSCOURSEWORKI_DEMOCLASS_HPP
+//#define PSCOURSEWORKI_DEMOCLASS_HPP
 
 #include "params.hpp"
 
 #include <iostream>
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      Demonstration class.
@@ -31,8 +31,8 @@ namespace GroupPractical
 		private:
 	};
 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 
 
-//#endif  //  #ndef GROUP_PRACTICAL_DEMOCLASS_HPP
+//#endif  //  #ndef PSCOURSEWORKI_DEMOCLASS_HPP
 

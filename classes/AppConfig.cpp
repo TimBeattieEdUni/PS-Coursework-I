@@ -17,7 +17,7 @@
 #include <stdexcept>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Constructor from configuration file name.
@@ -32,6 +32,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -63,6 +64,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -82,7 +84,7 @@ namespace GroupPractical
 	///
 	AppConfig::~AppConfig()
 	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
+
 	}
 
 
@@ -100,6 +102,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -133,4 +136,4 @@ namespace GroupPractical
 		return *this;
 	}
 	
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI

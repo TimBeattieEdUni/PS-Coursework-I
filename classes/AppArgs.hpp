@@ -5,8 +5,8 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_APPARGS_HPP
-#define GROUP_PRACTICAL_APPARGS_HPP
+#ifndef PSCOURSEWORKI_APPARGS_HPP
+#define PSCOURSEWORKI_APPARGS_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@
 #include <string>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      Command-line arguments.
@@ -38,7 +38,7 @@ namespace GroupPractical
 			std::string m_cfg_filename;               ///< Configuration file name.
 	};
 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 
 
-#endif  //  #ndef GROUP_PRACTICAL_APPARGS_HPP
+#endif  //  #ndef PSCOURSEWORKI_APPARGS_HPP
