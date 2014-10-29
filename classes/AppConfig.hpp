@@ -47,6 +47,8 @@ namespace PsCourseworkI
 			AppConfig(AppConfig const& rhs);              ///< Copy constructor.
 			AppConfig& operator=(AppConfig const& rhs);   ///< Assignment operator.
 		
+			void Print();   ///< Writes config to stdout.
+
 			void RemoveComment(std::string & line);       ///< Strips comments from line.
 		
 			unsigned int  StringToInt    (std::string const& str);   ///< Converts string to integer.

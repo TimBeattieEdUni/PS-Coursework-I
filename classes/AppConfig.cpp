@@ -42,7 +42,6 @@ namespace PsCourseworkI
 		, m_k(0.0)
 		, m_l(0.0)
 		, m_dt(0.0)
-
 	{
 		std::cout << "loading configuration from file \"" << cfg_filename << "\"" << std::endl;
 		
@@ -64,21 +63,18 @@ namespace PsCourseworkI
 			
 			std::istringstream splitter(line);
 			
-			//  read key
+			//  read key (if any)
 			std::string key;
 			splitter >> key;
-			
-			//  ignore lines which are whitespace-only
 			if (0 == key.size())
 			{
 				continue;
 			}
 
-			//  read value
+			//  read value (if any)
 			std::string value;
 			splitter >> value;
 
-			//  "key but no value" means bad line
 			if (0 == value.size())
 			{
 				std::cout << cfg_filename << ":" << line_num << ": warning: ignoring line with key but no value" << std::endl;
@@ -137,8 +133,45 @@ namespace PsCourseworkI
 				std::cout << cfg_filename << ":" << line_num << ": " << line << std::endl;				
 			}
 		}
+		
+		Print();
 	}
 
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details    Describe object destruction here.
+	///
+	/// @exception  None; this is a destructor.
+	///
+	AppConfig::~AppConfig()
+	{
+		
+	}
+	
+
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Writes all configuration options to stdout.
+	///
+	/// @todo Ideally, this would be a stream operator.
+	///
+	void AppConfig::Print()
+	{
+		std::cout << "configuration:" << std::endl;
+		
+		std::cout << "  Nx = " << m_Nx << std::endl;
+		std::cout << "  Ny = " << m_Ny << std::endl;
+		std::cout << "   T = " << m_T  << std::endl;
+		std::cout << "  TT = " << m_TT << std::endl;
+		std::cout << "   r = " << m_r  << std::endl;
+		std::cout << "   a = " << m_a  << std::endl;
+		std::cout << "   b = " << m_b  << std::endl;
+		std::cout << "   m = " << m_m  << std::endl;
+		std::cout << "   k = " << m_k  << std::endl;
+		std::cout << "   l = " << m_l  << std::endl;
+		std::cout << "  dt = " << m_dt << std::endl;
+	}
+	
 	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Converts the given string to an unsigned integer.
@@ -191,16 +224,6 @@ namespace PsCourseworkI
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object destruction here.
-	///
-	/// @exception  None; this is a destructor.
-	///
-	AppConfig::~AppConfig()
-	{
-
-	}
 
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Strips comment (anything beginning with '#' from the given 
