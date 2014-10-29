@@ -10,6 +10,7 @@
 #include "DemoClass.hpp"
 #include "AppArgs.hpp"
 #include "AppConfig.hpp"
+#include "Landscape.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -31,11 +32,11 @@ int main(int argc, char* argv[])
 	
 	try 
 	{
-		std::cout << "parsing command line arguments" << std::endl;
 		AppArgs args(argc, argv);
 
-		std::cout << "loading confiuration from \"" << args.CfgFilename() << "\"" << std::endl;
 		AppConfig cfg(args.CfgFilename());
+		
+		Landscape landscape(cfg);
 		
 		DemoClass the_demo;
 		(void) the_demo;

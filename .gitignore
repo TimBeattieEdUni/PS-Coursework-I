@@ -8,7 +8,7 @@ UnitTest++
 # Built binaries
 app/popsim
 test/popsim-test
-classes/libpopsim.a
+classes/libpopsim-classes.a
 
 
 # Build-generated files
@@ -20,5 +20,5 @@ classes/libpopsim.a
 *~
 
 
-# OS X fluff
+# OS X workings
 .DS_Store

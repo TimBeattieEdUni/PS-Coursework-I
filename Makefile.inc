@@ -8,8 +8,8 @@
 
 APP           = popsim
 TESTAPP       = popsim-test
-CLASSLIB      = libpopsim.a
-CLASSLIBFLAG  = -L../classes -lpopsim
+CLASSLIB      = libpopsim-classes.a
+CLASSLIBFLAG  = -L../classes -lpopsim-classes
 
 
 ##############################################################################

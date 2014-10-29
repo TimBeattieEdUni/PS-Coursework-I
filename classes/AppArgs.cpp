@@ -31,13 +31,12 @@ namespace GroupPractical
 	AppArgs::AppArgs(int argc, char** argv)
 		: m_cfg_filename()
 	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
 		if (s_num_args != argc)
 		{
 			throw std::runtime_error("usage: popsim <config-file>");
 		}
 
+		std::cout << "reading command line arguments" << std::endl;
 		m_cfg_filename = std::string(argv[1]);
 	}
 	
@@ -64,7 +63,7 @@ namespace GroupPractical
 	///
 	AppArgs::~AppArgs()
 	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
+
 	}
 
 

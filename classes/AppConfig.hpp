@@ -24,6 +24,8 @@ namespace GroupPractical
 	///
 	/// @invariant  All config is unchanged.
 	///
+	/// @todo Add input file names.
+	///
 	class AppConfig
 	{
 		public:
