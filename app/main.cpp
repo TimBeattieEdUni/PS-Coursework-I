@@ -41,6 +41,7 @@ int main(int argc, char* argv[])
 		//  initialise the landscape
 		Landscape landscape(cfg);  //  include pgm arrays for land/water and initial population densities
 
+		//  run the simulation
         for (int i=0; i<cfg.GetTT(); ++i)
         {
 			landscape.DoStep();
