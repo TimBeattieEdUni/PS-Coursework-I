@@ -3,7 +3,7 @@
 ///		file:	PopulationCompute.hpp
 ///		author:	Márton Feigl
 ///		date:	27/10/2014
-///		ver:	1.0
+///		ver:	1.1
 ///		description: includes class PopulationCompute definitions that calculates hare and puma population within 2D grid
 ///
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
