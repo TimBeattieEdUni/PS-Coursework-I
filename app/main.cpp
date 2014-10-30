@@ -7,7 +7,6 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //  Local headers.
-#include "DemoClass.hpp"
 #include "AppArgs.hpp"
 #include "AppConfig.hpp"
 #include "Landscape.hpp"
