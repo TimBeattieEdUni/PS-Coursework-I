@@ -19,6 +19,20 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
+	/// @brief      Two-dimensional size.
+	///
+	/// @details    Provides a single object for 2D array dimensions.
+	///
+	struct Size
+	{
+		Size(unsigned int x, unsigned int y) : m_x(x), m_y(y) {}
+		Size& operator=(Size const& rhs) { m_x = rhs.m_x; m_y = rhs.m_y; return *this; }
+		unsigned int m_x;
+		unsigned int m_y;
+	};
+
+	
+	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      2D array.
 	///
 	/// @details    Provides a two-dimensional contiguously- and dynamically-
@@ -28,26 +42,21 @@ namespace PsCourseworkI
 	class Array2D
 	{
 		public:
-			struct Size
-			{
-				unsigned int m_x;
-				unsigned int m_y;
-			};
-			
-			Array2D(Size size);                        ///< Constructor.
+			Array2D();                                 ///< Default Constructor.
+			Array2D(Size size);                        ///< Constructor from size.
 			~Array2D();                                ///< Destructor.
 
 			Size GetSize() const { return m_size; }    ///< Getter.
+			void Resize(Size const& size);             ///< Resizes the array.
 		
 			/// Element access.
 			T& operator() (unsigned int x, unsigned int y);
 
 		private:
-			Array2D();                                 ///< Default constructor.
 			Array2D(Array2D const& rhs);               ///< Copy constructor.
 			Array2D& operator=(Array2D const& rhs);    ///< Assignment operator.
 
-			Size const m_size ;                        ///< Array X and Y extents.
+			Size m_size;                               ///< Array X and Y extents.
 			std::vector<T> m_array;                    ///< The array itself.
 	};
 
@@ -76,6 +85,18 @@ namespace PsCourseworkI
 	
 	
 	//////////////////////////////////////////////////////////////////////////////
+	/// @details    Initialises the array with zero size.
+	///
+	template <typename T>
+	Array2D<T>::Array2D()
+		: m_size(Size(0,0))
+		, m_array()
+	{
+		
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Clean-up is automatic so far.
 	///
 	template <typename T>
@@ -84,6 +105,23 @@ namespace PsCourseworkI
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Clears the array and reinitialises it with the given size.
+	///
+	/// @param        size  New size for the array.
+	/// @return       
+	///
+	/// @post         The array has been resized.
+	///
+	template <typename T>
+	void Array2D<T>::Resize(Size const& size)
+	{
+		m_array.clear();
+		m_array.resize(size.m_x * size.m_y);
+		m_size = size;
+	}
+
 	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Provides access to array elements via x and y indices.
@@ -119,8 +157,8 @@ namespace PsCourseworkI
 	///
 	template <typename T>
 	Array2D<T>::Array2D(Array2D const& rhs)
-	: m_size()
-	, m_array()
+		: m_size()
+		, m_array()
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 		

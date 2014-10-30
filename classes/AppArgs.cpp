@@ -30,90 +30,38 @@ namespace PsCourseworkI
 	///
 	AppArgs::AppArgs(int argc, char** argv)
 		: m_cfg_filename()
+		, m_map_filename()
 	{
 		if (s_num_args != argc)
 		{
-			throw std::runtime_error("usage: popsim <config-file>");
+			throw std::runtime_error("usage: popsim <config-file> <map-file>");
 		}
 
 		std::cout << "reading command line arguments" << std::endl;
 		m_cfg_filename = std::string(argv[1]);
+		m_map_filename = std::string(argv[2]);
 	}
 	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Declared private to prevent use.
-	///
-	AppArgs::AppArgs()
-		: m_cfg_filename()
-	{
-
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object destruction here.
-	///
-	/// @param      Describe parameters here, one line each.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  None; this is a destructor.
-	///
-	AppArgs::~AppArgs()
-	{
-
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe copy construction here.
-	///
-	/// @param      Object to copy.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	AppArgs::AppArgs(AppArgs const& rhs)
-		: m_cfg_filename()
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object assignment here.
-	///
-	/// @param      Object on the right-hand side of the assignment statement.
-	/// @return     Object which has been assigned.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	AppArgs& AppArgs::operator=(AppArgs const& rhs)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-		return *this;
-	}
-
 	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @return     Config file name.
 	///
 	/// @pre        Config file name read from command line.
 	///
-	std::string AppArgs::CfgFilename() const
+	std::string AppArgs::GetCfgFilename() const
 	{
 		return m_cfg_filename;
 	}
 										 
+
+	//////////////////////////////////////////////////////////////////////////////
+	/// @return     Map file name.
+	///
+	/// @pre        Land/water map file name read from command line.
+	///
+	std::string AppArgs::GetMapFilename() const
+	{
+		return m_map_filename;
+	}
+
 }   //  namespace PsCourseworkI

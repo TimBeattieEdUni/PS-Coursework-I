@@ -38,11 +38,12 @@
 TEST(Array2DConstruction)
 {
 	using PsCourseworkI::Array2D;
-
-	Array2D<double>::Size size1 = { 10, 12 };
+	using PsCourseworkI::Size;
+	
+	Size size1(10, 12);
 	
 	Array2D<double> array(size1);
-	Array2D<double>::Size size2 = array.GetSize();
+	Size size2 = array.GetSize();
 	
 	CHECK(size1.m_x == size2.m_x);
 	CHECK(size1.m_y == size2.m_y);
@@ -57,8 +58,9 @@ TEST(Array2DConstruction)
 TEST(Array2DThrowOnInvalidIndex)
 {
 	using PsCourseworkI::Array2D;
-
-	Array2D<double>::Size size = { 0, 0 };
+	using PsCourseworkI::Size;
+	
+	Size size(0, 0);
 	
 	CHECK_THROW(Array2D<double> array(size), std::logic_error);
 }
@@ -73,11 +75,12 @@ TEST(Array2DThrowOnInvalidIndex)
 TEST(Array2DElementAccess)
 {
 	using PsCourseworkI::Array2D;
+	using PsCourseworkI::Size;
 	
-	Array2D<double>::Size given_size = { 2, 2 };
+	Size given_size(2, 2);
 	
 	Array2D<double> array(given_size);
-	Array2D<double>::Size array_size = array.GetSize();
+	Size array_size = array.GetSize();
 	
 	//  element access tests
 	for (unsigned int i=0; i<array_size.m_x; ++i)

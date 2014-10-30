@@ -35,6 +35,7 @@ namespace PsCourseworkI
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
+	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Cleans up any resources.
 	///
