@@ -36,8 +36,8 @@ int main(int argc, char* argv[])
 	PsCourseworkI::FileIO read;
 	(void) read;
 	
-	read.GetDimensions("islands.dat", &nx, &ny);
-	read.ReadBitmap("islands.dat", landscape, &nx, &ny);
+	read.GetDimensions("Landscap5.dat", &nx, &ny);
+	read.ReadBitmap("Landscap5.dat", landscape, &nx, &ny);
 	read.ConvertBitmap(landscape, &nx, &ny);
 	
 	std::cout << "nx = " << nx << std::endl;

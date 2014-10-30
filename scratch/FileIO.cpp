@@ -102,7 +102,7 @@ namespace PsCourseworkI
 				{
 					bitmap[i][j] = 255; 
 				}
-			//Set the island to be black
+			//Set the 'island' to be black
 				else if ( bitmap[i][j] == 1 ) 
 				{
 					bitmap[i][j] = 0; 
