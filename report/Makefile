@@ -11,9 +11,11 @@
 ##############################################################################
 #  File names.
 
-BIN = pdflatex
-SRC = report.tex
-OUT = report.pdf
+BIN   = pdflatex
+SRC   = report.tex
+FLAGS = -halt-on-error
+OUT   = report.pdf
+
 CLEANFILES = $(OUT) report.aux report.log report.toc
 
 
@@ -28,7 +30,7 @@ default: report
 report: $(OUT)
 
 $(OUT) : $(SRC)
-	$(BIN) $(SRC)
+	$(BIN) $(FLAGS) $(SRC)
 
 clean:
 	rm -rf $(CLEANFILES)
