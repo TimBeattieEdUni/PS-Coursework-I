@@ -36,10 +36,10 @@ int main(int argc, char* argv[])
 		AppArgs args(argc, argv);
 
 		//  load configuration from file
-		AppConfig cfg(args.CfgFilename());
+		AppConfig cfg(args.GetCfgFilename());
 		
-		//  load land/water bitmap
-		BmpFile lw_bmp("scratch/check.dat");
+		//  load land/water map from file
+		BmpFile map_bmp(args.GetMapFilename());
 		
 		//  initialise the landscape
 		Landscape landscape(cfg);  //  include pgm arrays for land/water and initial population densities

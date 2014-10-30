@@ -31,7 +31,7 @@ namespace PsCourseworkI
 	class BmpFile
 	{
 		public:
-			BmpFile(std::string filename);            ///< Constructor from filename.
+			BmpFile(std::string bmp_filename);         ///< Constructor from filename.
 
 		private:
 			BmpFile(BmpFile const& rhs);              ///< Copy constructor.

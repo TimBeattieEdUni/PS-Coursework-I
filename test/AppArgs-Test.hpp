@@ -29,19 +29,21 @@ TEST(AppArgsConstruct)
 {
 	using PsCourseworkI::AppArgs;
 	
-	int const argc = 2;
+	int const argc = 3;
 	
 	//  add const here to prevent compiler warning about deprecated conversion 
 	char const* exename = "exename";
 	char const* cfgfile = "cfgfile";
+	char const* mapfile = "mapfile";
 	
-	char const* argv[argc] = { exename, cfgfile };
+	char const* argv[argc] = { exename, cfgfile, mapfile };
 	
 	try
 	{
 		//  remove const here to mimic what main() is given
 		AppArgs args(argc, (char**)argv);
-		CHECK(args.CfgFilename() == cfgfile);
+		CHECK(args.GetCfgFilename() == cfgfile);
+		CHECK(args.GetMapFilename() == mapfile);
 	}
 	catch (...)
 	{
@@ -59,14 +61,15 @@ TEST(AppArgsThrowOnInvalidArgs)
 {
 	using PsCourseworkI::AppArgs;
 	
-	int const argc = 3;
+	int const argc = 4;
 	
 	//  add const here to prevent compiler warning about deprecated conversion 
 	char const* exename = "exename";
 	char const* cfgfile = "cfgfile";
+	char const* mapfile = "mapfile";
 	char const* wrongun = "wrongun";
 	
-	char const* argv[argc] = { exename, cfgfile, wrongun };
+	char const* argv[argc] = { exename, cfgfile, mapfile, wrongun };
 	
 	CHECK_THROW(AppArgs args(argc, (char**)argv), std::runtime_error);
 }

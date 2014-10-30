@@ -29,11 +29,13 @@ namespace PsCourseworkI
 	///
 	/// @exception  std::runtime_error  File could not be opened.
 	///
-	BmpFile::BmpFile(std::string filename)
+	BmpFile::BmpFile(std::string bmp_filename)
 		: m_array()
 	{
+		std::cout << "loading land/water map from from file \"" << bmp_filename << "\"" << std::endl;
+
 		//  open input stream 
-		std::ifstream file_reader(filename.c_str());
+		std::ifstream file_reader(bmp_filename.c_str());
 		
   		//  check that input file is valid
 		if ( !file_reader.is_open() )
