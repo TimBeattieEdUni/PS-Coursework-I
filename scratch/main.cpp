@@ -36,11 +36,14 @@ int main(int argc, char* argv[])
 	PsCourseworkI::FileIO read;
 	(void) read;
 	
-	read.GetDimensions("small.dat", &nx, &ny);
-	read.ReadBitmap("small.dat", landscape, &nx, &ny);
+	read.GetDimensions("islands.dat", &nx, &ny);
+	read.ReadBitmap("islands.dat", landscape, &nx, &ny);
+	read.ConvertBitmap(landscape, &nx, &ny);
 	
 	std::cout << "nx = " << nx << std::endl;
 	std::cout << "ny = " << ny << std::endl;
+	
+	read.WritePPM("exampleoutput.dat", landscape, &nx, &ny);
 	
 	return 0;
 }
