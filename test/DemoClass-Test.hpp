@@ -12,8 +12,8 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_DEMOCLASS_TEST_HPP
-#define GROUP_PRACTICAL_DEMOCLASS_TEST_HPP
+#ifndef PSCOURSEWORKI_DEMOCLASS_TEST_HPP
+#define PSCOURSEWORKI_DEMOCLASS_TEST_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@
 
 TEST(DemoClass)
 {
-	using GroupPractical::DemoClass;
+	using PsCourseworkI::DemoClass;
 
 	DemoClass d;
 	(void) d;
@@ -32,4 +32,4 @@ TEST(DemoClass)
 }
 
 
-#endif  //  #ndef GROUP_PRACTICAL_DEMOCLASS_TEST_HPP
+#endif  //  #ndef PSCOURSEWORKI_DEMOCLASS_TEST_HPP

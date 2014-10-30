@@ -15,7 +15,7 @@
 #include <iostream>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Describe object initialisation here.
@@ -64,6 +64,14 @@ namespace GroupPractical
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details    Advances the simulation by one time step.
+	///
+	void Landscape::DoStep()
+	{
+		std::cout << "time step" << std::endl;
+	}
+
 
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Describe copy construction here.
@@ -102,4 +110,4 @@ namespace GroupPractical
 		return *this;
 	}
 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI

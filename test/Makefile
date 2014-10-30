@@ -70,4 +70,4 @@ clean:
 #  Binary rules.
 
 $(TESTAPP): $(OBJS) ../classes/$(CLASSLIB)
-	$(CXX) -o $(TESTAPP) $(OBJS) $(CLASSLIBFLAG) $(TESTLIBFLAGS) $(LIBS)
+	$(CXX) -o $(TESTAPP) $(OBJS) $(CLASSLIBFLAGS) $(TESTLIBFLAGS) $(LIBS)

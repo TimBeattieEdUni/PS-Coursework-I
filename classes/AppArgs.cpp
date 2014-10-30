@@ -16,7 +16,7 @@
 #include <stdexcept>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Copies command line arguments into member variables.
@@ -116,4 +116,4 @@ namespace GroupPractical
 		return m_cfg_filename;
 	}
 										 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI

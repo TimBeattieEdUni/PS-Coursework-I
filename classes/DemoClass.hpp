@@ -5,11 +5,11 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_DEMOCLASS_HPP
-#define GROUP_PRACTICAL_DEMOCLASS_HPP
+#ifndef PSCOURSEWORKI_DEMOCLASS_HPP
+#define PSCOURSEWORKI_DEMOCLASS_HPP
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      Demonstration class.
@@ -28,8 +28,8 @@ namespace GroupPractical
 			DemoClass& operator=(DemoClass const& rhs);   ///< Assignment operator.
 	};
 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 
 
-#endif  //  #ndef GROUP_PRACTICAL_DEMOCLASS_HPP
+#endif  //  #ndef PSCOURSEWORKI_DEMOCLASS_HPP
 

@@ -15,7 +15,7 @@
 #include <iostream>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details
@@ -82,5 +82,5 @@ namespace GroupPractical
 		return *this;
 	}
 	
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 

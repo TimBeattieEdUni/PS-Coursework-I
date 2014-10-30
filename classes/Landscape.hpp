@@ -5,8 +5,8 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_LANDSCAPE_HPP
-#define GROUP_PRACTICAL_LANDSCAPE_HPP
+#ifndef PSCOURSEWORKI_LANDSCAPE_HPP
+#define PSCOURSEWORKI_LANDSCAPE_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@
 #include "AppConfig.hpp"
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief
@@ -26,16 +26,18 @@ namespace GroupPractical
 	class Landscape
 	{
 		public:
-			Landscape(AppConfig const& cfg);    ///< Constructor.
-			~Landscape();                       ///< Destructor.
+			Landscape(AppConfig const& cfg);   ///< Constructor.
+			~Landscape();                      ///< Destructor.
 
+			void DoStep();                     ///< Updates the landscape by one step.
+		
 		private:
 			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
 	};
 
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI
 
 
-#endif  //  #ndef GROUP_PRACTICAL_LANDSCAPE_HPP
+#endif  //  #ndef PSCOURSEWORKI_LANDSCAPE_HPP

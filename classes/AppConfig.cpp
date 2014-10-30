@@ -15,9 +15,11 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <string>
+#include <sstream>
 
 
-namespace GroupPractical
+namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Constructor from configuration file name.
@@ -32,6 +34,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -39,7 +42,6 @@ namespace GroupPractical
 		, m_k(0.0)
 		, m_l(0.0)
 		, m_dt(0.0)
-
 	{
 		std::cout << "loading configuration from file \"" << cfg_filename << "\"" << std::endl;
 		
@@ -50,11 +52,158 @@ namespace GroupPractical
 			throw std::runtime_error("failed to open config file");
 		}
 		
-		//  read lines in
+		//  process lines
+		std::string line;
+		unsigned int line_num = 0;
+		while (std::getline(cfg_file, line))
+		{
+			++line_num;
+			
+			RemoveComment(line);
+			
+			std::istringstream splitter(line);
+			
+			//  read key (if any)
+			std::string key;
+			splitter >> key;
+			if (0 == key.size())
+			{
+				continue;
+			}
+
+			//  read value (if any)
+			std::string value;
+			splitter >> value;
+
+			if (0 == value.size())
+			{
+				std::cout << cfg_filename << ":" << line_num << ": warning: ignoring line with key but no value" << std::endl;
+				std::cout << cfg_filename << ":" << line_num << ": " << line << std::endl;
+				continue;				
+			}
+	
+			//  identify which key we've just read
+			if (key == "Nx")
+			{
+				m_Nx = StringToInt(value);
+			}
+			else if (key == "Ny")
+			{
+				m_Ny = StringToInt(value);
+			}
+			else if (key == "T")
+			{
+				m_T = StringToInt(value); 
+			}
+			else if (key == "TT")
+			{
+				m_TT = StringToInt(value);
+			}
+			else if (key == "r")
+			{
+				m_r = StringToDouble(value);
+			}
+			else if (key == "a")
+			{
+				m_a = StringToDouble(value);
+			}
+			else if (key == "b")
+			{
+				m_b = StringToDouble(value);
+			}
+			else if (key == "m")
+			{
+				m_m = StringToDouble(value);
+			}
+			else if (key == "k")
+			{
+				m_k = StringToDouble(value);
+			}
+			else if (key == "l")
+			{
+				m_l = StringToDouble(value);
+			}
+			else if (key == "dt")
+			{
+				m_dt = StringToDouble(value);
+			}
+			else
+			{
+				std::cout << cfg_filename << ":" << line_num << ": warning: unrecognised key name" << std::endl;
+				std::cout << cfg_filename << ":" << line_num << ": " << line << std::endl;				
+			}
+		}
 		
-		//  parse lines and store options
+		Print();
 	}
 
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details    Describe object destruction here.
+	///
+	/// @exception  None; this is a destructor.
+	///
+	AppConfig::~AppConfig()
+	{
+		
+	}
+	
+
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Writes all configuration options to stdout.
+	///
+	/// @todo Ideally, this would be a stream operator.
+	///
+	void AppConfig::Print()
+	{
+		std::cout << "configuration:" << std::endl;
+		
+		std::cout << "  Nx = " << m_Nx << std::endl;
+		std::cout << "  Ny = " << m_Ny << std::endl;
+		std::cout << "   T = " << m_T  << std::endl;
+		std::cout << "  TT = " << m_TT << std::endl;
+		std::cout << "   r = " << m_r  << std::endl;
+		std::cout << "   a = " << m_a  << std::endl;
+		std::cout << "   b = " << m_b  << std::endl;
+		std::cout << "   m = " << m_m  << std::endl;
+		std::cout << "   k = " << m_k  << std::endl;
+		std::cout << "   l = " << m_l  << std::endl;
+		std::cout << "  dt = " << m_dt << std::endl;
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Converts the given string to an unsigned integer.
+	///
+	/// @param        str  The given string
+	/// @return       Integer value read from the given string.
+	///
+	unsigned int AppConfig::StringToInt(std::string const& str)
+	{
+		unsigned int value;
+		std::stringstream converter(str);
+		
+		converter >> value;
+		return value;
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Converts the given string to a double.
+	///
+	/// @param        str  The given string
+	/// @return       Double value read from the given string.
+	///
+	double AppConfig::StringToDouble(std::string const& str)
+	{
+		double value;
+		std::stringstream converter(str);
+		
+		converter >> value;
+		return value;		
+	}
+	
 	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Declared private to prevent use.
@@ -63,6 +212,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -76,15 +226,20 @@ namespace GroupPractical
 
 
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object destruction here.
+	/// @details      Strips comment (anything beginning with '#' from the given 
+	///               string.
 	///
-	/// @exception  None; this is a destructor.
+	/// @param        line  Line from configuration file.
 	///
-	AppConfig::~AppConfig()
+	/// @post         Any comment in the given line has been removed.
+	///
+	/// @exception    
+	///
+	void AppConfig::RemoveComment(std::string& line)
 	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
+		line = line.substr(0, line.find('#'));
 	}
-
+	
 
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Describe copy construction here.
@@ -100,6 +255,7 @@ namespace GroupPractical
 		: m_Nx(0)
 		, m_Ny(0)
 		, m_T(0)
+		, m_TT(0)
 		, m_r(0.0)
 		, m_a(0.0)
 		, m_b(0.0)
@@ -133,4 +289,4 @@ namespace GroupPractical
 		return *this;
 	}
 	
-}   //  namespace GroupPractical
+}   //  namespace PsCourseworkI

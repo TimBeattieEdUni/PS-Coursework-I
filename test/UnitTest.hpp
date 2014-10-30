@@ -8,14 +8,14 @@
 ///
 
 
-#ifndef GROUP_PRACTICAL_UNIT_TEST_HEADERS_H
-#define GROUP_PRACTICAL_UNIT_TEST_HEADERS_H
+#ifndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H
+#define PSCOURSEWORKI_UNIT_TEST_HEADERS_H
 
 
 //////////////////////////////////////////////////////////////////////////////
 //  Class test headers.
-#include "DemoClass-Test.hpp"
+#include "Array2D-Test.hpp"
 #include "AppArgs-Test.hpp"
 
 
-#endif  //  #ndef GROUP_PRACTICAL_UNIT_TEST_HEADERS_H
+#endif  //  #ndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H
