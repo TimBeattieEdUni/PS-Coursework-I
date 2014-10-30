@@ -27,7 +27,6 @@ namespace PsCourseworkI
 		public:
 			Cell();    ///< Constructor.
 
-		private:
 			bool    m_land;     ///< Land/water flag.
 			double  m_hare_d;   ///< Population density of hares.
 			double  m_puma_d;   ///< Population density of pumas.
