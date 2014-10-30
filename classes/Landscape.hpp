@@ -13,6 +13,7 @@
 //  Local headers.
 #include "AppConfig.hpp"
 #include "Array2D.hpp"
+#include "BmpFile.hpp"
 #include "Cell.hpp"
 
 
@@ -28,10 +29,10 @@ namespace PsCourseworkI
 	class Landscape
 	{
 		public:
-			Landscape(AppConfig const& cfg);   ///< Constructor.
-			~Landscape();                      ///< Destructor.
+			Landscape(AppConfig const& cfg, BmpFile const& bmp);   ///< Constructor.
+			~Landscape();                                          ///< Destructor.
 
-			void DoStep();                     ///< Updates the landscape by one step.
+			void DoStep();                                ///< Updates the landscape by one step.
 		
 		private:
 			Landscape();                                  ///< Default Constructor.

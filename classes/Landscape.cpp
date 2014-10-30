@@ -24,12 +24,28 @@ namespace PsCourseworkI
 	///
 	/// @post       Landscape array has been initialised.
 	///
-	Landscape::Landscape(AppConfig const& cfg)
+	Landscape::Landscape(AppConfig const& cfg, BmpFile const& bmp)
 		: m_landscape(Size(cfg.GetNx(), cfg.GetNy()))
 	{
 		(void) cfg;
+
+		std::cout << "applying land/water map to landscape" << std::endl;
 		
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
+		BmpFile::BmpArray const& bmp_array = bmp.GetArray();
+		
+		if (! (bmp_array.GetSize() == m_landscape.GetSize()))
+		{
+			throw std::runtime_error("size mismatch between land/water bitmap and landscape");
+		}
+
+		//  write land/water flags into landscape cells
+		for (unsigned int i = 0; i < cfg.GetNx(); ++i)
+		{
+			for (unsigned int j = 0; j < cfg.GetNy(); ++j)
+			{
+				m_landscape(i, j).m_land = static_cast<bool>(bmp_array(i, j));
+			}
+		}
 	}
 
 

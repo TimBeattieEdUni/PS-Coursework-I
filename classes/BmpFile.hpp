@@ -31,13 +31,17 @@ namespace PsCourseworkI
 	class BmpFile
 	{
 		public:
-			BmpFile(std::string bmp_filename);         ///< Constructor from filename.
-
-		private:
-			BmpFile(BmpFile const& rhs);              ///< Copy constructor.
-			BmpFile& operator=(BmpFile const& rhs);   ///< Assignment operator.
+			typedef Array2D<char> BmpArray;                  ///< Saves typing.
 		
-			Array2D<char> m_array;                    ///< Bitmap in memory.
+			BmpFile(std::string bmp_filename);               ///< Constructor from filename.
+
+			BmpArray const& GetArray() const { return m_array; }   ///< Getter.
+			
+		private:
+			BmpFile(BmpFile const& rhs);                     ///< Copy constructor.
+			BmpFile& operator=(BmpFile const& rhs);          ///< Assignment operator.
+		
+			BmpArray m_array;                                ///< Bitmap in memory.
 	};
 
 }   //  namespace PsCourseworkI

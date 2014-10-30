@@ -33,6 +33,19 @@ namespace PsCourseworkI
 
 	
 	//////////////////////////////////////////////////////////////////////////////
+	/// @brief        Equivalence operator for Size objects.
+	///
+	/// @param        lhs  Object on the left-hand side of the comparison.
+	/// @param        rhs  Object on the right-hand side of the comparison.
+	/// @return       true if the Sizes are equal, false if not.
+	///	
+	inline bool operator==(Size const& lhs, Size const& rhs)
+	{
+		return ((lhs.m_x == rhs.m_x) && (lhs.m_y == rhs.m_y));
+	}
+
+	
+	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      2D array.
 	///
 	/// @details    Provides a two-dimensional contiguously- and dynamically-
@@ -44,13 +57,13 @@ namespace PsCourseworkI
 		public:
 			Array2D();                                 ///< Default Constructor.
 			Array2D(Size size);                        ///< Constructor from size.
-			~Array2D();                                ///< Destructor.
 
 			Size GetSize() const { return m_size; }    ///< Getter.
 			void Resize(Size const& size);             ///< Resizes the array.
 		
 			/// Element access.
-			T& operator() (unsigned int x, unsigned int y);
+			T&        operator() (unsigned int x, unsigned int y);
+			T const&  operator() (unsigned int x, unsigned int y)  const; 
 
 		private:
 			Array2D(Array2D const& rhs);               ///< Copy constructor.
@@ -97,16 +110,6 @@ namespace PsCourseworkI
 	
 	
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Clean-up is automatic so far.
-	///
-	template <typename T>
-	Array2D<T>::~Array2D()
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Clears the array and reinitialises it with the given size.
 	///
 	/// @param        size  New size for the array.
@@ -135,6 +138,32 @@ namespace PsCourseworkI
 	///
 	template <typename T>
 	T& Array2D<T>::operator() (unsigned int x, unsigned int y)
+	{
+		if (x >= m_size.m_x)
+		{
+			throw std::logic_error("Array2D: x dimension out of bounds");
+		}
+		
+		if (y >= m_size.m_y)
+		{
+			throw std::logic_error("Array2D: y dimension out of bounds");
+		}
+		
+		return m_array[(x * m_size.m_x) + y];
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Const version of operator() above.
+	///
+	/// @param        x  X-index of array element.
+	/// @param        y  Y-index of array element.
+	/// @return       Reference to the requested array element.
+	///
+	/// @exception    std::logic_error Invalid array index.
+	///
+	template <typename T>
+	T const& Array2D<T>::operator() (unsigned int x, unsigned int y) const
 	{
 		if (x >= m_size.m_x)
 		{
