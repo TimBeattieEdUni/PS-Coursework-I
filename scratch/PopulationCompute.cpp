@@ -90,9 +90,9 @@ float PopulationCompute::PumaSurrounding(int i, int j)
 	*/
 
 	if(i-1 < 0)		BorderControl.m_border[0] = 0.0; else BorderControl.m_border[0] = m_curr_prop[i-1][j].puma_density;
-	if(i+1 > MAX)	BorderControl.m_border[1] = 0.0; else BorderControl.m_border[1] = m_curr_prop[i+1][j].puma_density;
+	if(i+1 >= MAX)	BorderControl.m_border[1] = 0.0; else BorderControl.m_border[1] = m_curr_prop[i+1][j].puma_density;
 	if(j-1 < 0)		BorderControl.m_border[2] = 0.0; else BorderControl.m_border[2] = m_curr_prop[i][j-1].puma_density;
-	if(j+1 > MAX)	BorderControl.m_border[3] = 0.0; else BorderControl.m_border[3] = m_curr_prop[i][j+1].puma_density;
+	if(j+1 >= MAX)	BorderControl.m_border[3] = 0.0; else BorderControl.m_border[3] = m_curr_prop[i][j+1].puma_density;
 
 	return (
 				(BorderControl.m_border[0] +
