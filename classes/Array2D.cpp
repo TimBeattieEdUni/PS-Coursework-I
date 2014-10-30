@@ -27,7 +27,8 @@ namespace PsCourseworkI
 	///
 	/// @exception  std::logic_error Invalid array size(s).
 	///
-	Array2D::Array2D(Size size)
+	template <typename T>
+	Array2D<T>::Array2D(Size size)
 		: m_size(size)
 		, m_array(size.m_x * size.m_y)
 	{
@@ -43,7 +44,8 @@ namespace PsCourseworkI
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Clean-up is automatic so far.
 	///
-	Array2D::~Array2D()
+	template <typename T>
+	Array2D<T>::~Array2D()
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
@@ -59,7 +61,8 @@ namespace PsCourseworkI
 	///
 	/// @exception    std::logic_error Invalid array index.
 	///
-	double& Array2D::operator() (unsigned int x, unsigned int y)
+	template <typename T>
+	T& Array2D<T>::operator() (unsigned int x, unsigned int y)
 	{
 		if (x >= m_size.m_x)
 		{
@@ -80,7 +83,8 @@ namespace PsCourseworkI
 	///
 	/// @param      rhs  Object to copy.
 	///
-	Array2D::Array2D(Array2D const& rhs)
+	template <typename T>
+	Array2D<T>::Array2D(Array2D const& rhs)
 		: m_size()
 		, m_array()
 	{
@@ -96,7 +100,8 @@ namespace PsCourseworkI
 	/// @param      rhs  Object on the right-hand side of the assignment statement.
 	/// @return     Object which has been assigned.
 	///
-	Array2D& Array2D::operator=(Array2D const& rhs)
+	template <typename T>
+	Array2D<T>& Array2D<T>::operator=(Array2D<T> const& rhs)
 	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 
@@ -105,3 +110,7 @@ namespace PsCourseworkI
 	}
 
 }   //  namespace PsCourseworkI
+
+
+//  Instantiate the types we know we'll need
+template class PsCourseworkI::Array2D<double>;

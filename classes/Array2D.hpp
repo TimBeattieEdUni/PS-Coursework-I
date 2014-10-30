@@ -22,6 +22,7 @@ namespace PsCourseworkI
 	/// @details    Provides a two-dimensional contiguously- and dynamically-
 	///             allocated array.
 	///
+	template <typename T>
 	class Array2D
 	{
 		public:
@@ -37,7 +38,7 @@ namespace PsCourseworkI
 			Size GetSize() const { return m_size; }    ///< Getter.
 		
 			/// Element access.
-			double& operator() (unsigned int x, unsigned int y);
+			T& operator() (unsigned int x, unsigned int y);
 
 		private:
 			Array2D();                                 ///< Default constructor.
@@ -45,7 +46,7 @@ namespace PsCourseworkI
 			Array2D& operator=(Array2D const& rhs);    ///< Assignment operator.
 
 			Size const m_size ;                        ///< Array X and Y extents.
-			std::vector<double> m_array;               ///< The array itself.
+			std::vector<T> m_array;                    ///< The array itself.
 	};
 
 }   //  namespace PsCourseworkI
