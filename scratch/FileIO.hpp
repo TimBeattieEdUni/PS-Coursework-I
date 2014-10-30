@@ -27,7 +27,8 @@ namespace PsCourseworkI
   			~FileIO();   ///< Destructor.
 			void ReadBitmap(std::string inputfile, double p_bmp_array[XMAX][YMAX], int* xdimension, int* ydimension);
 			void GetDimensions(std::string inputfile, int* xdimension, int* ydimension);  
-
+			void WritePPM(std::string outputfile, double p_bmp_array[XMAX][YMAX], int* xdimension, int* ydimension);
+			void ConvertBitmap(double bitmap[XMAX][YMAX], int* xdimension, int* ydimension);
 		private:
 	};
 
