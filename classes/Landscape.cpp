@@ -18,33 +18,17 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object initialisation here.
+	/// @details    Sets up the 2D array of landscape cells.
 	///
-	/// @param      Describe parameters here, one line each.
+	/// @param      cfg  Application configuration.
 	///
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
+	/// @post       Landscape array has been initialised.
 	///
 	Landscape::Landscape(AppConfig const& cfg)
+		: m_landscape(Size(cfg.GetNx(), cfg.GetNy()))
 	{
 		(void) cfg;
 		
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object initialisation here.
-	///
-	/// @param      Describe parameters here, one line each.
-	///
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape()
-	{
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
@@ -64,50 +48,13 @@ namespace PsCourseworkI
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
+
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Advances the simulation by one time step.
 	///
 	void Landscape::DoStep()
 	{
 		std::cout << "time step" << std::endl;
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe copy construction here.
-	///
-	/// @param      rhs  Object to copy.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape(Landscape const& rhs)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object assignment here.
-	///
-	/// @param      rhs  Object on the right-hand side of the assignment statement.
-	/// @return     Object which has been assigned.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape& Landscape::operator=(Landscape const& rhs)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-		return *this;
 	}
 
 }   //  namespace PsCourseworkI

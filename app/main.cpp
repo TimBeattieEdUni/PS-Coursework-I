@@ -11,6 +11,7 @@
 #include "AppArgs.hpp"
 #include "AppConfig.hpp"
 #include "Landscape.hpp"
+#include "BmpFile.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -38,11 +39,14 @@ int main(int argc, char* argv[])
 		//  load configuration from file
 		AppConfig cfg(args.CfgFilename());
 		
+		//  load land/water bitmap
+		BmpFile lw_bmp("scratch/check.dat");
+		
 		//  initialise the landscape
 		Landscape landscape(cfg);  //  include pgm arrays for land/water and initial population densities
 
 		//  run the simulation
-        for (int i=0; i<cfg.GetTT(); ++i)
+        for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
 			landscape.DoStep();
 			

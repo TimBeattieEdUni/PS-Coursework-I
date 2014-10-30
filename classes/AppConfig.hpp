@@ -30,17 +30,18 @@ namespace PsCourseworkI
 			AppConfig(std::string const& cfg_filename);   ///< Constructor from config file name.
 			~AppConfig();                                 ///< Destructor.
 			
-			int     GetNx() { return m_Nx; }   ///< Getter.
-			int     GetNy() { return m_Ny; }   ///< Getter.
-			int     GetT()  { return m_T;  }   ///< Getter.
-			int     GetTT() { return m_TT; }   ///< Getter.
-			double  Getr()  { return m_r;  }   ///< Getter.
-			double  Geta()  { return m_a;  }   ///< Getter.
-			double  Getb()  { return m_b;  }   ///< Getter.
-			double  Getm()  { return m_m;  }   ///< Getter.
-			double  Getk()  { return m_k;  }   ///< Getter.
-			double  Getl()  { return m_l;  }   ///< Getter.
-			double  Getdt() { return m_dt; }   ///< Getter.
+			unsigned int GetNx() const { return m_Nx; }   ///< Getter.
+			unsigned int GetNy() const { return m_Ny; }   ///< Getter.
+			unsigned int GetT()  const { return m_T;  }   ///< Getter.
+			unsigned int GetTT() const { return m_TT; }   ///< Getter.
+		
+			double  Getr()  const { return m_r;  }   ///< Getter.
+			double  Geta()  const { return m_a;  }   ///< Getter.
+			double  Getb()  const { return m_b;  }   ///< Getter.
+			double  Getm()  const { return m_m;  }   ///< Getter.
+			double  Getk()  const { return m_k;  }   ///< Getter.
+			double  Getl()  const { return m_l;  }   ///< Getter.
+			double  Getdt() const { return m_dt; }   ///< Getter.
 
 		private:
 			AppConfig();                                  ///< Default Constructor.
