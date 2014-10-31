@@ -39,6 +39,7 @@ namespace PsCourseworkI
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
 		
+			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
 			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
 			LsArray m_landscape;                          ///< The landscape itself.
 	};
