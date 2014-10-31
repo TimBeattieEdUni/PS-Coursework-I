@@ -11,7 +11,7 @@
 #include "AppConfig.hpp"
 #include "Landscape.hpp"
 #include "BmpFile.hpp"
-
+#include "PpmFile.hpp"
 
 //////////////////////////////////////////////////////////////////////////////
 //  Standard headers.
@@ -52,6 +52,9 @@ int main(int argc, char* argv[])
 			if (0 == i % cfg.GetT())
 			{
 				//  write regular output here.
+				
+				// write landscape to Plain ASCii PPM File (add functionality to append index)  				
+				PpmFile wrt_ppm(cfg, i /*WHAT_IS_TO_BE_PRINTED*/);
 			}
         }
 		
