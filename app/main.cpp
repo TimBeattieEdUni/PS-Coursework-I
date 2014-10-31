@@ -42,7 +42,10 @@ int main(int argc, char* argv[])
 		BmpFile map_bmp(args.GetMapFilename());
 		
 		//  initialise the landscape
-		Landscape landscape(cfg, map_bmp);  //  include arrays for initial population densities
+		Landscape landscape(cfg, map_bmp);
+
+		landscape.ApplyRandomPumas();
+		landscape.ApplyRandomHares();
 
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)

@@ -30,16 +30,19 @@ namespace PsCourseworkI
 	{
 		public:
 			Landscape(AppConfig const& cfg, BmpFile const& bmp);   ///< Constructor.
-			~Landscape();                                          ///< Destructor.
 
 			void DoStep();                                ///< Updates the landscape by one step.
 		
+			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
+			void ApplyRandomPumas();                      ///< Applies random puma population density.
+			void ApplyRandomHares();                      ///< Applies random hare population density.
+		
+
 		private:
 			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
-		
-			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
+				
 			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
 			LsArray m_landscape;                          ///< The landscape itself.
 	};

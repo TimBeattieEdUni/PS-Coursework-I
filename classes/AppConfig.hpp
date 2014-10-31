@@ -30,6 +30,7 @@ namespace PsCourseworkI
 			AppConfig(std::string const& cfg_filename);   ///< Constructor from config file name.
 			~AppConfig();                                 ///< Destructor.
 			
+			///  @note Variable names are as described in the Group Coursework handout.
 			unsigned int GetNx() const { return m_Nx; }   ///< Getter.
 			unsigned int GetNy() const { return m_Ny; }   ///< Getter.
 			unsigned int GetT()  const { return m_T;  }   ///< Getter.
