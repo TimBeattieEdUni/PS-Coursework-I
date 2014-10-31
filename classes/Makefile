@@ -24,13 +24,12 @@ DEPS    = $(OBJS:.o=.d)
 
 default: release
 
-.PHONY: release
+.PHONY: release debug profile clean
+
 release: $(CLASSLIB)
+debug:   $(CLASSLIB)
+profile: $(CLASSLIB)
 
-.PHONY: debug
-debug: $(CLASSLIB)
-
-.PHONY: clean
 clean:
 	rm -f $(DEPS)
 	rm -f $(OBJS)
@@ -49,7 +48,7 @@ clean:
 #  Build objects from source.
 
 %.o : %.cpp
-	$(CXX) -c $(CXXFLAGS) $(WARNINGS) -MMD -o $@ $<
+	$(CXX) $(PROFFLAGS) -c $(CXXFLAGS) $(WARNINGS) -MMD -o $@ $<
 
 
 

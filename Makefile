@@ -2,7 +2,7 @@
 #  Top-level makefile for popsim.
 #
 #  Top-level targets: release, debug, clean.
-#  Low-level targets: app, doc, test. 
+#  Low-level targets: app, doc, test.
 #
 #  Default target: release.
 #
@@ -23,13 +23,15 @@ include Makefile.inc
 
 default: release
 
-.PHONY: release debug clean doc
+.PHONY: release debug clean doc profile
 
 release: TARGET=release
 debug:   TARGET=debug
+profile: TARGET=profile
 
 release: doc app test
 debug:   doc app test
+profile: app
 
 clean:
 	$(MAKE) -C app      clean
@@ -40,12 +42,13 @@ clean:
 	rm -rf $(TESTLIBDIR)
 
 
+
 ##############################################################################
 #  Dependencies.
 
 .PHONY: doc classes app test
 
-app: classes	
+app: classes
 	$(MAKE) -C app $(TARGET)
 
 doc: classes app test
@@ -64,7 +67,7 @@ classes:
 #  3rd-party unit test library.
 
 testlib: $(TESTLIBDIR)
-	$(MAKE) -C $(TESTLIBDIR) 
+	$(MAKE) -C $(TESTLIBDIR)
 
 $(TESTLIBDIR): $(TESTLIBZIP)
 	rm -rf $(TESTLIBDIR)
