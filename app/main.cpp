@@ -7,10 +7,10 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //  Local headers.
-#include "DemoClass.hpp"
 #include "AppArgs.hpp"
 #include "AppConfig.hpp"
 #include "Landscape.hpp"
+#include "BmpFile.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -36,13 +36,16 @@ int main(int argc, char* argv[])
 		AppArgs args(argc, argv);
 
 		//  load configuration from file
-		AppConfig cfg(args.CfgFilename());
+		AppConfig cfg(args.GetCfgFilename());
+		
+		//  load land/water map from file
+		BmpFile map_bmp(args.GetMapFilename());
 		
 		//  initialise the landscape
-		Landscape landscape(cfg);  //  include pgm arrays for land/water and initial population densities
+		Landscape landscape(cfg, map_bmp);  //  include arrays for initial population densities
 
 		//  run the simulation
-        for (int i=0; i<cfg.GetTT(); ++i)
+        for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
 			landscape.DoStep();
 			

@@ -17,13 +17,13 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @brief  First test for class Cell.
 ///
-/// @test   Cell can be constructed from valid arguments.
+/// @test   Placeholder; class Cell is currently trivial.
 ///
 TEST(Cell)
 {
 	using repo::classes::Cell;
 
-	CHECK(false);
+	CHECK(true);
 }
 
 

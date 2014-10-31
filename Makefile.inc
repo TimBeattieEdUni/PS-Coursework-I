@@ -2,7 +2,6 @@
 #  Global Make options.
 
 
-
 ##############################################################################
 #  Binary names.
 
@@ -23,6 +22,12 @@ release:  CXXFLAGS  += -O3
 debug:    CXXFLAGS  += -g -D_DEBUG
 
 
+##############################################################################
+#  Profiling.
+
+PROFFLAGS            =
+profile:  PROFFLAGS += -pg
+
 
 ##############################################################################
 #  Library archiver.
@@ -31,16 +36,14 @@ AR       = ar
 ARFLAGS  = rcs
 
 
-
 ##############################################################################
 #  System libraries.
 
-LIBS      = 
+LIBS      =
 
 # To add a library, uncomment its line.
-#LIBS      += -lboost_system-mt 
+#LIBS      += -lboost_system-mt
 #LIBS      += -lboost_thread-mt
-
 
 
 ##############################################################################

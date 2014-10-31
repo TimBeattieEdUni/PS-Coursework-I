@@ -12,6 +12,9 @@
 //////////////////////////////////////////////////////////////////////////////
 //  Local headers.
 #include "AppConfig.hpp"
+#include "Array2D.hpp"
+#include "BmpFile.hpp"
+#include "Cell.hpp"
 
 
 namespace PsCourseworkI
@@ -26,15 +29,19 @@ namespace PsCourseworkI
 	class Landscape
 	{
 		public:
-			Landscape(AppConfig const& cfg);   ///< Constructor.
-			~Landscape();                      ///< Destructor.
+			Landscape(AppConfig const& cfg, BmpFile const& bmp);   ///< Constructor.
+			~Landscape();                                          ///< Destructor.
 
-			void DoStep();                     ///< Updates the landscape by one step.
+			void DoStep();                                ///< Updates the landscape by one step.
 		
 		private:
 			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
+		
+			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
+			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
+			LsArray m_landscape;                          ///< The landscape itself.
 	};
 
 }   //  namespace PsCourseworkI

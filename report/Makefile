@@ -30,7 +30,7 @@ default: report
 report: $(OUT)
 
 $(OUT) : $(SRC)
-	$(BIN) $(FLAGS) $(SRC)
+	$(BIN) $(FLAGS) $(SRC) > make.log 2>&1
 
 clean:
 	rm -rf $(CLEANFILES)

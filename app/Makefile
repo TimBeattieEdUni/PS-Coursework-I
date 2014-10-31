@@ -1,5 +1,5 @@
 ##############################################################################
-#  Makefile for directory "app".  Builds the application from main.cpp and the 
+#  Makefile for directory "app".  Builds the application from main.cpp and the
 #  class library.
 
 
@@ -19,7 +19,7 @@ INCLUDE = -I../classes
 
 
 ##############################################################################
-#  Source, objects, and header dependencies.  There should only be main.*, but 
+#  Source, objects, and header dependencies.  There should only be main.*, but
 #  we use well-tested patterns just in case.
 
 SOURCE  = *.cpp
@@ -33,13 +33,12 @@ DEPS    = $(OBJS:.o=.d)
 
 default: release
 
-.PHONY: release
+.PHONY: release debug profile clean
+
 release: $(APP)
+debug:   $(APP)
+profile: $(APP)
 
-.PHONY: debug
-debug: $(APP)
-
-.PHONY: clean
 clean:
 	rm -f $(DEPS)
 	rm -f $(OBJS)
@@ -66,4 +65,4 @@ clean:
 #  Build executable from objects.
 
 $(APP): $(OBJS) ../classes/$(CLASSLIB)
-	$(CXX) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)
+	$(CXX) $(PROFFLAGS) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)

@@ -6,3 +6,5 @@ report.log
 report.pdf
 report.toc
 
+# Output from Makefile.
+make.log

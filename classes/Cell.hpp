@@ -9,23 +9,27 @@
 #define PSCOURSEWORKI_CELL_HPP
 
 
+//////////////////////////////////////////////////////////////////////////////
+//  Standard headers.
+#include <vector>
+
+
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      Represents one cell in the landscape.
 	///
 	/// @details    Stores hare and puma population densities and land/water 
-	///             status.  Knows about its north/south/east/west neighbours.
+	///             status.
 	///
 	class Cell
 	{
 		public:
 			Cell();    ///< Constructor.
-			~Cell();   ///< Destructor.
 
-		private:
-			Cell(Cell const& rhs);              ///< Copy constructor.
-			Cell& operator=(Cell const& rhs);   ///< Assignment operator.
+			bool    m_land;     ///< Land/water flag.
+			double  m_hare_d;   ///< Population density of hares.
+			double  m_puma_d;   ///< Population density of pumas.
 	};
 
 }   //  namespace PsCourseworkI

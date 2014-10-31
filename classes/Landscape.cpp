@@ -13,39 +13,26 @@
 //////////////////////////////////////////////////////////////////////////////
 //  Standard headers.
 #include <iostream>
+#include <algorithm>
 
 
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object initialisation here.
+	/// @details    Sets up the 2D array of landscape cells.
 	///
-	/// @param      Describe parameters here, one line each.
+	/// @param      cfg  Application configuration.
 	///
-	/// @post       List what is guaranteed to be true after this function returns.
+	/// @post       Landscape array has been initialised.
 	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape(AppConfig const& cfg)
+	Landscape::Landscape(AppConfig const& cfg, BmpFile const& bmp)
+		: m_landscape(Size(cfg.GetNx(), cfg.GetNy()))
 	{
 		(void) cfg;
+
+		std::cout << "landscape size:      " << m_landscape.GetSize().m_x << " x " << m_landscape.GetSize().m_y << std::endl;
 		
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object initialisation here.
-	///
-	/// @param      Describe parameters here, one line each.
-	///
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape()
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
+		ApplyLandWaterMap(bmp);
 	}
 
 
@@ -64,6 +51,7 @@ namespace PsCourseworkI
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 	}
 
+
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Advances the simulation by one time step.
 	///
@@ -71,43 +59,33 @@ namespace PsCourseworkI
 	{
 		std::cout << "time step" << std::endl;
 	}
-
-
+	
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe copy construction here.
+	/// @details      Reads the given land/water bitmap and applies it to the
+	///               array of cells.
 	///
-	/// @param      rhs  Object to copy.
+	/// @param        bmp  Land/water bitmap.
 	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
+	/// @post         The given land/water bitmap has been applied to the landscape.
 	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape::Landscape(Landscape const& rhs)
+	void Landscape::ApplyLandWaterMap(BmpFile const& bmp)
 	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object assignment here.
-	///
-	/// @param      rhs  Object on the right-hand side of the assignment statement.
-	/// @return     Object which has been assigned.
-	///
-	/// @pre        List what must be true before this function is called.
-	/// @post       List what is guaranteed to be true after this function returns.
-	///
-	/// @exception  List exceptions this function may throw here.
-	///
-	Landscape& Landscape::operator=(Landscape const& rhs)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-		(void) rhs;
-		return *this;
+		BmpFile::BmpArray const& bmp_array = bmp.GetArray();
+		
+		std::cout << "land/water map size: " << bmp_array.GetSize().m_x << " x " << bmp_array.GetSize().m_y << std::endl;
+		
+		//  handle non-matching bmp and landscape sizes gracefully
+		unsigned int size_x = std::min(bmp_array.GetSize().m_x, m_landscape.GetSize().m_x);
+		unsigned int size_y = std::min(bmp_array.GetSize().m_y, m_landscape.GetSize().m_y);
+		
+		//  write land/water flags into landscape cells
+		for (unsigned int i = 0; i < size_x; ++i)
+		{
+			for (unsigned int j = 0; j < size_y; ++j)
+			{
+				m_landscape(i, j).m_land = static_cast<bool>(bmp_array(i, j));
+			}
+		}		
 	}
 
 }   //  namespace PsCourseworkI
