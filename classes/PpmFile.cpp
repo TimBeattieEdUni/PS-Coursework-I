@@ -17,66 +17,67 @@
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
-#include <sstream> 
+#include <sstream>
+
 
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Writes our passed array out to a Plain PPM file as specified        
-	///		in the courseword handout.
+	/// @details    Prepares a file for PPM output, including writing the magic
+	///             number to the start of the file.  
 	///
-	/// @param      cfg           Configuration File.   
-	///             ppm_filename  Name of file to open.
+	/// @param      filename  Name of file for writing.
 	///
-	/// @post       Passed Array has been written to Plain PPM file.       
+	/// @exception  std::runtime_error  File could not be opened for writing.
 	///
-	/// @exception  std::runtime_error  File could not be opened.
+	/// @todo       Class PpmFile is hard-coded to RGB pixel values of 255,255,255.
 	///
-	PpmFile::PpmFile(AppConfig const& cfg, unsigned int time_step/*, std::string ppm_filename*/ /*,WHAT_IS_TO_BE_PRINTED */ )
-//		: m_array()
-//	void FileIO::WritePPM(std::string outputfile, double p_bmp_array[XMAX][YMAX], int* xdimension, int* ydimension)
+	PpmFile::PpmFile(std::string const& filename, Size const& size, unsigned int const max_rgb_val)
+		: m_max_rgb_val(max_rgb_val)
+		, m_pixels_written(0)
+		, m_size(size)
+		, m_out_file(filename.c_str())
 	{
-		//  define the name of the output file
-		std::stringstream ss(std::stringstream::in | std::stringstream::out);
-		ss << "output/output";
-		ss << time_step;
-		std::string ppm_filename = ss.str();	
-		
-		std::cout << "writing landscape to file \"" << ppm_filename << "\"" << std::endl; 
+		std::cout << "preparing PPM file: \"" << filename << "\"" << std::endl; 
 
-		//  open output stream 
-		std::ofstream file_writer(ppm_filename.c_str());
-		
   		//  check that output file is valid
-		if ( !file_writer.is_open() )
+		if ( !m_out_file.is_open() )
 		{
 			throw std::runtime_error("failed to open ppm file for writing");
 		}
 
-		(void) cfg;
-
-		//  write PPM configuration data
-		file_writer << "P3" << std::endl;				//  magic number	
-		file_writer << cfg.GetNy() << " " << cfg.GetNx() << std::endl;	//  image dimensions (width height)
-		file_writer << "255" << std::endl; 				//  pixel value range 
-	
-		//  write the array out as raster image.
-		for (unsigned int i=0; i<cfg.GetNx(); i++)
-		{
-			for (unsigned int j=0; j<cfg.GetNy(); j++)
-			{
-				file_writer << "0 0 0" << /* WHAT_IS_TO_BE_PRINTED << */ "\t";
-			}
-			
-			file_writer << std::endl;
-		}
-
+		//  write header: magic number, image size, and max pixel component value
+		m_out_file << "P3" << "\n";
+		m_out_file << size.m_x << " " << size.m_x << "\n";
+		m_out_file << m_max_rgb_val << "\n";
 	}
-/*
-		if (0 == size_x || 0 == size_y)
-		{
-			throw std::runtime_error("bitmap had zero for x or y size");
-		}
+
+	
+	void PpmFile::WritePixel(Pixel const& pixel)
+	{
+		m_out_file << pixel.m_red << " " << pixel.m_green << " " << pixel.m_blue << "\t";
 		
-*/
+		++m_pixels_written;
+
+		//  new line after every 4 pixels to stay within PPM P3 format's limit of 70 chars per line
+		if (0 == (m_pixels_written % 4))
+		{
+			m_out_file << "\n";
+		}
+	}
+	
+
+	void PpmFile::Finalise()
+	{
+		m_out_file << "\n";
+		m_out_file.close();
+		
+		std::cout << "PPM file closed; " << m_pixels_written << " pixels written" << std::endl;
+		
+		if (m_pixels_written != (m_size.m_x * m_size.m_y))
+		{
+			throw std::logic_error("wrong number of pixels written; PPM file will be corrupt");
+		}
+	}
+
 }   //  namespace PsCourseworkI

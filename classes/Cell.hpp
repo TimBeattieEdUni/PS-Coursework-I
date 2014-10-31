@@ -25,11 +25,13 @@ namespace PsCourseworkI
 	class Cell
 	{
 		public:
-			Cell();    ///< Constructor.
+			Cell();             ///< Default constructor.
+		
+			Cell(bool land, double hares, double pumas);   ///< Constructor from values.
 
 			bool    m_land;     ///< Land/water flag.
-			double  m_hare_d;   ///< Population density of hares.
-			double  m_puma_d;   ///< Population density of pumas.
+			double  m_hares;    ///< Population density of hares.
+			double  m_pumas;    ///< Population density of pumas.
 	};
 
 }   //  namespace PsCourseworkI

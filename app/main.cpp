@@ -10,12 +10,15 @@
 #include "AppArgs.hpp"
 #include "AppConfig.hpp"
 #include "Landscape.hpp"
+#include "LandscapePpmWriter.hpp"
 #include "BmpFile.hpp"
 #include "PpmFile.hpp"
+
 
 //////////////////////////////////////////////////////////////////////////////
 //  Standard headers.
 #include <iostream>
+#include <sstream>
 
 
 //////////////////////////////////////////	////////////////////////////////////
@@ -47,6 +50,9 @@ int main(int argc, char* argv[])
 		landscape.ApplyRandomPumas();
 		landscape.ApplyRandomHares();
 
+		//  initialise PPM file writer
+		LandscapePpmWriter ls_writer(landscape);
+
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
@@ -54,14 +60,16 @@ int main(int argc, char* argv[])
 			
 			if (0 == i % cfg.GetT())
 			{
-				//  write regular output here.
+				//  create output filename
+				std::stringstream filename_ss;
+				filename_ss << "output/output" << i << ".ppm";
 				
-				// write landscape to Plain ASCii PPM File (add functionality to append index)  				
-				PpmFile wrt_ppm(cfg, i /*WHAT_IS_TO_BE_PRINTED*/);
+				//  write current state of the landscape to PPM file
+				ls_writer.Write(filename_ss.str());
 			}
         }
 		
-		//  do final output here.
+		std::cout << "simulation complete." << std::endl;
     }
 	catch (std::exception const& e) 
 	{

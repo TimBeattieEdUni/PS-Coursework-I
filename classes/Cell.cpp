@@ -22,10 +22,22 @@ namespace PsCourseworkI
 	///
 	Cell::Cell()
 		: m_land(false)
-		, m_hare_d(0.0)
-		, m_puma_d(0.0)
+		, m_hares(0.0)
+		, m_pumas(0.0)
 	{
 
+	}
+
+	
+	//////////////////////////////////////////////////////////////////////////////
+	/// @details    Applies the given values.
+	///
+	Cell::Cell(bool land, double hares, double pumas)
+		: m_land(land)
+		, m_hares(hares)
+		, m_pumas(pumas)
+	{
+		
 	}
 
 }   //  namespace PsCourseworkI

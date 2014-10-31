@@ -31,7 +31,7 @@ namespace PsCourseworkI
 	class BmpFile
 	{
 		public:
-			typedef Array2D<char> BmpArray;                  ///< Saves typing.
+			typedef Array2D<unsigned int> BmpArray;          ///< Saves typing.
 		
 			BmpFile(std::string bmp_filename);               ///< Constructor from filename.
 

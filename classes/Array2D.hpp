@@ -63,6 +63,7 @@ namespace PsCourseworkI
 		
 			/// Element access.
 			T&        operator() (unsigned int x, unsigned int y);
+			/// Const element access.
 			T const&  operator() (unsigned int x, unsigned int y)  const; 
 
 		private:
@@ -87,9 +88,7 @@ namespace PsCourseworkI
 	Array2D<T>::Array2D(Size size)
 	: m_size(size)
 	, m_array(size.m_x * size.m_y)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-		
+	{		
 		if ((0 == size.m_x) || (0 == size.m_y))
 		{
 			throw std::logic_error("array size cannot be zero");

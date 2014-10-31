@@ -29,6 +29,8 @@ namespace PsCourseworkI
 	class Landscape
 	{
 		public:
+			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
+
 			Landscape(AppConfig const& cfg, BmpFile const& bmp);   ///< Constructor.
 
 			void DoStep();                                ///< Updates the landscape by one step.
@@ -37,14 +39,17 @@ namespace PsCourseworkI
 			void ApplyRandomPumas();                      ///< Applies random puma population density.
 			void ApplyRandomHares();                      ///< Applies random hare population density.
 		
+			LsArray const& GetArray() const { return m_array; }   ///< Getter.
 
 		private:
 			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
 				
-			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
-			LsArray m_landscape;                          ///< The landscape itself.
+			void InitHalo();                              ///< Initialises the halo.
+		
+			Size m_landscape_size;                        ///< Landscape size without halo.
+			LsArray m_array;                              ///< Landscape array including halo.
 	};
 
 }   //  namespace PsCourseworkI
