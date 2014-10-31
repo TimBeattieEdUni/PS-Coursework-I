@@ -23,6 +23,9 @@ gmon.out
 # Editor backups
 *~
 
+# Program output
+output
+
 
 # OS X workings
 .DS_Store
