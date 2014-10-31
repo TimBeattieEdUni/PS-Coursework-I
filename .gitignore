@@ -16,6 +16,10 @@ classes/libpopsim-classes.a
 *.d
 
 
+# Profiling output
+gmon.out
+
+
 # Editor backups
 *~
 
