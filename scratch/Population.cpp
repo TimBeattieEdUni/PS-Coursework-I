@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //  This class's header.
 #include "Population.hpp"
+#include "Array2D.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -29,15 +30,15 @@ namespace PsCourseworkI
 	///
 	/// @exception
 	///
-	Population::Population(Array2D<double>::Size grid_size, bool timestamp_seed)
+	Population::Population(Size grid_size, bool timestamp_seed)
 	{
 	    if(timestamp_seed)
 	    {
 	        std::srand(std::time(0)); //use current time as seed for random generator)
 	    }
 
-	    Array2D<double> Puma_Array(grid_size);
-	    Array2D<double> Hare_Array(grid_size);
+	     Population_array Puma_Array(grid_size);
+	     Population_array Hare_Array(grid_size);
 
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 
@@ -69,7 +70,7 @@ namespace PsCourseworkI
 
     void Population::populate_Hares()
     {
-        Array2D<double>::Size grid_size = Hare_Array.GetSize();
+        Size grid_size = Hare_Array.GetSize();
 
         for (unsigned int i=0; i<grid_size.m_x; i++)
         {
@@ -94,7 +95,7 @@ namespace PsCourseworkI
 
     void Population::populate_Pumas_evenly()
     {
-        Array2D<double>::Size grid_size = Puma_Array.GetSize();
+        Size grid_size = Puma_Array.GetSize();
 
         for (unsigned int i=0; i<grid_size.m_x; i++)
         {
@@ -122,16 +123,16 @@ namespace PsCourseworkI
     {
         unsigned int packlocation_x, packlocation_y;
 
-        Array2D<double>::Size grid_size = Puma_Array.GetSize();
+        Size grid_size = Puma_Array.GetSize();
 
         for(unsigned int i=0; i<number_of_packs; i++)
         {
-            pack_location_x=std::floor(rand0x(grid_size.m_x));//generate pack location
-            pack_location_y=std::floor(rand0x(grid_size.m_y));
+            packlocation_x=std::floor(rand0x(grid_size.m_x));//generate pack location
+            packlocation_y=std::floor(rand0x(grid_size.m_y));
 
-            for(unsigned int i=pack_location_x; i<grid_size.m_x; i++) // populating puma beginning on top left corner of the pack
+            for(unsigned int i=packlocation_x; i<size_of_packs; i++) // populating puma beginning on top left corner of the pack
             {
-                for (unsigned int j=packlocation_y; j<grid_size.m_y; j++)
+                for (unsigned int j=packlocation_y; j<size_of_packs; j++)
                 {
                     Puma_Array(i,j)=5;
                 }
