@@ -30,8 +30,6 @@ namespace PsCourseworkI
 	///
 	/// @exception  std::runtime_error  File could not be opened for writing.
 	///
-	/// @todo       Class PpmFile is hard-coded to RGB pixel values of 255,255,255.
-	///
 	PpmFile::PpmFile(std::string const& filename, Size const& size, unsigned int const max_rgb_val)
 		: m_max_rgb_val(max_rgb_val)
 		, m_pixels_written(0)
