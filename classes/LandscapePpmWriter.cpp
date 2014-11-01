@@ -40,6 +40,8 @@ namespace PsCourseworkI
 	///
 	/// @exception    std::runtime_error The file could not be opened or written to.
 	///
+	/// @todo         Scaling factor from population densities to RGB values is hard-coded with magic numbers!
+	///
 	void LandscapePpmWriter::Write(std::string const& filename)
 	{
 		std::cout << "writing landscape to \"" << filename << "\"" << std::endl; 
@@ -57,8 +59,10 @@ namespace PsCourseworkI
 			for (unsigned int j = 1; j < ls_size.m_y - 1; ++j)
 			{
 				Cell const& cell = ls_array(i, j);
-				unsigned char blue_val = cell.m_land ? 0 : 255;
-				ppm_file.WritePixel(Pixel(cell.m_pumas, cell.m_hares, blue_val));
+				unsigned char red_val    = static_cast<unsigned char>(cell.m_pumas * 255);
+				unsigned char green_val  = static_cast<unsigned char>(cell.m_hares * 255);
+				unsigned char blue_val   = cell.m_land ? 0 : 255;
+				ppm_file.WritePixel(Pixel(red_val, green_val, blue_val));
 			}
 		}
 

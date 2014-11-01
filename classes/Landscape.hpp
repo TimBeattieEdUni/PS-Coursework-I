@@ -20,36 +20,38 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @brief
+	/// @brief      Landscape for population simulation.
 	///
-	/// @details
-	///
-	/// @invariant
+	/// @details    Implements a population simulation of pumas and hares on a 
+	///             rectangular grid of cells which can be either land or water.
 	///
 	class Landscape
 	{
 		public:
 			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
 
-			Landscape(AppConfig const& cfg, BmpFile const& bmp);   ///< Constructor.
+			/// Constructor from configuration and land/water bitmask.
+			Landscape(AppConfig const& cfg, BmpFile const& bmp);
 
-			void DoStep();                                ///< Updates the landscape by one step.
+			LsArray const& GetArray() const;              ///< Getter.
+			void Update();                                ///< Updates the landscape by one time step.
 		
 			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
 			void ApplyRandomPumas();                      ///< Applies random puma population density.
 			void ApplyRandomHares();                      ///< Applies random hare population density.
 		
-			LsArray const& GetArray() const { return m_array; }   ///< Getter.
-
 		private:
 			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
 				
-			void InitHalo();                              ///< Initialises the halo.
-		
+			void InitHalos();                             ///< Initialises array halos.
+				
+			bool m_bswap_arrays;                          ///< Indicates which array is current/new.
 			Size m_landscape_size;                        ///< Landscape size without halo.
-			LsArray m_array;                              ///< Landscape array including halo.
+			AppConfig const& m_cfg;                       ///< Application configuration.
+			LsArray m_array_old;                          ///< Old landscape array (including halo).
+			LsArray m_array_new;                          ///< New landscape array (including halo).
 	};
 
 }   //  namespace PsCourseworkI

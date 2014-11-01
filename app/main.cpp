@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
-			landscape.DoStep();
+			landscape.Update();
 			
 			if (0 == i % cfg.GetT())
 			{

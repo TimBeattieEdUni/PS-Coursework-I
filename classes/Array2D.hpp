@@ -59,7 +59,7 @@ namespace PsCourseworkI
 			Array2D(Size size);                        ///< Constructor from size.
 
 			Size GetSize() const { return m_size; }    ///< Getter.
-			void Resize(Size const& size);             ///< Resizes the array.
+			void Resize(Size const& new_size);         ///< Resizes the array.
 		
 			/// Element access.
 			T&        operator() (unsigned int x, unsigned int y);
@@ -112,16 +112,15 @@ namespace PsCourseworkI
 	/// @details      Clears the array and reinitialises it with the given size.
 	///
 	/// @param        size  New size for the array.
-	/// @return       
 	///
 	/// @post         The array has been resized.
 	///
 	template <typename T>
-	void Array2D<T>::Resize(Size const& size)
+	void Array2D<T>::Resize(Size const& new_size)
 	{
 		m_array.clear();
-		m_array.resize(size.m_x * size.m_y);
-		m_size = size;
+		m_array.resize(new_size.m_x * new_size.m_y);
+		m_size = new_size;
 	}
 
 	
