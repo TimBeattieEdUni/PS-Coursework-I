@@ -46,7 +46,6 @@ int main(int argc, char* argv[])
 		
 		//  initialise the landscape
 		Landscape landscape(cfg, map_bmp);
-
 		landscape.ApplyRandomPumas();
 		landscape.ApplyRandomHares();
 
@@ -56,8 +55,7 @@ int main(int argc, char* argv[])
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
-			landscape.Update();
-			
+			//  write current state to PPM file regularly
 			if (0 == i % cfg.GetT())
 			{
 				//  create output filename
@@ -67,9 +65,11 @@ int main(int argc, char* argv[])
 				//  write current state of the landscape to PPM file
 				ls_writer.Write(filename_ss.str());
 			}
+
+			landscape.Update();
         }
 		
-		std::cout << "simulation complete." << std::endl;
+		std::cout << "simulation complete" << std::endl;
     }
 	catch (std::exception const& e) 
 	{
@@ -78,4 +78,3 @@ int main(int argc, char* argv[])
 	
 	return 0;
 }
-

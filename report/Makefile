@@ -7,17 +7,26 @@
 #
 
 
+##############################################################################
+#  LaTeX compiler.
+
+LTX    = pdflatex
+FLAGS  = -halt-on-error
+
 
 ##############################################################################
-#  File names.
+#  Source and output.
 
-BIN   = pdflatex
-SRC   = report.tex
-FLAGS = -halt-on-error
-OUT   = report.pdf
+SRC    = report.tex
+OUT    = $(SRC:.tex=.pdf)
+TOC    = $(SRC:.tex=.toc)
+AUX    = $(SRC:.tex=.aux)
 
-CLEANFILES = $(OUT) report.aux report.log report.toc
+#  pdflatex writes its own log as well as lots of output, so we have two logs
+LLOG   = $(SRC:.tex=.log)
+MLOG   = make.log
 
+CLEANFILES = $(OUT) $(TOC) $(AUX) $(LLOG) $(MLOG)
 
 
 ##############################################################################
@@ -30,7 +39,7 @@ default: report
 report: $(OUT)
 
 $(OUT) : $(SRC)
-	$(BIN) $(FLAGS) $(SRC) > make.log 2>&1
+	$(LTX) $(FLAGS) $(SRC) > $(MLOG) 2>&1
 
 clean:
 	rm -rf $(CLEANFILES)

@@ -3,7 +3,6 @@
 #  library for use by both the app and the unit test.
 
 
-
 ##############################################################################
 #  Include project-global definitions.
 
@@ -13,10 +12,9 @@ include ../Makefile.inc
 ##############################################################################
 #  Source, objects, and header dependencies.
 
-SOURCE  = *.cpp
-OBJS    = $(patsubst %.cpp,%.o,$(wildcard $(SOURCE)))
-DEPS    = $(OBJS:.o=.d)
-
+SOURCE  = $(wildcard *.cpp)
+OBJS    = $(SOURCE:.cpp=.o)
+DEPS    = $(SOURCE:.cpp=.d)
 
 
 ##############################################################################
@@ -36,12 +34,10 @@ clean:
 	rm -f $(CLASSLIB)
 
 
-
 ##############################################################################
 #  Automatically generated header dependency files.
 
 -include $(DEPS)
-
 
 
 ##############################################################################
@@ -49,7 +45,6 @@ clean:
 
 %.o : %.cpp
 	$(CXX) $(PROFFLAGS) -c $(CXXFLAGS) $(WARNINGS) -MMD -o $@ $<
-
 
 
 ##############################################################################
