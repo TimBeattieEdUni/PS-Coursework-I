@@ -147,7 +147,7 @@ namespace PsCourseworkI
 			throw std::logic_error("Array2D: y dimension out of bounds");
 		}
 		
-		return m_array[(x * m_size.m_x) + y];
+		return m_array[(y * m_size.m_x) + x];
 	}
 	
 	
@@ -173,7 +173,7 @@ namespace PsCourseworkI
 			throw std::logic_error("Array2D: y dimension out of bounds");
 		}
 		
-		return m_array[(x * m_size.m_x) + y];
+		return m_array[(y * m_size.m_x) + x];
 	}
 	
 	

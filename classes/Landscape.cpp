@@ -68,7 +68,7 @@ namespace PsCourseworkI
 	/// @todo       Performance improvement: store pointers to neighbours in each cell at start-up.
 	///
 	void Landscape::Update()
-	{		
+	{	
 		std::cout << "updating landscape" << std::endl;
 		
 		m_bswap_arrays = !m_bswap_arrays;
@@ -211,19 +211,19 @@ namespace PsCourseworkI
 		for (unsigned int i = 0; i < size_x; ++i)
 		{
 			m_array_old(i, 0)           = water;
-			m_array_old(i, size_x - 1)  = water;
+			m_array_old(i, size_y - 1)  = water;
 			
 			m_array_new(i, 0)           = water;
-			m_array_new(i, size_x - 1)  = water;
+			m_array_new(i, size_y - 1)  = water;
 		}
 		
 		for (unsigned int j = 0; j < size_y; ++j)
 		{
 			m_array_old(0, j)           = water;
-			m_array_old(size_y - 1, j)  = water;
+			m_array_old(size_x - 1, j)  = water;
 			
 			m_array_new(0, j)           = water;
-			m_array_new(size_y - 1, j)  = water;
+			m_array_new(size_x - 1, j)  = water;
 		}
 	}
 	

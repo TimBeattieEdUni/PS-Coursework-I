@@ -44,9 +44,8 @@ TEST(Array2DConstruction)
 	
 	Array2D<double> array(size1);
 	Size size2 = array.GetSize();
-	
-	CHECK(size1.m_x == size2.m_x);
-	CHECK(size1.m_y == size2.m_y);
+
+	CHECK(size1 == size2);
 }
 
 
@@ -77,7 +76,8 @@ TEST(Array2DElementAccess)
 	using PsCourseworkI::Array2D;
 	using PsCourseworkI::Size;
 	
-	Size given_size(2, 2);
+	//  use a non-square size to verify indexing arithmetic
+	Size given_size(3, 7);
 	
 	Array2D<double> array(given_size);
 	Size array_size = array.GetSize();
