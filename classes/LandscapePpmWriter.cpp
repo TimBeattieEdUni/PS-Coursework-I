@@ -40,7 +40,7 @@ namespace PsCourseworkI
 	///
 	/// @exception    std::runtime_error The file could not be opened or written to.
 	///
-	/// @todo         Scaling factor from population densities to RGB values is hard-coded with magic numbers!
+	/// @todo         Scaling factor from population densities to RGB values is hard-coded.
 	///
 	void LandscapePpmWriter::Write(std::string const& filename)
 	{
@@ -54,14 +54,14 @@ namespace PsCourseworkI
 		Size size_nohalo(ls_size.m_x - 2, ls_size.m_y - 2);
 		
 		PpmFile ppm_file(filename, size_nohalo, rgb_max);		
-		for (unsigned int i = 1; i < ls_size.m_x - 1; ++i)
+		for (unsigned int j = 1; j < ls_size.m_y - 1; ++j)
 		{
-			for (unsigned int j = 1; j < ls_size.m_y - 1; ++j)
+			for (unsigned int i = 1; i < ls_size.m_x - 1; ++i)
 			{
 				Cell const& cell = ls_array(i, j);
-				unsigned char red_val    = static_cast<unsigned char>(cell.m_pumas * 255);
-				unsigned char green_val  = static_cast<unsigned char>(cell.m_hares * 255);
-				unsigned char blue_val   = cell.m_land ? 0 : 255;
+				unsigned char red_val    = static_cast<unsigned char>(cell.m_pumas * rgb_max);
+				unsigned char green_val  = static_cast<unsigned char>(cell.m_hares * rgb_max);
+				unsigned char blue_val   = cell.m_land ? 0 : rgb_max;
 				ppm_file.WritePixel(Pixel(red_val, green_val, blue_val));
 			}
 		}

@@ -92,6 +92,12 @@ namespace PsCourseworkI
 				//  the cell we're about to update in the "new" array
 				Cell& cell_new = array_new(array_i, array_j);
 				
+				//  no update necessary for water cells
+				if (! cell_new.m_land)
+				{
+					continue;
+				}
+				
 				//  the same cell and its neighbours in the "old" array
 				Cell const& cell_old  = array_old(array_i, array_j);
 				Cell const& nbr_n     = array_old(array_i + 1, array_j);
@@ -136,9 +142,7 @@ namespace PsCourseworkI
 	void Landscape::ApplyLandWaterMap(BmpFile const& bmp)
 	{
 		BmpFile::BmpArray const& bmp_array = bmp.GetArray();
-		
-		std::cout << "land/water map size: " << bmp_array.GetSize().m_x << " x " << bmp_array.GetSize().m_y << std::endl;
-		
+				
 		unsigned int size_x = m_landscape_size.m_x;
 		unsigned int size_y = m_landscape_size.m_y;
 		
@@ -152,15 +156,15 @@ namespace PsCourseworkI
 			size_x = std::min(bmp_array.GetSize().m_x, m_landscape_size.m_x);
 			size_y = std::min(bmp_array.GetSize().m_y, m_landscape_size.m_y);
 
-			std::cout << "using matching area: " << size_x << " x " << size_y << "\n" << std::endl;
+			std::cout << "applying bitmask to overlapping rectangle: " << size_x << " x " << size_y << "\n" << std::endl;
 		}
 
 		//  write land/water flags into landscape cells inside the halo
-		for (unsigned int i = 0; i < size_x; ++i)
+		for (unsigned int j = 0; j < size_y; ++j)
 		{
-			for (unsigned int j = 0; j < size_y; ++j)
+			for (unsigned int i = 0; i < size_x; ++i)
 			{
-				//  do both arrays here so bmp_array is only read once.
+				//  adjust i and j for landscape's 1x1 offset into the array
 				m_array_old(i + 1, j + 1).m_land = static_cast<bool>(bmp_array(i, j));
 				m_array_new(i + 1, j + 1).m_land = static_cast<bool>(bmp_array(i, j));
 			}

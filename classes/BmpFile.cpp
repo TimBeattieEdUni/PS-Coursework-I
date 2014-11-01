@@ -48,10 +48,11 @@ namespace PsCourseworkI
 		unsigned int size_y = 0;
 		file_reader >> size_x >> size_y;
 		
+		std::cout << "bitmask size: " << size_x << " x " << size_y << std::endl;
 		//  validate dimensions
 		if (0 == size_x || 0 == size_y)
 		{
-			throw std::runtime_error("bitmap had zero for x or y size");
+			throw std::runtime_error("found zero x or y size in bitmap file");
 		}
 		
 		//  prep the array
@@ -59,9 +60,9 @@ namespace PsCourseworkI
 		m_array.Resize(bmp_size);
 		
 		//  read each subsequent field into the corresponding element of the array.
-		for (unsigned int i=0; i<size_x; i++)
+		for (unsigned int j=0; j<size_y; j++)
 		{
-			for (unsigned int j=0; j<size_y; j++)
+			for (unsigned int i=0; i<size_x; i++)
 			{
 				file_reader >> m_array(i, j);
 			}
