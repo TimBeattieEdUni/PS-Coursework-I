@@ -19,6 +19,7 @@
 //  Standard headers.
 #include <iostream>
 #include <sstream>
+#include <ctime>
 
 
 //////////////////////////////////////////	////////////////////////////////////
@@ -32,18 +33,23 @@
 int main(int argc, char* argv[])
 {
 	using namespace PsCourseworkI;
-	
-	try 
+
+	// start clock for total time
+	clock_t ttotal;
+	ttotal=std::clock();
+
+
+	try
 	{
 		//  parse command line
 		AppArgs args(argc, argv);
 
 		//  load configuration from file
 		AppConfig cfg(args.GetCfgFilename());
-		
+
 		//  load land/water map from file
 		BmpFile map_bmp(args.GetMapFilename());
-		
+
 		//  initialise the landscape
 		Landscape landscape(cfg, map_bmp);
 		landscape.ApplyRandomPumas();
@@ -51,6 +57,7 @@ int main(int argc, char* argv[])
 
 		//  initialise PPM file writer
 		LandscapePpmWriter ls_writer(landscape);
+
 
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)
@@ -61,20 +68,28 @@ int main(int argc, char* argv[])
 				//  create output filename
 				std::stringstream filename_ss;
 				filename_ss << "output/output" << i << ".ppm";
-				
+
 				//  write current state of the landscape to PPM file
 				ls_writer.Write(filename_ss.str());
 			}
 
 			landscape.Update();
         }
-		
+
+
 		std::cout << "simulation complete" << std::endl;
+
+		//timings:
+		ttotal=std::clock()-ttotal;
+  		std::cout << "Total CPU time spend=" <<static_cast<double>(ttotal)/CLOCKS_PER_SEC<<std::endl;
+
+
+
     }
-	catch (std::exception const& e) 
+	catch (std::exception const& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+
 	return 0;
 }

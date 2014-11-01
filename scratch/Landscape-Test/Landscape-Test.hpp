@@ -23,17 +23,17 @@
 #include <cmath>
 #include <iostream>
 
-////////////////////////////////////////////////////////////////////////////
-/// @brief  First test for class Landscape.
-///
-/// @test   Landscape can be constructed from valid arguments.
-///
-TEST(Landscape)
-{
-	using repo::classes::Landscape;
-
-	CHECK(false);
-}
+//////////////////////////////////////////////////////////////////////////////
+///// @brief  First test for class Landscape.
+/////
+///// @test   Landscape can be constructed from valid arguments.
+/////
+//TEST(Landscape)
+//{
+//	using repo::classes::Landscape;
+//
+//	CHECK(false);
+//}
 
 
 //////////////////////////////////////////////////////////////////////////////
