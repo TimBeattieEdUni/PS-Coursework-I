@@ -48,7 +48,7 @@ namespace PsCourseworkI
 
 		//  write header: magic number, image size, and max pixel component value
 		m_out_file << "P3" << "\n";
-		m_out_file << size.m_x << " " << size.m_x << "\n";
+		m_out_file << size.m_y << " " << size.m_x << "\n";
 		m_out_file << m_max_rgb_val << "\n";
 	}
 
