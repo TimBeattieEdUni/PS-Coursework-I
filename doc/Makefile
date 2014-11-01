@@ -1,11 +1,12 @@
 ##############################################################################
-#  Makefile for documentation.
+#  Makefile for Doxygen documentation.  Doc index can be found here:
+#
+#  doxygen/index.html
 #
 #  Targets: doc, clean.
 #
 #  Default target is "doc".
 #
-
 
 
 ##############################################################################
@@ -19,7 +20,6 @@ LOG     = doxygen.log
 DBG     = debug.txt
 
 CLEANFILES = $(OUTDIR) $(LOG) $(DBG)
-
 
 
 ##############################################################################
