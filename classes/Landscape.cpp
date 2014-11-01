@@ -139,11 +139,21 @@ namespace PsCourseworkI
 		
 		std::cout << "land/water map size: " << bmp_array.GetSize().m_x << " x " << bmp_array.GetSize().m_y << std::endl;
 		
-		//  handle non-matching bmp and landscape sizes gracefully
-		unsigned int size_x = std::min(bmp_array.GetSize().m_x, m_landscape_size.m_x);
-		unsigned int size_y = std::min(bmp_array.GetSize().m_y, m_landscape_size.m_y);
+		unsigned int size_x = m_landscape_size.m_x;
+		unsigned int size_y = m_landscape_size.m_y;
+		
+		//  check sizes of bitmask and landscape match
+		Size bmp_size = bmp_array.GetSize();
+		if (! (bmp_size == m_landscape_size))
+		{
+			std::cout << "\nwarning: land/water bitmask size differs from landscape size" << std::endl;
 
-		std::cout << "bitmap-landscape matching area: " << size_x << " x " << size_y << std::endl;
+			//  use size of intersection of bit mask and landscape
+			size_x = std::min(bmp_array.GetSize().m_x, m_landscape_size.m_x);
+			size_y = std::min(bmp_array.GetSize().m_y, m_landscape_size.m_y);
+
+			std::cout << "using matching area: " << size_x << " x " << size_y << "\n" << std::endl;
+		}
 
 		//  write land/water flags into landscape cells inside the halo
 		for (unsigned int i = 0; i < size_x; ++i)
