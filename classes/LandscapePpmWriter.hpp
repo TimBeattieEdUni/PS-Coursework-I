@@ -5,8 +5,8 @@
 ///
 
 
-#ifndef GROUP PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
-#define GROUP PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
+#ifndef GROUP_PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
+#define GROUP_PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -44,4 +44,4 @@ namespace PsCourseworkI
 }   //  namespace PsCourseworkI
 
 
-#endif  //  #ndef GROUP PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
+#endif  //  #ndef GROUP_PRACTICAL_REPO_LANDSCAPEPPMWRITER_HPP
