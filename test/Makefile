@@ -55,11 +55,11 @@ clean:
 #  Build objects from source.
 
 %.o : %.cpp
-	$(CXX) -c $(CXXFLAGS) $(INCLUDE) $(WARNINGS) -MMD -o $@ $<
+	$(CXX) $(PROFFLAGS) -c $(CXXFLAGS) $(INCLUDE) $(WARNINGS) -MMD -o $@ $<
 
 
 ##############################################################################
 #  Binary rules.
 
 $(TESTAPP): $(OBJS) ../classes/$(CLASSLIB)
-	$(CXX) -o $(TESTAPP) $(OBJS) $(CLASSLIBFLAGS) $(TESTLIBFLAGS) $(LIBS)
+	$(CXX) $(PROFFLAGS) -o $(TESTAPP) $(OBJS) $(CLASSLIBFLAGS) $(TESTLIBFLAGS) $(LIBS)

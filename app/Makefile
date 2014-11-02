@@ -51,11 +51,11 @@ clean:
 #  Build objects from source.
 
 %.o : %.cpp
-	$(CXX) -c $(CXXFLAGS) $(WARNINGS) $(INCLUDE) -MMD -o $@ $<
+	$(CXX) $(PROFFLAGS) -c $(CXXFLAGS) $(WARNINGS) $(INCLUDE) -MMD -o $@ $<
 
 
 ##############################################################################
 #  Build executable from objects.
 
 $(APP): $(OBJS) ../classes/$(CLASSLIB)
-	$(CXX) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)
+	$(CXX) $(PROFFLAGS) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)

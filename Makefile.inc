@@ -20,7 +20,13 @@ WARNINGS = -Wall -Wextra -pedantic -Weffc++ -Werror
 CXXFLAGS             =
 release:  CXXFLAGS  += -O3
 debug:    CXXFLAGS  += -g -D_DEBUG
-profile:  CXXFLAGS  += -pg
+
+
+##############################################################################
+#  Profiling.
+
+PROFFLAGS            =
+profile:  PROFFLAGS += -pg
 
 
 ##############################################################################
