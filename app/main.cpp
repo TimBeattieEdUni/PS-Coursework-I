@@ -20,9 +20,10 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <iomanip>
 
 
-//////////////////////////////////////////	////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 /// @brief      Program entry point.
 ///
 /// @details    Runs the simulation of puma and hare populations.
@@ -68,13 +69,16 @@ int main(int argc, char* argv[])
 			{
 				//  create output filename
 				std::stringstream filename_ss;
-				filename_ss << "output/output" << i << ".ppm";
+				filename_ss << "output" << i << ".ppm";
 
 				//  write current state of the landscape to PPM file
 				ls_writer.Write(filename_ss.str());
 			}
 
+			//  do update and report time
 			landscape.Update();
+			double sim_time = i * cfg.Getdt();
+			std::cout << "landscape updated to time " << sim_time << " months" << std::endl;
         }
 
 
@@ -82,7 +86,7 @@ int main(int argc, char* argv[])
 
 		//timings:
 		ttotal=std::clock()-ttotal;
-  		std::cout << "Total CPU time spend=" <<static_cast<double>(ttotal)/CLOCKS_PER_SEC<<std::endl;
+  		std::cout << "Total CPU time: " << std::setw(10) << static_cast<double>(ttotal)/CLOCKS_PER_SEC << std::endl;
 
 
 
