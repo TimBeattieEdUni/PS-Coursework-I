@@ -1,0 +1,17 @@
+Unit Testing
+
+For unit testing, we chose to use UnitTest++,  which is available here:
+
+	http://unittest-cpp.sourceforge.net 
+
+UnitTest++ is free and open source, and we found it easy to set up and use, with a small but effective feature set.  The documentation for UnitTest++ is brief but complete and can be found in the following file in the project (once the project has been built):
+
+	UnitTest++/docs/UnitTest++.html
+
+We downloaded UnitTest++ as a .zip file and added this file to the Git repository in the "downloads" directory.  We then integrated the build of UnitTest++ into the build system.  Running "make test" in the project's top-level directory will unzip the downloaded file to the directory "UnitTest++", run UnitTest++'s own makefile to build the UnitTest++ static library, and build and run the project's unit tests which link in that library.  UnitTest++'s build runs unit tests on UnitTest++ itself, using UnitTest++'s own testing features.
+
+To ensure that the binary code being unit tested was the same code included in the popsim program, the project's build system was configured to build all C++ classes into a static library which was then linked into both the popsim program and the unit test program.  This technique avoids certain problems which can occur when compiler or linker settings differ between multiple builds of the same source code.
+
+We implemented the unit test program with a small C++ implementation file which implemented main() and #included test headers for the project's C++ classes.  Each class's test header contained one or more UnitTest++ TEST macros which implemented unit tests for the class.  The main() function simply contained a call to UnitTest::RunAllTests().  The unit test implementation and header files were placed in the "test" directory.
+
+We began the project with the intention of writing each class's unit tests while that class was being developed in order to ensure that every feature of every class would be robust and dependable before being used in the program.  We found, however, that as the deadline approached, we gave in to the pressure to "just get it done" and wrote several classes without tests, intending to write the tests later.  We then found a serious bug in several places in our code where arrays of values in memory were being read from or written to files in the wrong order; we were iterating over columns, then rows, of cells in our landscape grid, but iterating over rows, then columns, of pixels in our PPM and bitmask files.  This bug cost us a day of development which could have been saved by writing even simple unit tests which covered only the basic workings of our landscape, PPM file, and bitmask classes.
