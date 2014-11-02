@@ -58,4 +58,4 @@ clean:
 #  Build executable from objects.
 
 $(APP): $(OBJS) ../classes/$(CLASSLIB)
-	$(CXX) $(PROFFLAGS) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)
+	$(CXX) -o $(APP) $(OBJS) $(CLASSLIBFLAGS) $(LIBS)

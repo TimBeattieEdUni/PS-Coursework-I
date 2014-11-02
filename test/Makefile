@@ -55,7 +55,7 @@ clean:
 #  Build objects from source.
 
 %.o : %.cpp
-	$(CXX) $(PROFFLAGS)-c $(CXXFLAGS) $(INCLUDE) $(WARNINGS) -MMD -o $@ $<
+	$(CXX) -c $(CXXFLAGS) $(INCLUDE) $(WARNINGS) -MMD -o $@ $<
 
 
 ##############################################################################
