@@ -68,8 +68,6 @@ namespace PsCourseworkI
 	///
 	void Landscape::Update()
 	{	
-		std::cout << "updating landscape" << std::endl;
-		
 		m_bswap_arrays = !m_bswap_arrays;
 
 		LsArray& array_new = m_bswap_arrays ? m_array_new : m_array_old;		
