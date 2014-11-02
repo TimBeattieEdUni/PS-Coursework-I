@@ -20,11 +20,8 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
-<<<<<<< HEAD
 #include <iomanip>
-=======
 #include <sys/time.h>
->>>>>>> 4eb0f63ebf6c7de080078ead9a0905f4cd58a76d
 
 
 //////////////////////////////////////////////////////////////////////////////
