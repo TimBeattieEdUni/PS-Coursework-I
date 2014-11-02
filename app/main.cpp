@@ -48,10 +48,11 @@ int main(int argc, char* argv[])
 		AppConfig cfg(args.GetCfgFilename());
 
 		//  load land/water map from file
-		BmpFile map_bmp(args.GetMapFilename());
+		BmpFile land_water_mask(args.GetMapFilename());
 
 		//  initialise the landscape
-		Landscape landscape(cfg, map_bmp);
+		Landscape landscape(cfg);
+		landscape.ApplyLandWaterMask(land_water_mask.GetArray());
 		landscape.ApplyRandomPumas();
 		landscape.ApplyRandomHares();
 

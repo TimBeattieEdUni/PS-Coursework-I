@@ -27,7 +27,7 @@ namespace PsCourseworkI
 	///
 	/// @post       Landscape array has been initialised.
 	///
-	Landscape::Landscape(AppConfig const& cfg, BmpFile const& bmp)
+	Landscape::Landscape(AppConfig const& cfg)
 		: m_bswap_arrays(false)
 		, m_landscape_size(cfg.GetNx(), cfg.GetNy())
 		, m_cfg(cfg)
@@ -37,7 +37,6 @@ namespace PsCourseworkI
 		std::cout << "landscape size: " << m_landscape_size.m_x << " x " << m_landscape_size.m_y << std::endl;
 		
 		InitHalos();
-		ApplyLandWaterMap(bmp);
 	}
 
 
@@ -139,22 +138,20 @@ namespace PsCourseworkI
 	///
 	/// @post         The given land/water bitmap has been applied to the landscape.
 	///
-	void Landscape::ApplyLandWaterMap(BmpFile const& bmp)
+	void Landscape::ApplyLandWaterMask(BmpFile::BmpArray const& mask_array)
 	{
-		BmpFile::BmpArray const& bmp_array = bmp.GetArray();
-				
 		unsigned int size_x = m_landscape_size.m_x;
 		unsigned int size_y = m_landscape_size.m_y;
 		
 		//  check sizes of bitmask and landscape match
-		Size bmp_size = bmp_array.GetSize();
+		Size bmp_size = mask_array.GetSize();
 		if (! (bmp_size == m_landscape_size))
 		{
 			std::cout << "\nwarning: land/water bitmask size differs from landscape size" << std::endl;
 
 			//  use size of intersection of bit mask and landscape
-			size_x = std::min(bmp_array.GetSize().m_x, m_landscape_size.m_x);
-			size_y = std::min(bmp_array.GetSize().m_y, m_landscape_size.m_y);
+			size_x = std::min(mask_array.GetSize().m_x, m_landscape_size.m_x);
+			size_y = std::min(mask_array.GetSize().m_y, m_landscape_size.m_y);
 
 			std::cout << "applying bitmask to overlapping rectangle: " << size_x << " x " << size_y << "\n" << std::endl;
 		}
@@ -165,8 +162,8 @@ namespace PsCourseworkI
 			for (unsigned int i = 0; i < size_x; ++i)
 			{
 				//  adjust i and j for landscape's 1x1 offset into the array
-				m_array_old(i + 1, j + 1).m_land = static_cast<bool>(bmp_array(i, j));
-				m_array_new(i + 1, j + 1).m_land = static_cast<bool>(bmp_array(i, j));
+				m_array_old(i + 1, j + 1).m_land = static_cast<bool>(mask_array(i, j));
+				m_array_new(i + 1, j + 1).m_land = static_cast<bool>(mask_array(i, j));
 			}
 		}		
 	}

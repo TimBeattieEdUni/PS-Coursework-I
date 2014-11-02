@@ -31,12 +31,14 @@ namespace PsCourseworkI
 			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
 
 			/// Constructor from configuration and land/water bitmask.
-			Landscape(AppConfig const& cfg, BmpFile const& bmp);
+			Landscape(AppConfig const& cfg);
 
 			LsArray const& GetArray() const;              ///< Getter.
 			void Update();                                ///< Updates the landscape by one time step.
 		
-			void ApplyLandWaterMap(BmpFile const& bmp);   ///< Applies land/water bitmap.
+			///< Applies land/water bitmask.
+			void ApplyLandWaterMask(BmpFile::BmpArray const& bmp);
+		
 			void ApplyRandomPumas();                      ///< Applies random puma population density.
 			void ApplyRandomHares();                      ///< Applies random hare population density.
 		
