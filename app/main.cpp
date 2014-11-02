@@ -34,9 +34,9 @@ int main(int argc, char* argv[])
 {
 	using namespace PsCourseworkI;
 
-	// start clock for total time
-	clock_t ttotal;
-	ttotal=std::clock();
+	// get the starting time
+	time_t t_start=time(NULL);
+
 
 
 	try
@@ -55,6 +55,19 @@ int main(int argc, char* argv[])
 		landscape.ApplyLandWaterMask(land_water_mask.GetArray());
 		landscape.ApplyRandomPumas();
 		landscape.ApplyRandomHares();
+
+        		// get the ending time
+        time_t t_end=time(NULL);
+        double t_simulation=difftime(t_end, t_start); // getting elapsed time till start
+
+        std::cout<<"time in seconds="<<t_simulation<<std::endl;
+
+        //splitting the time in hours minutes and seconds:
+        unsigned int hours=static_cast<unsigned int>(t_simulation/3600);
+        unsigned int minutes=static_cast<unsigned int>(t_simulation/60);
+        double seconds=t_simulation-hours*3600-minutes*60;
+
+  		std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" s "<<std::endl;
 
 		//  initialise PPM file writer
 		LandscapePpmWriter ls_writer(landscape);
@@ -80,9 +93,16 @@ int main(int argc, char* argv[])
 
 		std::cout << "simulation complete" << std::endl;
 
-		//timings:
-		ttotal=std::clock()-ttotal;
-  		std::cout << "Total CPU time spend=" <<static_cast<double>(ttotal)/CLOCKS_PER_SEC<<std::endl;
+        // get the ending time
+        time_t t_end=time(NULL);
+        double t_simulation=difftime(t_end, t_start); // getting elapsed time till start
+
+        //splitting the time in hours minutes and seconds:
+        unsigned int hours=static_cast<unsigned int>(t_simulation/3600);
+        unsigned int minutes=static_cast<unsigned int>(t_simulation/60);
+        double seconds=t_simulation-hours*3600-minutes*60;
+
+  		std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" s "<<std::endl;
 
 
 
