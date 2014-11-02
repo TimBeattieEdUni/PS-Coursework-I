@@ -8,6 +8,9 @@ Equations - discrete versions we can use will be given?
 Indexing is by column, then by row, from the bottom-left.
 
 
+Add a "make tarball" step for handing it in!
+
+
 Tasks with breakdown:
 
 Set up version control:
