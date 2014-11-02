@@ -20,6 +20,7 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <sys/time.h>
 
 
 //////////////////////////////////////////	////////////////////////////////////
@@ -34,8 +35,10 @@ int main(int argc, char* argv[])
 {
 	using namespace PsCourseworkI;
 
-	// get the starting time
-	time_t t_start=time(NULL);
+	//fields for timing
+	timeval t_start,t_end;
+	//set starting time
+	gettimeofday(&t_start,NULL); // on windows OS use: GetSystemTime
 
 
 
@@ -80,16 +83,23 @@ int main(int argc, char* argv[])
 
 		std::cout << "simulation complete" << std::endl;
 
-        // get the ending time
-        time_t t_end=time(NULL);
-        double t_simulation=difftime(t_end, t_start); // getting elapsed time till start
+        // timing:
+        gettimeofday(&t_end,NULL);
 
-        //splitting the time in hours minutes and seconds:
-        unsigned int hours=static_cast<unsigned int>(t_simulation/3600);
-        unsigned int minutes=static_cast<unsigned int>(t_simulation/60);
-        double seconds=t_simulation-hours*3600-minutes*60;
+        unsigned int seconds_diff=(t_end.tv_sec - t_start.tv_sec);
+        unsigned int microseconds_diff=(t_end.tv_usec - t_start.tv_usec);
 
-  		std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" s "<<std::endl;
+        //transforming the seconds and microseconds output in usaual format (h,min,sec,msec,usec)
+        unsigned int hours=(seconds_diff/3600);
+        unsigned int minutes=(seconds_diff/60);
+        unsigned int seconds=seconds_diff-hours*3600-minutes*60;
+
+        unsigned int milliseconds=(microseconds_diff/1000);
+        unsigned int microseconds=microseconds_diff-1000*milliseconds;
+
+        //timing output
+        std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" sec "<<milliseconds<<" msec "<<microseconds<<" usec "<<std::endl;
+
 
 
 
