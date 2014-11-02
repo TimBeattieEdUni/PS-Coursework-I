@@ -56,19 +56,6 @@ int main(int argc, char* argv[])
 		landscape.ApplyRandomPumas();
 		landscape.ApplyRandomHares();
 
-        		// get the ending time
-        time_t t_end=time(NULL);
-        double t_simulation=difftime(t_end, t_start); // getting elapsed time till start
-
-        std::cout<<"time in seconds="<<t_simulation<<std::endl;
-
-        //splitting the time in hours minutes and seconds:
-        unsigned int hours=static_cast<unsigned int>(t_simulation/3600);
-        unsigned int minutes=static_cast<unsigned int>(t_simulation/60);
-        double seconds=t_simulation-hours*3600-minutes*60;
-
-  		std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" s "<<std::endl;
-
 		//  initialise PPM file writer
 		LandscapePpmWriter ls_writer(landscape);
 
