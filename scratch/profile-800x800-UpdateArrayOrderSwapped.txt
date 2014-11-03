@@ -1,0 +1,995 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 48.54     59.65    59.65     1250     0.05     0.09  PsCourseworkI::Landscape::Update()
+ 17.45     81.10    21.45 4806406416     0.00     0.00  PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int)
+ 12.34     96.27    15.17 511439120     0.00     0.00  std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long)
+  4.64    101.97     5.70 1600001250     0.00     0.00  PsCourseworkI::AppConfig::Getdt() const
+  2.82    105.44     3.47 800000000     0.00     0.00  PsCourseworkI::AppConfig::Getb() const
+  2.78    108.85     3.41        2     1.71     2.65  PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size)
+  2.21    111.57     2.72 800000000     0.00     0.00  PsCourseworkI::AppConfig::Getr() const
+  1.79    113.78     2.21 800000000     0.00     0.00  PsCourseworkI::AppConfig::Getl() const
+  1.64    115.80     2.02 800000000     0.00     0.00  PsCourseworkI::AppConfig::Geta() const
+  1.50    117.64     1.85        2     0.92     0.94  std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&)
+  1.44    119.41     1.77 800000000     0.00     0.00  PsCourseworkI::AppConfig::Getm() const
+  1.35    121.07     1.66 800000000     0.00     0.00  PsCourseworkI::AppConfig::Getk() const
+  1.01    122.31     1.24     1251     0.00     0.00  PsCourseworkI::AppConfig::GetTT() const
+  0.25    122.62     0.31        3     0.10     0.10  PsCourseworkI::AppConfig::GetNy() const
+  0.07    122.71     0.09       13     0.01     0.02  PsCourseworkI::LandscapePpmWriter::Write(std::string const&)
+  0.04    122.76     0.06  8320000     0.00     0.00  PsCourseworkI::Pixel::Pixel(unsigned char, unsigned char, unsigned char)
+  0.04    122.81     0.05  8320000     0.00     0.00  PsCourseworkI::PpmFile::WritePixel(PsCourseworkI::Pixel const&)
+  0.02    122.84     0.03        1     0.03     0.05  PsCourseworkI::Landscape::ApplyRandomHares()
+  0.02    122.86     0.02        2     0.01     0.02  void std::__uninitialized_fill_n<false>::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&)
+  0.02    122.88     0.02        1     0.02     0.04  PsCourseworkI::Landscape::ApplyRandomPumas()
+  0.01    122.89     0.01  8320000     0.00     0.00  std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) const
+  0.01    122.90     0.01  1286408     0.00     0.00  void std::_Construct<PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell const&)
+  0.01    122.91     0.01  1286408     0.00     0.00  operator new(unsigned long, void*)
+  0.01    122.92     0.01  1280000     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) const
+  0.01    122.93     0.01  1280000     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) const
+  0.01    122.94     0.01       13     0.00     0.00  PsCourseworkI::PpmFile::PpmFile(std::string const&, PsCourseworkI::Size const&, unsigned int)
+  0.00    122.95     0.01        1     0.01     0.01  global constructors keyed to _ZN13PsCourseworkI18LandscapePpmWriterC2ERNS_9LandscapeE
+  0.00    122.95     0.00  8320000     0.00     0.00  PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) const
+  0.00    122.95     0.00   640000     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int)
+  0.00    122.95     0.00   640000     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long)
+  0.00    122.95     0.00     1250     0.00     0.00  PsCourseworkI::AppConfig::GetT() const
+  0.00    122.95     0.00       66     0.00     0.00  bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  0.00    122.95     0.00       44     0.00     0.00  PsCourseworkI::AppConfig::RemoveComment(std::string&)
+  0.00    122.95     0.00       37     0.00     0.00  std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+  0.00    122.95     0.00       18     0.00     0.00  PsCourseworkI::Size::Size(unsigned int, unsigned int)
+  0.00    122.95     0.00       15     0.00     0.00  PsCourseworkI::Array2D<PsCourseworkI::Cell>::GetSize() const
+  0.00    122.95     0.00       13     0.00     0.00  PsCourseworkI::PpmFile::Finalise()
+  0.00    122.95     0.00       13     0.00     0.00  PsCourseworkI::PpmFile::~PpmFile()
+  0.00    122.95     0.00       13     0.00     0.00  PsCourseworkI::Landscape::GetArray() const
+  0.00    122.95     0.00        7     0.00     0.00  PsCourseworkI::AppConfig::StringToDouble(std::string const&)
+  0.00    122.95     0.00        7     0.00     0.00  std::__niter_base<unsigned int*, false>::__b(unsigned int*)
+  0.00    122.95     0.00        6     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::size() const
+  0.00    122.95     0.00        6     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator()
+  0.00    122.95     0.00        4     0.00     0.00  PsCourseworkI::AppConfig::StringToInt(std::string const&)
+  0.00    122.95     0.00        4     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::~new_allocator()
+  0.00    122.95     0.00        4     0.00     0.00  __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::base() const
+  0.00    122.95     0.00        4     0.00     0.00  std::allocator<PsCourseworkI::Cell>::~allocator()
+  0.00    122.95     0.00        4     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_get_Tp_allocator()
+  0.00    122.95     0.00        4     0.00     0.00  std::__miter_base<unsigned int*, false>::__b(unsigned int*)
+  0.00    122.95     0.00        3     0.00     0.00  PsCourseworkI::AppConfig::GetNx() const
+  0.00    122.95     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<unsigned int>::max_size() const
+  0.00    122.95     0.00        3     0.00     0.00  void std::_Destroy_aux<true>::__destroy<unsigned int*>(unsigned int*, unsigned int*)
+  0.00    122.95     0.00        3     0.00     0.00  void std::_Destroy<unsigned int*>(unsigned int*, unsigned int*)
+  0.00    122.95     0.00        3     0.00     0.00  void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  0.00    122.95     0.00        2     0.00     0.00  PsCourseworkI::Cell::Cell()
+  0.00    122.95     0.00        2     0.00     0.00  PsCourseworkI::Array2D<PsCourseworkI::Cell>::~Array2D()
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::deallocate(PsCourseworkI::Cell*, unsigned long)
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::allocate(unsigned long, void const*)
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator(__gnu_cxx::new_allocator<PsCourseworkI::Cell> const&)
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator()
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::__normal_iterator(unsigned int* const&)
+  0.00    122.95     0.00        2     0.00     0.00  __gnu_cxx::new_allocator<PsCourseworkI::Cell>::max_size() const
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() const
+  0.00    122.95     0.00        2     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const
+  0.00    122.95     0.00        2     0.00     0.00  std::allocator<PsCourseworkI::Cell>::allocator()
+  0.00    122.95     0.00        2     0.00     0.00  std::allocator<PsCourseworkI::Cell>::allocator(std::allocator<PsCourseworkI::Cell> const&)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<unsigned int>(unsigned int const*, unsigned int const*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.00  void std::_Destroy_aux<true>::__destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*)
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_allocate(unsigned long)
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::_Vector_impl(std::allocator<PsCourseworkI::Cell> const&)
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::~_Vector_impl()
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_deallocate(PsCourseworkI::Cell*, unsigned long)
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&)
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base()
+  0.00    122.95     0.00        2     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__uninitialized_copy<true>::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.02  std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&)
+  0.00    122.95     0.00        2     0.00     0.00  std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector()
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__copy_move_a<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.02  void std::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__uninitialized_copy_a<unsigned int*, unsigned int*, unsigned int>(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::__uninitialized_move_a<unsigned int*, unsigned int*, std::allocator<unsigned int> >(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  0.00    122.95     0.00        2     0.00     0.02  void std::__uninitialized_fill_n_a<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell>&)
+  0.00    122.95     0.00        2     0.00     0.00  unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  0.00    122.95     0.00        2     0.00     0.00  void std::_Destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*)
+  0.00    122.95     0.00        2     0.00     0.00  void std::_Destroy<PsCourseworkI::Cell*, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell*, std::allocator<PsCourseworkI::Cell>&)
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI4CellC2Ev
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI7AppArgsC2EiPPc
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI7BmpFileC2ESs
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI7PpmFileC2ERKSsRKNS_4SizeEj
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI9AppConfigC2ERKSs
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to _ZN13PsCourseworkI9LandscapeC2ERKNS_9AppConfigE
+  0.00    122.95     0.00        1     0.00     0.00  global constructors keyed to main
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::LandscapePpmWriter::LandscapePpmWriter(PsCourseworkI::Landscape&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Cell::Cell(bool, double, double)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Size::operator=(PsCourseworkI::Size const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppArgs::AppArgs(int, char**)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppArgs::~AppArgs()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::Array2D()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::~Array2D()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::BmpFile::BmpFile(std::string)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::BmpFile::~BmpFile()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppConfig::Print()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppConfig::AppConfig(std::string const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppConfig::~AppConfig()
+  0.00    122.95     0.00        1     0.00     0.03  PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Landscape::InitHalos()
+  0.00    122.95     0.00        1     0.00     5.60  PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Landscape::~Landscape()
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::operator==(PsCourseworkI::Size const&, PsCourseworkI::Size const&)
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<unsigned int>::deallocate(unsigned int*, unsigned long)
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<unsigned int>::allocate(unsigned long, void const*)
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<unsigned int>::new_allocator()
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<unsigned int>::~new_allocator()
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::difference_type __gnu_cxx::operator-<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&)
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppArgs::GetCfgFilename() const
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::AppArgs::GetMapFilename() const
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::Array2D<unsigned int>::GetSize() const
+  0.00    122.95     0.00        1     0.00     0.00  PsCourseworkI::BmpFile::GetArray() const
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const
+  0.00    122.95     0.00        1     0.00     0.00  std::allocator<unsigned int>::allocator()
+  0.00    122.95     0.00        1     0.00     0.00  std::allocator<unsigned int>::~allocator()
+  0.00    122.95     0.00        1     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_allocate(unsigned long)
+  0.00    122.95     0.00        1     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::_Vector_impl()
+  0.00    122.95     0.00        1     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::~_Vector_impl()
+  0.00    122.95     0.00        1     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_base()
+  0.00    122.95     0.00        1     0.00     0.00  std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base()
+  0.00    122.95     0.00        1     0.00     0.00  void std::__uninitialized_fill_n<true>::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&)
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*)
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::end()
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::begin()
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::clear()
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&)
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int)
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::vector()
+  0.00    122.95     0.00        1     0.00     0.00  std::vector<unsigned int, std::allocator<unsigned int> >::~vector()
+  0.00    122.95     0.00        1     0.00     0.00  __gnu_cxx::__enable_if<std::__is_scalar<unsigned int>::__value, unsigned int*>::__type std::__fill_n_a<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  0.00    122.95     0.00        1     0.00     0.00  void std::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  0.00    122.95     0.00        1     0.00     0.00  void std::__uninitialized_fill_n_a<unsigned int*, unsigned long, unsigned int, unsigned int>(unsigned int*, unsigned long, unsigned int const&, std::allocator<unsigned int>&)
+  0.00    122.95     0.00        1     0.00     0.00  unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00    122.95     0.00        1     0.00     0.00  unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.01% of 122.95 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00  122.94                 main [1]
+               59.65   56.11    1250/1250        PsCourseworkI::Landscape::Update() [2]
+                0.00    5.60       1/1           PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+                1.24    0.00    1251/1251        PsCourseworkI::AppConfig::GetTT() const [15]
+                0.09    0.13      13/13          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+                0.03    0.02       1/1           PsCourseworkI::Landscape::ApplyRandomHares() [20]
+                0.02    0.02       1/1           PsCourseworkI::Landscape::ApplyRandomPumas() [25]
+                0.00    0.03       1/1           PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+                0.00    0.00    1250/1600001250     PsCourseworkI::AppConfig::Getdt() const [5]
+                0.00    0.00    1250/1250        PsCourseworkI::AppConfig::GetT() const [43]
+                0.00    0.00      13/37          std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [46]
+                0.00    0.00       1/1           PsCourseworkI::AppArgs::AppArgs(int, char**) [116]
+                0.00    0.00       1/1           PsCourseworkI::AppArgs::GetCfgFilename() const [133]
+                0.00    0.00       1/1           PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+                0.00    0.00       1/1           PsCourseworkI::AppArgs::GetMapFilename() const [134]
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::GetArray() const [136]
+                0.00    0.00       1/1           PsCourseworkI::LandscapePpmWriter::LandscapePpmWriter(PsCourseworkI::Landscape&) [113]
+                0.00    0.00       1/1           PsCourseworkI::Landscape::~Landscape() [126]
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::~BmpFile() [122]
+                0.00    0.00       1/1           PsCourseworkI::AppConfig::~AppConfig() [125]
+                0.00    0.00       1/1           PsCourseworkI::AppArgs::~AppArgs() [117]
+-----------------------------------------------
+               59.65   56.11    1250/1250        main [1]
+[2]     94.2   59.65   56.11    1250         PsCourseworkI::Landscape::Update() [2]
+               21.42   15.15 4800000000/4806406416     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+                5.70    0.00 1600000000/1600001250     PsCourseworkI::AppConfig::Getdt() const [5]
+                3.47    0.00 800000000/800000000     PsCourseworkI::AppConfig::Getb() const [8]
+                2.72    0.00 800000000/800000000     PsCourseworkI::AppConfig::Getr() const [9]
+                2.21    0.00 800000000/800000000     PsCourseworkI::AppConfig::Getl() const [10]
+                2.02    0.00 800000000/800000000     PsCourseworkI::AppConfig::Geta() const [11]
+                1.77    0.00 800000000/800000000     PsCourseworkI::AppConfig::Getm() const [13]
+                1.66    0.00 800000000/800000000     PsCourseworkI::AppConfig::Getk() const [14]
+-----------------------------------------------
+                0.00    0.00    6416/4806406416     PsCourseworkI::Landscape::InitHalos() [36]
+                0.01    0.00 1280000/4806406416     PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+                0.01    0.01 2560000/4806406416     PsCourseworkI::Landscape::ApplyRandomPumas() [25]
+                0.01    0.01 2560000/4806406416     PsCourseworkI::Landscape::ApplyRandomHares() [20]
+               21.42   15.15 4800000000/4806406416     PsCourseworkI::Landscape::Update() [2]
+[3]     29.8   21.45   15.17 4806406416         PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+               15.17    0.00 511439120/511439120     std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) [4]
+-----------------------------------------------
+               15.17    0.00 511439120/511439120     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+[4]     12.3   15.17    0.00 511439120         std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) [4]
+-----------------------------------------------
+                0.00    0.00    1250/1600001250     main [1]
+                5.70    0.00 1600000000/1600001250     PsCourseworkI::Landscape::Update() [2]
+[5]      4.6    5.70    0.00 1600001250         PsCourseworkI::AppConfig::Getdt() const [5]
+-----------------------------------------------
+                0.00    5.60       1/1           main [1]
+[6]      4.6    0.00    5.60       1         PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+                3.41    1.89       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+                0.31    0.00       3/3           PsCourseworkI::AppConfig::GetNy() const [16]
+                0.00    0.00       1/1           PsCourseworkI::Landscape::InitHalos() [36]
+                0.00    0.00       3/3           PsCourseworkI::AppConfig::GetNx() const [62]
+                0.00    0.00       3/18          PsCourseworkI::Size::Size(unsigned int, unsigned int) [47]
+-----------------------------------------------
+                3.41    1.89       2/2           PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+[7]      4.3    3.41    1.89       2         PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+                1.85    0.04       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&) [12]
+                0.00    0.00       2/2           PsCourseworkI::Cell::Cell() [67]
+                0.00    0.00       2/2           std::allocator<PsCourseworkI::Cell>::allocator() [77]
+                0.00    0.00       2/4           std::allocator<PsCourseworkI::Cell>::~allocator() [59]
+-----------------------------------------------
+                3.47    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[8]      2.8    3.47    0.00 800000000         PsCourseworkI::AppConfig::Getb() const [8]
+-----------------------------------------------
+                2.72    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[9]      2.2    2.72    0.00 800000000         PsCourseworkI::AppConfig::Getr() const [9]
+-----------------------------------------------
+                2.21    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[10]     1.8    2.21    0.00 800000000         PsCourseworkI::AppConfig::Getl() const [10]
+-----------------------------------------------
+                2.02    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[11]     1.6    2.02    0.00 800000000         PsCourseworkI::AppConfig::Geta() const [11]
+-----------------------------------------------
+                1.85    0.04       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+[12]     1.5    1.85    0.04       2         std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&) [12]
+                0.00    0.04       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&) [22]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&) [85]
+-----------------------------------------------
+                1.77    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[13]     1.4    1.77    0.00 800000000         PsCourseworkI::AppConfig::Getm() const [13]
+-----------------------------------------------
+                1.66    0.00 800000000/800000000     PsCourseworkI::Landscape::Update() [2]
+[14]     1.4    1.66    0.00 800000000         PsCourseworkI::AppConfig::Getk() const [14]
+-----------------------------------------------
+                1.24    0.00    1251/1251        main [1]
+[15]     1.0    1.24    0.00    1251         PsCourseworkI::AppConfig::GetTT() const [15]
+-----------------------------------------------
+                0.31    0.00       3/3           PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+[16]     0.2    0.31    0.00       3         PsCourseworkI::AppConfig::GetNy() const [16]
+-----------------------------------------------
+                0.09    0.13      13/13          main [1]
+[17]     0.2    0.09    0.13      13         PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+                0.06    0.00 8320000/8320000     PsCourseworkI::Pixel::Pixel(unsigned char, unsigned char, unsigned char) [18]
+                0.05    0.00 8320000/8320000     PsCourseworkI::PpmFile::WritePixel(PsCourseworkI::Pixel const&) [19]
+                0.00    0.01 8320000/8320000     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) const [29]
+                0.01    0.00      13/13          PsCourseworkI::PpmFile::PpmFile(std::string const&, PsCourseworkI::Size const&, unsigned int) [33]
+                0.00    0.00      13/13          PsCourseworkI::Landscape::GetArray() const [51]
+                0.00    0.00      13/15          PsCourseworkI::Array2D<PsCourseworkI::Cell>::GetSize() const [48]
+                0.00    0.00      13/18          PsCourseworkI::Size::Size(unsigned int, unsigned int) [47]
+                0.00    0.00      13/13          PsCourseworkI::PpmFile::Finalise() [49]
+                0.00    0.00      13/13          PsCourseworkI::PpmFile::~PpmFile() [50]
+-----------------------------------------------
+                0.06    0.00 8320000/8320000     PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[18]     0.0    0.06    0.00 8320000         PsCourseworkI::Pixel::Pixel(unsigned char, unsigned char, unsigned char) [18]
+-----------------------------------------------
+                0.05    0.00 8320000/8320000     PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[19]     0.0    0.05    0.00 8320000         PsCourseworkI::PpmFile::WritePixel(PsCourseworkI::Pixel const&) [19]
+-----------------------------------------------
+                0.03    0.02       1/1           main [1]
+[20]     0.0    0.03    0.02       1         PsCourseworkI::Landscape::ApplyRandomHares() [20]
+                0.01    0.01 2560000/4806406416     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+-----------------------------------------------
+                0.02    0.02       2/2           void std::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [23]
+[21]     0.0    0.02    0.02       2         void std::__uninitialized_fill_n<false>::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [21]
+                0.01    0.01 1286408/1286408     void std::_Construct<PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell const&) [27]
+-----------------------------------------------
+                0.00    0.04       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&) [12]
+[22]     0.0    0.00    0.04       2         std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&) [22]
+                0.00    0.04       2/2           void std::__uninitialized_fill_n_a<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell>&) [24]
+                0.00    0.00       2/4           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_get_Tp_allocator() [60]
+-----------------------------------------------
+                0.00    0.04       2/2           void std::__uninitialized_fill_n_a<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell>&) [24]
+[23]     0.0    0.00    0.04       2         void std::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [23]
+                0.02    0.02       2/2           void std::__uninitialized_fill_n<false>::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [21]
+-----------------------------------------------
+                0.00    0.04       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&) [22]
+[24]     0.0    0.00    0.04       2         void std::__uninitialized_fill_n_a<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell>&) [24]
+                0.00    0.04       2/2           void std::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [23]
+-----------------------------------------------
+                0.02    0.02       1/1           main [1]
+[25]     0.0    0.02    0.02       1         PsCourseworkI::Landscape::ApplyRandomPumas() [25]
+                0.01    0.01 2560000/4806406416     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+-----------------------------------------------
+                0.00    0.03       1/1           main [1]
+[26]     0.0    0.00    0.03       1         PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+                0.01    0.01 1280000/1280000     PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) const [28]
+                0.01    0.00 1280000/4806406416     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::GetSize() const [135]
+                0.00    0.00       1/1           PsCourseworkI::operator==(PsCourseworkI::Size const&, PsCourseworkI::Size const&) [127]
+-----------------------------------------------
+                0.01    0.01 1286408/1286408     void std::__uninitialized_fill_n<false>::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&) [21]
+[27]     0.0    0.01    0.01 1286408         void std::_Construct<PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell const&) [27]
+                0.01    0.00 1286408/1286408     operator new(unsigned long, void*) [31]
+-----------------------------------------------
+                0.01    0.01 1280000/1280000     PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+[28]     0.0    0.01    0.01 1280000         PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) const [28]
+                0.01    0.00 1280000/1280000     std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) const [32]
+-----------------------------------------------
+                0.00    0.01 8320000/8320000     PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[29]     0.0    0.00    0.01 8320000         PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) const [29]
+                0.01    0.00 8320000/8320000     std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) const [30]
+-----------------------------------------------
+                0.01    0.00 8320000/8320000     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) const [29]
+[30]     0.0    0.01    0.00 8320000         std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) const [30]
+-----------------------------------------------
+                0.01    0.00 1286408/1286408     void std::_Construct<PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell const&) [27]
+[31]     0.0    0.01    0.00 1286408         operator new(unsigned long, void*) [31]
+-----------------------------------------------
+                0.01    0.00 1280000/1280000     PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) const [28]
+[32]     0.0    0.01    0.00 1280000         std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) const [32]
+-----------------------------------------------
+                0.01    0.00      13/13          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[33]     0.0    0.01    0.00      13         PsCourseworkI::PpmFile::PpmFile(std::string const&, PsCourseworkI::Size const&, unsigned int) [33]
+                0.00    0.00      13/37          std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [46]
+-----------------------------------------------
+                0.01    0.00       1/1           __do_global_ctors_aux [35]
+[34]     0.0    0.01    0.00       1         global constructors keyed to _ZN13PsCourseworkI18LandscapePpmWriterC2ERNS_9LandscapeE [34]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [110]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.0    0.00    0.01                 __do_global_ctors_aux [35]
+                0.01    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI18LandscapePpmWriterC2ERNS_9LandscapeE [34]
+                0.00    0.00       1/1           global constructors keyed to main [104]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7AppArgsC2EiPPc [99]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI9AppConfigC2ERKSs [102]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7BmpFileC2ESs [100]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI9LandscapeC2ERKNS_9AppConfigE [103]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7PpmFileC2ERKSsRKNS_4SizeEj [101]
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI4CellC2Ev [98]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+[36]     0.0    0.00    0.00       1         PsCourseworkI::Landscape::InitHalos() [36]
+                0.00    0.00    6416/4806406416     PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [3]
+                0.00    0.00       2/15          PsCourseworkI::Array2D<PsCourseworkI::Cell>::GetSize() const [48]
+                0.00    0.00       1/1           PsCourseworkI::Cell::Cell(bool, double, double) [114]
+-----------------------------------------------
+                0.00    0.00  640000/640000      PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+[41]     0.0    0.00    0.00  640000         PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) [41]
+                0.00    0.00  640000/640000      std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) [42]
+-----------------------------------------------
+                0.00    0.00  640000/640000      PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) [41]
+[42]     0.0    0.00    0.00  640000         std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) [42]
+-----------------------------------------------
+                0.00    0.00    1250/1250        main [1]
+[43]     0.0    0.00    0.00    1250         PsCourseworkI::AppConfig::GetT() const [43]
+-----------------------------------------------
+                0.00    0.00      66/66          PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+[44]     0.0    0.00    0.00      66         bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [44]
+-----------------------------------------------
+                0.00    0.00      44/44          PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+[45]     0.0    0.00    0.00      44         PsCourseworkI::AppConfig::RemoveComment(std::string&) [45]
+-----------------------------------------------
+                0.00    0.00       4/37          PsCourseworkI::AppConfig::StringToInt(std::string const&) [56]
+                0.00    0.00       7/37          PsCourseworkI::AppConfig::StringToDouble(std::string const&) [52]
+                0.00    0.00      13/37          main [1]
+                0.00    0.00      13/37          PsCourseworkI::PpmFile::PpmFile(std::string const&, PsCourseworkI::Size const&, unsigned int) [33]
+[46]     0.0    0.00    0.00      37         std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [46]
+-----------------------------------------------
+                0.00    0.00       1/18          PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+                0.00    0.00       1/18          PsCourseworkI::Array2D<unsigned int>::Array2D() [119]
+                0.00    0.00       3/18          PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+                0.00    0.00      13/18          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[47]     0.0    0.00    0.00      18         PsCourseworkI::Size::Size(unsigned int, unsigned int) [47]
+-----------------------------------------------
+                0.00    0.00       2/15          PsCourseworkI::Landscape::InitHalos() [36]
+                0.00    0.00      13/15          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[48]     0.0    0.00    0.00      15         PsCourseworkI::Array2D<PsCourseworkI::Cell>::GetSize() const [48]
+-----------------------------------------------
+                0.00    0.00      13/13          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[49]     0.0    0.00    0.00      13         PsCourseworkI::PpmFile::Finalise() [49]
+-----------------------------------------------
+                0.00    0.00      13/13          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[50]     0.0    0.00    0.00      13         PsCourseworkI::PpmFile::~PpmFile() [50]
+-----------------------------------------------
+                0.00    0.00      13/13          PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [17]
+[51]     0.0    0.00    0.00      13         PsCourseworkI::Landscape::GetArray() const [51]
+-----------------------------------------------
+                0.00    0.00       7/7           PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+[52]     0.0    0.00    0.00       7         PsCourseworkI::AppConfig::StringToDouble(std::string const&) [52]
+                0.00    0.00       7/37          std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [46]
+-----------------------------------------------
+                0.00    0.00       1/7           unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [159]
+                0.00    0.00       6/7           unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [91]
+[53]     0.0    0.00    0.00       7         std::__niter_base<unsigned int*, false>::__b(unsigned int*) [53]
+-----------------------------------------------
+                0.00    0.00       2/6           std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int) [152]
+                0.00    0.00       4/6           std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [137]
+[54]     0.0    0.00    0.00       6         std::vector<unsigned int, std::allocator<unsigned int> >::size() const [54]
+-----------------------------------------------
+                0.00    0.00       1/6           std::vector<unsigned int, std::allocator<unsigned int> >::~vector() [154]
+                0.00    0.00       1/6           std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*) [147]
+                0.00    0.00       4/6           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[55]     0.0    0.00    0.00       6         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() [55]
+-----------------------------------------------
+                0.00    0.00       4/4           PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+[56]     0.0    0.00    0.00       4         PsCourseworkI::AppConfig::StringToInt(std::string const&) [56]
+                0.00    0.00       4/37          std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [46]
+-----------------------------------------------
+                0.00    0.00       4/4           std::allocator<PsCourseworkI::Cell>::~allocator() [59]
+[57]     0.0    0.00    0.00       4         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::~new_allocator() [57]
+-----------------------------------------------
+                0.00    0.00       2/4           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+                0.00    0.00       2/4           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::difference_type __gnu_cxx::operator-<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&) [132]
+[58]     0.0    0.00    0.00       4         __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::base() const [58]
+-----------------------------------------------
+                0.00    0.00       2/4           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::~_Vector_impl() [83]
+                0.00    0.00       2/4           PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+[59]     0.0    0.00    0.00       4         std::allocator<PsCourseworkI::Cell>::~allocator() [59]
+                0.00    0.00       4/4           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::~new_allocator() [57]
+-----------------------------------------------
+                0.00    0.00       2/4           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector() [89]
+                0.00    0.00       2/4           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&) [22]
+[60]     0.0    0.00    0.00       4         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_get_Tp_allocator() [60]
+-----------------------------------------------
+                0.00    0.00       4/4           unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [95]
+[61]     0.0    0.00    0.00       4         std::__miter_base<unsigned int*, false>::__b(unsigned int*) [61]
+-----------------------------------------------
+                0.00    0.00       3/3           PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [6]
+[62]     0.0    0.00    0.00       3         PsCourseworkI::AppConfig::GetNx() const [62]
+-----------------------------------------------
+                0.00    0.00       1/3           __gnu_cxx::new_allocator<unsigned int>::allocate(unsigned long, void const*) [129]
+                0.00    0.00       2/3           std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const [76]
+[63]     0.0    0.00    0.00       3         __gnu_cxx::new_allocator<unsigned int>::max_size() const [63]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::_Destroy<unsigned int*>(unsigned int*, unsigned int*) [65]
+[64]     0.0    0.00    0.00       3         void std::_Destroy_aux<true>::__destroy<unsigned int*>(unsigned int*, unsigned int*) [64]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&) [66]
+[65]     0.0    0.00    0.00       3         void std::_Destroy<unsigned int*>(unsigned int*, unsigned int*) [65]
+                0.00    0.00       3/3           void std::_Destroy_aux<true>::__destroy<unsigned int*>(unsigned int*, unsigned int*) [64]
+-----------------------------------------------
+                0.00    0.00       1/3           std::vector<unsigned int, std::allocator<unsigned int> >::~vector() [154]
+                0.00    0.00       1/3           std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*) [147]
+                0.00    0.00       1/3           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[66]     0.0    0.00    0.00       3         void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&) [66]
+                0.00    0.00       3/3           void std::_Destroy<unsigned int*>(unsigned int*, unsigned int*) [65]
+-----------------------------------------------
+                0.00    0.00       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+[67]     0.0    0.00    0.00       2         PsCourseworkI::Cell::Cell() [67]
+-----------------------------------------------
+                0.00    0.00       2/2           PsCourseworkI::Landscape::~Landscape() [126]
+[68]     0.0    0.00    0.00       2         PsCourseworkI::Array2D<PsCourseworkI::Cell>::~Array2D() [68]
+                0.00    0.00       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector() [89]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_deallocate(PsCourseworkI::Cell*, unsigned long) [84]
+[69]     0.0    0.00    0.00       2         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::deallocate(PsCourseworkI::Cell*, unsigned long) [69]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_allocate(unsigned long) [81]
+[70]     0.0    0.00    0.00       2         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::allocate(unsigned long, void const*) [70]
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::max_size() const [74]
+-----------------------------------------------
+                0.00    0.00       2/2           std::allocator<PsCourseworkI::Cell>::allocator(std::allocator<PsCourseworkI::Cell> const&) [78]
+[71]     0.0    0.00    0.00       2         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator(__gnu_cxx::new_allocator<PsCourseworkI::Cell> const&) [71]
+-----------------------------------------------
+                0.00    0.00       2/2           std::allocator<PsCourseworkI::Cell>::allocator() [77]
+[72]     0.0    0.00    0.00       2         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator() [72]
+-----------------------------------------------
+                0.00    0.00       1/2           std::vector<unsigned int, std::allocator<unsigned int> >::end() [148]
+                0.00    0.00       1/2           std::vector<unsigned int, std::allocator<unsigned int> >::begin() [149]
+[73]     0.0    0.00    0.00       2         __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::__normal_iterator(unsigned int* const&) [73]
+-----------------------------------------------
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::allocate(unsigned long, void const*) [70]
+[74]     0.0    0.00    0.00       2         __gnu_cxx::new_allocator<PsCourseworkI::Cell>::max_size() const [74]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const [76]
+[75]     0.0    0.00    0.00       2         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() const [75]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [137]
+[76]     0.0    0.00    0.00       2         std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const [76]
+                0.00    0.00       2/3           __gnu_cxx::new_allocator<unsigned int>::max_size() const [63]
+                0.00    0.00       2/2           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() const [75]
+-----------------------------------------------
+                0.00    0.00       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [7]
+[77]     0.0    0.00    0.00       2         std::allocator<PsCourseworkI::Cell>::allocator() [77]
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator() [72]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::_Vector_impl(std::allocator<PsCourseworkI::Cell> const&) [82]
+[78]     0.0    0.00    0.00       2         std::allocator<PsCourseworkI::Cell>::allocator(std::allocator<PsCourseworkI::Cell> const&) [78]
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator(__gnu_cxx::new_allocator<PsCourseworkI::Cell> const&) [71]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::__copy_move_a<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [90]
+[79]     0.0    0.00    0.00       2         unsigned int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<unsigned int>(unsigned int const*, unsigned int const*, unsigned int*) [79]
+-----------------------------------------------
+                0.00    0.00       2/2           void std::_Destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [96]
+[80]     0.0    0.00    0.00       2         void std::_Destroy_aux<true>::__destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [80]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&) [85]
+[81]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_allocate(unsigned long) [81]
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::allocate(unsigned long, void const*) [70]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&) [85]
+[82]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::_Vector_impl(std::allocator<PsCourseworkI::Cell> const&) [82]
+                0.00    0.00       2/2           std::allocator<PsCourseworkI::Cell>::allocator(std::allocator<PsCourseworkI::Cell> const&) [78]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base() [86]
+[83]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::~_Vector_impl() [83]
+                0.00    0.00       2/4           std::allocator<PsCourseworkI::Cell>::~allocator() [59]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base() [86]
+[84]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_deallocate(PsCourseworkI::Cell*, unsigned long) [84]
+                0.00    0.00       2/2           __gnu_cxx::new_allocator<PsCourseworkI::Cell>::deallocate(PsCourseworkI::Cell*, unsigned long) [69]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&) [12]
+[85]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&) [85]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::_Vector_impl(std::allocator<PsCourseworkI::Cell> const&) [82]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_allocate(unsigned long) [81]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector() [89]
+[86]     0.0    0.00    0.00       2         std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base() [86]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_deallocate(PsCourseworkI::Cell*, unsigned long) [84]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::~_Vector_impl() [83]
+-----------------------------------------------
+                0.00    0.00       1/2           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base() [144]
+                0.00    0.00       1/2           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[87]     0.0    0.00    0.00       2         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long) [87]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<unsigned int>::deallocate(unsigned int*, unsigned long) [128]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [92]
+[88]     0.0    0.00    0.00       2         unsigned int* std::__uninitialized_copy<true>::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [88]
+                0.00    0.00       2/2           unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [95]
+-----------------------------------------------
+                0.00    0.00       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::~Array2D() [68]
+[89]     0.0    0.00    0.00       2         std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector() [89]
+                0.00    0.00       2/4           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_get_Tp_allocator() [60]
+                0.00    0.00       2/2           void std::_Destroy<PsCourseworkI::Cell*, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell*, std::allocator<PsCourseworkI::Cell>&) [97]
+                0.00    0.00       2/2           std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base() [86]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [91]
+[90]     0.0    0.00    0.00       2         unsigned int* std::__copy_move_a<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [90]
+                0.00    0.00       2/2           unsigned int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<unsigned int>(unsigned int const*, unsigned int const*, unsigned int*) [79]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [95]
+[91]     0.0    0.00    0.00       2         unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [91]
+                0.00    0.00       6/7           std::__niter_base<unsigned int*, false>::__b(unsigned int*) [53]
+                0.00    0.00       2/2           unsigned int* std::__copy_move_a<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [90]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_copy_a<unsigned int*, unsigned int*, unsigned int>(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [93]
+[92]     0.0    0.00    0.00       2         unsigned int* std::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [92]
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_copy<true>::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [88]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_move_a<unsigned int*, unsigned int*, std::allocator<unsigned int> >(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [94]
+[93]     0.0    0.00    0.00       2         unsigned int* std::__uninitialized_copy_a<unsigned int*, unsigned int*, unsigned int>(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [93]
+                0.00    0.00       2/2           unsigned int* std::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [92]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[94]     0.0    0.00    0.00       2         unsigned int* std::__uninitialized_move_a<unsigned int*, unsigned int*, std::allocator<unsigned int> >(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [94]
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_copy_a<unsigned int*, unsigned int*, unsigned int>(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [93]
+-----------------------------------------------
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_copy<true>::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [88]
+[95]     0.0    0.00    0.00       2         unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [95]
+                0.00    0.00       4/4           std::__miter_base<unsigned int*, false>::__b(unsigned int*) [61]
+                0.00    0.00       2/2           unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*) [91]
+-----------------------------------------------
+                0.00    0.00       2/2           void std::_Destroy<PsCourseworkI::Cell*, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell*, std::allocator<PsCourseworkI::Cell>&) [97]
+[96]     0.0    0.00    0.00       2         void std::_Destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [96]
+                0.00    0.00       2/2           void std::_Destroy_aux<true>::__destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [80]
+-----------------------------------------------
+                0.00    0.00       2/2           std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector() [89]
+[97]     0.0    0.00    0.00       2         void std::_Destroy<PsCourseworkI::Cell*, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell*, std::allocator<PsCourseworkI::Cell>&) [97]
+                0.00    0.00       2/2           void std::_Destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [96]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[98]     0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI4CellC2Ev [98]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [112]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[99]     0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI7AppArgsC2EiPPc [99]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [106]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[100]    0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI7BmpFileC2ESs [100]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [108]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[101]    0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI7PpmFileC2ERKSsRKNS_4SizeEj [101]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [111]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[102]    0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI9AppConfigC2ERKSs [102]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [107]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[103]    0.0    0.00    0.00       1         global constructors keyed to _ZN13PsCourseworkI9LandscapeC2ERKNS_9AppConfigE [103]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [109]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [35]
+[104]    0.0    0.00    0.00       1         global constructors keyed to main [104]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [105]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to main [104]
+[105]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [105]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7AppArgsC2EiPPc [99]
+[106]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [106]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI9AppConfigC2ERKSs [102]
+[107]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [107]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7BmpFileC2ESs [100]
+[108]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [108]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI9LandscapeC2ERKNS_9AppConfigE [103]
+[109]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [109]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI18LandscapePpmWriterC2ERNS_9LandscapeE [34]
+[110]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI7PpmFileC2ERKSsRKNS_4SizeEj [101]
+[111]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [111]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to _ZN13PsCourseworkI4CellC2Ev [98]
+[112]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [112]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[113]    0.0    0.00    0.00       1         PsCourseworkI::LandscapePpmWriter::LandscapePpmWriter(PsCourseworkI::Landscape&) [113]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Landscape::InitHalos() [36]
+[114]    0.0    0.00    0.00       1         PsCourseworkI::Cell::Cell(bool, double, double) [114]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [118]
+[115]    0.0    0.00    0.00       1         PsCourseworkI::Size::operator=(PsCourseworkI::Size const&) [115]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[116]    0.0    0.00    0.00       1         PsCourseworkI::AppArgs::AppArgs(int, char**) [116]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[117]    0.0    0.00    0.00       1         PsCourseworkI::AppArgs::~AppArgs() [117]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+[118]    0.0    0.00    0.00       1         PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [118]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::clear() [150]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int) [152]
+                0.00    0.00       1/1           PsCourseworkI::Size::operator=(PsCourseworkI::Size const&) [115]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+[119]    0.0    0.00    0.00       1         PsCourseworkI::Array2D<unsigned int>::Array2D() [119]
+                0.00    0.00       1/18          PsCourseworkI::Size::Size(unsigned int, unsigned int) [47]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::vector() [153]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::BmpFile::~BmpFile() [122]
+[120]    0.0    0.00    0.00       1         PsCourseworkI::Array2D<unsigned int>::~Array2D() [120]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::~vector() [154]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[121]    0.0    0.00    0.00       1         PsCourseworkI::BmpFile::BmpFile(std::string) [121]
+                0.00    0.00  640000/640000      PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) [41]
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Array2D() [119]
+                0.00    0.00       1/18          PsCourseworkI::Size::Size(unsigned int, unsigned int) [47]
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [118]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[122]    0.0    0.00    0.00       1         PsCourseworkI::BmpFile::~BmpFile() [122]
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::~Array2D() [120]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+[123]    0.0    0.00    0.00       1         PsCourseworkI::AppConfig::Print() [123]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[124]    0.0    0.00    0.00       1         PsCourseworkI::AppConfig::AppConfig(std::string const&) [124]
+                0.00    0.00      66/66          bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [44]
+                0.00    0.00      44/44          PsCourseworkI::AppConfig::RemoveComment(std::string&) [45]
+                0.00    0.00       7/7           PsCourseworkI::AppConfig::StringToDouble(std::string const&) [52]
+                0.00    0.00       4/4           PsCourseworkI::AppConfig::StringToInt(std::string const&) [56]
+                0.00    0.00       1/1           PsCourseworkI::AppConfig::Print() [123]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[125]    0.0    0.00    0.00       1         PsCourseworkI::AppConfig::~AppConfig() [125]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[126]    0.0    0.00    0.00       1         PsCourseworkI::Landscape::~Landscape() [126]
+                0.00    0.00       2/2           PsCourseworkI::Array2D<PsCourseworkI::Cell>::~Array2D() [68]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+[127]    0.0    0.00    0.00       1         PsCourseworkI::operator==(PsCourseworkI::Size const&, PsCourseworkI::Size const&) [127]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long) [87]
+[128]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<unsigned int>::deallocate(unsigned int*, unsigned long) [128]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_allocate(unsigned long) [140]
+[129]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<unsigned int>::allocate(unsigned long, void const*) [129]
+                0.00    0.00       1/3           __gnu_cxx::new_allocator<unsigned int>::max_size() const [63]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<unsigned int>::allocator() [138]
+[130]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<unsigned int>::new_allocator() [130]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<unsigned int>::~allocator() [139]
+[131]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<unsigned int>::~new_allocator() [131]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[132]    0.0    0.00    0.00       1         __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::difference_type __gnu_cxx::operator-<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&) [132]
+                0.00    0.00       2/4           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::base() const [58]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[133]    0.0    0.00    0.00       1         PsCourseworkI::AppArgs::GetCfgFilename() const [133]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[134]    0.0    0.00    0.00       1         PsCourseworkI::AppArgs::GetMapFilename() const [134]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [26]
+[135]    0.0    0.00    0.00       1         PsCourseworkI::Array2D<unsigned int>::GetSize() const [135]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[136]    0.0    0.00    0.00       1         PsCourseworkI::BmpFile::GetArray() const [136]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[137]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [137]
+                0.00    0.00       4/6           std::vector<unsigned int, std::allocator<unsigned int> >::size() const [54]
+                0.00    0.00       2/2           std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const [76]
+                0.00    0.00       1/1           unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [158]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::_Vector_impl() [141]
+[138]    0.0    0.00    0.00       1         std::allocator<unsigned int>::allocator() [138]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<unsigned int>::new_allocator() [130]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::~_Vector_impl() [142]
+[139]    0.0    0.00    0.00       1         std::allocator<unsigned int>::~allocator() [139]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<unsigned int>::~new_allocator() [131]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[140]    0.0    0.00    0.00       1         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_allocate(unsigned long) [140]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<unsigned int>::allocate(unsigned long, void const*) [129]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_base() [143]
+[141]    0.0    0.00    0.00       1         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::_Vector_impl() [141]
+                0.00    0.00       1/1           std::allocator<unsigned int>::allocator() [138]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base() [144]
+[142]    0.0    0.00    0.00       1         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::~_Vector_impl() [142]
+                0.00    0.00       1/1           std::allocator<unsigned int>::~allocator() [139]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::vector() [153]
+[143]    0.0    0.00    0.00       1         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_base() [143]
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::_Vector_impl() [141]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::~vector() [154]
+[144]    0.0    0.00    0.00       1         std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base() [144]
+                0.00    0.00       1/2           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long) [87]
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::~_Vector_impl() [142]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [156]
+[145]    0.0    0.00    0.00       1         void std::__uninitialized_fill_n<true>::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [145]
+                0.00    0.00       1/1           unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [159]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [151]
+[146]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+                0.00    0.00       4/6           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() [55]
+                0.00    0.00       2/4           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::base() const [58]
+                0.00    0.00       2/2           unsigned int* std::__uninitialized_move_a<unsigned int*, unsigned int*, std::allocator<unsigned int> >(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&) [94]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [137]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::begin() [149]
+                0.00    0.00       1/1           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::difference_type __gnu_cxx::operator-<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&) [132]
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_allocate(unsigned long) [140]
+                0.00    0.00       1/1           void std::__uninitialized_fill_n_a<unsigned int*, unsigned long, unsigned int, unsigned int>(unsigned int*, unsigned long, unsigned int const&, std::allocator<unsigned int>&) [157]
+                0.00    0.00       1/3           void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&) [66]
+                0.00    0.00       1/2           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long) [87]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::clear() [150]
+[147]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*) [147]
+                0.00    0.00       1/6           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() [55]
+                0.00    0.00       1/3           void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&) [66]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int) [152]
+[148]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::end() [148]
+                0.00    0.00       1/2           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::__normal_iterator(unsigned int* const&) [73]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[149]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::begin() [149]
+                0.00    0.00       1/2           __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::__normal_iterator(unsigned int* const&) [73]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [118]
+[150]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::clear() [150]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*) [147]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int) [152]
+[151]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [151]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [118]
+[152]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int) [152]
+                0.00    0.00       2/6           std::vector<unsigned int, std::allocator<unsigned int> >::size() const [54]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::end() [148]
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [151]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::Array2D() [119]
+[153]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::vector() [153]
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_base() [143]
+-----------------------------------------------
+                0.00    0.00       1/1           PsCourseworkI::Array2D<unsigned int>::~Array2D() [120]
+[154]    0.0    0.00    0.00       1         std::vector<unsigned int, std::allocator<unsigned int> >::~vector() [154]
+                0.00    0.00       1/6           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() [55]
+                0.00    0.00       1/3           void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&) [66]
+                0.00    0.00       1/1           std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base() [144]
+-----------------------------------------------
+                0.00    0.00       1/1           unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [159]
+[155]    0.0    0.00    0.00       1         __gnu_cxx::__enable_if<std::__is_scalar<unsigned int>::__value, unsigned int*>::__type std::__fill_n_a<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [155]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::__uninitialized_fill_n_a<unsigned int*, unsigned long, unsigned int, unsigned int>(unsigned int*, unsigned long, unsigned int const&, std::allocator<unsigned int>&) [157]
+[156]    0.0    0.00    0.00       1         void std::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [156]
+                0.00    0.00       1/1           void std::__uninitialized_fill_n<true>::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [145]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&) [146]
+[157]    0.0    0.00    0.00       1         void std::__uninitialized_fill_n_a<unsigned int*, unsigned long, unsigned int, unsigned int>(unsigned int*, unsigned long, unsigned int const&, std::allocator<unsigned int>&) [157]
+                0.00    0.00       1/1           void std::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [156]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [137]
+[158]    0.0    0.00    0.00       1         unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [158]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::__uninitialized_fill_n<true>::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [145]
+[159]    0.0    0.00    0.00       1         unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [159]
+                0.00    0.00       1/7           std::__niter_base<unsigned int*, false>::__b(unsigned int*) [53]
+                0.00    0.00       1/1           __gnu_cxx::__enable_if<std::__is_scalar<unsigned int>::__value, unsigned int*>::__type std::__fill_n_a<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&) [155]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [34] global constructors keyed to _ZN13PsCourseworkI18LandscapePpmWriterC2ERNS_9LandscapeE [127] PsCourseworkI::operator==(PsCourseworkI::Size const&, PsCourseworkI::Size const&) [84] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_deallocate(PsCourseworkI::Cell*, unsigned long)
+  [98] global constructors keyed to _ZN13PsCourseworkI4CellC2Ev [69] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::deallocate(PsCourseworkI::Cell*, unsigned long) [60] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_get_Tp_allocator()
+  [99] global constructors keyed to _ZN13PsCourseworkI7AppArgsC2EiPPc [70] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::allocate(unsigned long, void const*) [85] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_base(unsigned long, std::allocator<PsCourseworkI::Cell> const&)
+ [100] global constructors keyed to _ZN13PsCourseworkI7BmpFileC2ESs [71] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator(__gnu_cxx::new_allocator<PsCourseworkI::Cell> const&) [86] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~_Vector_base()
+ [101] global constructors keyed to _ZN13PsCourseworkI7PpmFileC2ERKSsRKNS_4SizeEj [72] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::new_allocator() [140] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_allocate(unsigned long)
+ [102] global constructors keyed to _ZN13PsCourseworkI9AppConfigC2ERKSs [57] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::~new_allocator() [141] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::_Vector_impl()
+ [103] global constructors keyed to _ZN13PsCourseworkI9LandscapeC2ERKNS_9AppConfigE [128] __gnu_cxx::new_allocator<unsigned int>::deallocate(unsigned int*, unsigned long) [142] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_impl::~_Vector_impl()
+ [104] global constructors keyed to main [129] __gnu_cxx::new_allocator<unsigned int>::allocate(unsigned long, void const*) [87] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_deallocate(unsigned int*, unsigned long)
+ [105] __static_initialization_and_destruction_0(int, int) [130] __gnu_cxx::new_allocator<unsigned int>::new_allocator() [55] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator()
+ [106] __static_initialization_and_destruction_0(int, int) [131] __gnu_cxx::new_allocator<unsigned int>::~new_allocator() [143] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_Vector_base()
+ [107] __static_initialization_and_destruction_0(int, int) [73] __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::__normal_iterator(unsigned int* const&) [144] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::~_Vector_base()
+ [108] __static_initialization_and_destruction_0(int, int) [132] __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::difference_type __gnu_cxx::operator-<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > const&) [61] std::__miter_base<unsigned int*, false>::__b(unsigned int*)
+ [109] __static_initialization_and_destruction_0(int, int) [133] PsCourseworkI::AppArgs::GetCfgFilename() const [53] std::__niter_base<unsigned int*, false>::__b(unsigned int*)
+ [110] __static_initialization_and_destruction_0(int, int) [134] PsCourseworkI::AppArgs::GetMapFilename() const [88] unsigned int* std::__uninitialized_copy<true>::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+ [111] __static_initialization_and_destruction_0(int, int) [48] PsCourseworkI::Array2D<PsCourseworkI::Cell>::GetSize() const [21] void std::__uninitialized_fill_n<false>::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&)
+ [112] __static_initialization_and_destruction_0(int, int) [29] PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) const [145] void std::__uninitialized_fill_n<true>::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  [17] PsCourseworkI::LandscapePpmWriter::Write(std::string const&) [135] PsCourseworkI::Array2D<unsigned int>::GetSize() const [22] std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_fill_initialize(unsigned long, PsCourseworkI::Cell const&)
+ [113] PsCourseworkI::LandscapePpmWriter::LandscapePpmWriter(PsCourseworkI::Landscape&) [28] PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) const [12] std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::vector(unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell> const&)
+  [67] PsCourseworkI::Cell::Cell() [136] PsCourseworkI::BmpFile::GetArray() const [89] std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::~vector()
+ [114] PsCourseworkI::Cell::Cell(bool, double, double) [43] PsCourseworkI::AppConfig::GetT() const [4] std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long)
+  [47] PsCourseworkI::Size::Size(unsigned int, unsigned int) [11] PsCourseworkI::AppConfig::Geta() const [146] std::vector<unsigned int, std::allocator<unsigned int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&)
+ [115] PsCourseworkI::Size::operator=(PsCourseworkI::Size const&) [8] PsCourseworkI::AppConfig::Getb() const [147] std::vector<unsigned int, std::allocator<unsigned int> >::_M_erase_at_end(unsigned int*)
+  [18] PsCourseworkI::Pixel::Pixel(unsigned char, unsigned char, unsigned char) [14] PsCourseworkI::AppConfig::Getk() const [148] std::vector<unsigned int, std::allocator<unsigned int> >::end()
+ [116] PsCourseworkI::AppArgs::AppArgs(int, char**) [10] PsCourseworkI::AppConfig::Getl() const [149] std::vector<unsigned int, std::allocator<unsigned int> >::begin()
+ [117] PsCourseworkI::AppArgs::~AppArgs() [13] PsCourseworkI::AppConfig::Getm() const [150] std::vector<unsigned int, std::allocator<unsigned int> >::clear()
+   [7] PsCourseworkI::Array2D<PsCourseworkI::Cell>::Array2D(PsCourseworkI::Size) [9] PsCourseworkI::AppConfig::Getr() const [151] std::vector<unsigned int, std::allocator<unsigned int> >::insert(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned long, unsigned int const&)
+  [68] PsCourseworkI::Array2D<PsCourseworkI::Cell>::~Array2D() [62] PsCourseworkI::AppConfig::GetNx() const [152] std::vector<unsigned int, std::allocator<unsigned int> >::resize(unsigned long, unsigned int)
+   [3] PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int) [16] PsCourseworkI::AppConfig::GetNy() const [153] std::vector<unsigned int, std::allocator<unsigned int> >::vector()
+ [118] PsCourseworkI::Array2D<unsigned int>::Resize(PsCourseworkI::Size const&) [15] PsCourseworkI::AppConfig::GetTT() const [154] std::vector<unsigned int, std::allocator<unsigned int> >::~vector()
+ [119] PsCourseworkI::Array2D<unsigned int>::Array2D() [5] PsCourseworkI::AppConfig::Getdt() const [42] std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long)
+ [120] PsCourseworkI::Array2D<unsigned int>::~Array2D() [51] PsCourseworkI::Landscape::GetArray() const [27] void std::_Construct<PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell const&)
+  [41] PsCourseworkI::Array2D<unsigned int>::operator()(unsigned int, unsigned int) [74] __gnu_cxx::new_allocator<PsCourseworkI::Cell>::max_size() const [155] __gnu_cxx::__enable_if<std::__is_scalar<unsigned int>::__value, unsigned int*>::__type std::__fill_n_a<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+ [121] PsCourseworkI::BmpFile::BmpFile(std::string) [63] __gnu_cxx::new_allocator<unsigned int>::max_size() const [90] unsigned int* std::__copy_move_a<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+ [122] PsCourseworkI::BmpFile::~BmpFile() [58] __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >::base() const [91] unsigned int* std::__copy_move_a2<false, unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  [19] PsCourseworkI::PpmFile::WritePixel(PsCourseworkI::Pixel const&) [75] std::_Vector_base<unsigned int, std::allocator<unsigned int> >::_M_get_Tp_allocator() const [92] unsigned int* std::uninitialized_copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+  [49] PsCourseworkI::PpmFile::Finalise() [30] std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long) const [23] void std::uninitialized_fill_n<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&)
+  [33] PsCourseworkI::PpmFile::PpmFile(std::string const&, PsCourseworkI::Size const&, unsigned int) [137] std::vector<unsigned int, std::allocator<unsigned int> >::_M_check_len(unsigned long, char const*) const [156] void std::uninitialized_fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  [50] PsCourseworkI::PpmFile::~PpmFile() [54] std::vector<unsigned int, std::allocator<unsigned int> >::size() const [93] unsigned int* std::__uninitialized_copy_a<unsigned int*, unsigned int*, unsigned int>(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  [56] PsCourseworkI::AppConfig::StringToInt(std::string const&) [76] std::vector<unsigned int, std::allocator<unsigned int> >::max_size() const [94] unsigned int* std::__uninitialized_move_a<unsigned int*, unsigned int*, std::allocator<unsigned int> >(unsigned int*, unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  [45] PsCourseworkI::AppConfig::RemoveComment(std::string&) [32] std::vector<unsigned int, std::allocator<unsigned int> >::operator[](unsigned long) const [24] void std::__uninitialized_fill_n_a<PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell, PsCourseworkI::Cell>(PsCourseworkI::Cell*, unsigned long, PsCourseworkI::Cell const&, std::allocator<PsCourseworkI::Cell>&)
+  [52] PsCourseworkI::AppConfig::StringToDouble(std::string const&) [77] std::allocator<PsCourseworkI::Cell>::allocator() [157] void std::__uninitialized_fill_n_a<unsigned int*, unsigned long, unsigned int, unsigned int>(unsigned int*, unsigned long, unsigned int const&, std::allocator<unsigned int>&)
+ [123] PsCourseworkI::AppConfig::Print() [78] std::allocator<PsCourseworkI::Cell>::allocator(std::allocator<PsCourseworkI::Cell> const&) [158] unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+ [124] PsCourseworkI::AppConfig::AppConfig(std::string const&) [59] std::allocator<PsCourseworkI::Cell>::~allocator() [95] unsigned int* std::copy<unsigned int*, unsigned int*>(unsigned int*, unsigned int*, unsigned int*)
+ [125] PsCourseworkI::AppConfig::~AppConfig() [138] std::allocator<unsigned int>::allocator() [159] unsigned int* std::fill_n<unsigned int*, unsigned long, unsigned int>(unsigned int*, unsigned long, unsigned int const&)
+  [20] PsCourseworkI::Landscape::ApplyRandomHares() [139] std::allocator<unsigned int>::~allocator() [96] void std::_Destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*)
+  [25] PsCourseworkI::Landscape::ApplyRandomPumas() [79] unsigned int* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<unsigned int>(unsigned int const*, unsigned int const*, unsigned int*) [97] void std::_Destroy<PsCourseworkI::Cell*, PsCourseworkI::Cell>(PsCourseworkI::Cell*, PsCourseworkI::Cell*, std::allocator<PsCourseworkI::Cell>&)
+  [26] PsCourseworkI::Landscape::ApplyLandWaterMask(PsCourseworkI::Array2D<unsigned int> const&) [80] void std::_Destroy_aux<true>::__destroy<PsCourseworkI::Cell*>(PsCourseworkI::Cell*, PsCourseworkI::Cell*) [65] void std::_Destroy<unsigned int*>(unsigned int*, unsigned int*)
+   [2] PsCourseworkI::Landscape::Update() [64] void std::_Destroy_aux<true>::__destroy<unsigned int*>(unsigned int*, unsigned int*) [66] void std::_Destroy<unsigned int*, unsigned int>(unsigned int*, unsigned int*, std::allocator<unsigned int>&)
+  [36] PsCourseworkI::Landscape::InitHalos() [81] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_M_allocate(unsigned long) [44] bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+   [6] PsCourseworkI::Landscape::Landscape(PsCourseworkI::AppConfig const&) [82] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::_Vector_impl(std::allocator<PsCourseworkI::Cell> const&) [46] std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+ [126] PsCourseworkI::Landscape::~Landscape() [83] std::_Vector_base<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::_Vector_impl::~_Vector_impl() [31] operator new(unsigned long, void*)
