@@ -29,11 +29,12 @@ The program spent more time in Landscape::Update() than any other function.  Thi
 
 	(figure n: output from gprof on 800x800 all-land array on CP Lab after removing bounds checking from Array2D<T>::operator())
 
+
 Run time for this modified implementation was 27.123 seconds - an improvement of 43% over the implementation with bounds checking.  While bounds checking was included in the initial version of Array2D<T>::operator() as a precaution, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing it was considered to be worthwhile.
 
-The reference documentation for class std::vector states that element access with bounds checking is provided by the function std::vector<T>::at().  A timing run was performed with std::vector<T>::operator[] replaced with std::vector<T>::at(), resulting in a run time of 35.127 seconds.  This was an improvement of 26% over the initial implementation but still considerably slower than with no bounds checking at all.  All three possibilites were left in the code in Landscape::Update() with the unused options commented out.
+The reference documentation for class std::vector states that element access with bounds checking is provided by the function std::vector<T>::at().  A timing run was performed with std::vector<T>::operator[] replaced with std::vector<T>::at(), resulting in a run time of 35.127 seconds.  This was an improvement of 26% over the initial implementation but still considerably slower than with no bounds checking at all.  All three options were left in the code in Landscape::Update() with the unused options commented out.
 
-A second optimisation became apparent on examination of the for loops in Landscape::Update(): the code was iterating over the x-coordinate of a cell, then over its y-coordinate.  While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.  The order of the iterations was swapped, and a further profiling and timing run were performed.  
+A second optimisation became apparent on examination of the for loops in Landscape::Update(): the code was iterating over the x-coordinate of a cell, then over its y-coordinate.  While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.  The order of the iterations was swapped, and another profiling and timing run were performed.  
 
 	Flat profile:
 
@@ -44,9 +45,9 @@ A second optimisation became apparent on examination of the for loops in Landsca
 	17.45	81.10		21.45	4806406416	0.00	0.00	PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int)
 	12.34	96.27		15.17	511439120	0.00	0.00	std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long)
 
-	(figure n: output from gprof on 800x800 all-land array on CP Lab with previous optimisation and iteration order swapped in Landscape::Update())
+	(figure n: output from gprof on 800x800 all-land array on CP Lab with array bounds checking disabled and iteration order swapped in Landscape::Update())
 
 
 Run time with the order of iterations swapped was 12.366 seconds, a reduction of 54% from the previous implementation and a reduction of 74% from the original unoptimised implementation.
 
-Finally, another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function Landscape::Update() could access each cell's neighbours without calling Array2D::operator() four more times.  Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update, reducing the number of memory accesses to non-local parts of the array.  However, there was insufficient time for this change to be implemented and tested.
+Finally, another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function Landscape::Update() could access each cell's neighbours without calling Array2D::operator() four times.  Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update, reducing the number of memory accesses to non-local parts of the array.  However, there was insufficient time for this change to be implemented and tested.
