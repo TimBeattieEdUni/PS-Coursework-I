@@ -1,7 +1,5 @@
 Profiling:
 
-(redo timings - taking a lot longer now - did I take times from macbook?)
-
 Profiling runs were done using gprof on the CP Labs machines with an all-land 800x800 cell landscape for all runs of the program.  To save time, timing runs were done on a faster machine: a core i7 laptop with a solid-state hard drive. 
 
 For reference an initial run of the program was done and was found to take 47.437 seconds.  Profiling the the first implementation of the popsim program revealed that three functions accounted for approximately 80% of the run time:
