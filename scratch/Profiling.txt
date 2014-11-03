@@ -2,7 +2,9 @@ Profiling:
 
 (redo timings - taking a lot longer now - did I take times from macbook?)
 
-Profiling was done using gprof on cplab151 with an all-land 800x800 cell landscape for all runs of the program.  For reference an initial run of the program was done and was found to take 47.437 seconds.  Profiling the the first implementation of the popsim program revealed that three functions accounted for approximately 80% of the run time:
+Profiling runs were done using gprof on the CP Labs machines with an all-land 800x800 cell landscape for all runs of the program.  To save time, timing runs were done on a faster machine: a core i7 laptop with a solid-state hard drive. 
+
+For reference an initial run of the program was done and was found to take 47.437 seconds.  Profiling the the first implementation of the popsim program revealed that three functions accounted for approximately 80% of the run time:
 
 	Flat profile:
 
@@ -16,7 +18,7 @@ Profiling was done using gprof on cplab151 with an all-land 800x800 cell landsca
 	(figure n: output from gprof on 800x800 all-land array on CP Lab)
 
 
-The program spent more time in Landscape::Update() than any other function.  This was to be expected as all of the calculation was done there.  However, one quarter of the run time was spent accessing elements of the landscape array, and this allowed a simple modification which improved performance significantly: removal of the bounds checking on every element access in Array2D<T>::operator().  This change was made and the profiling run was redone, producing the following results:
+The program spent more time in Landscape::Update() than any other function.  This was to be expected as all of the calculation was done there.  However, one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification which improved performance significantly: removal of the bounds checking on every element access in Array2D<T>::operator().  This change was made and the profiling run was redone, producing the following results:
 
 	Flat profile:
 
@@ -31,6 +33,22 @@ The program spent more time in Landscape::Update() than any other function.  Thi
 
 Run time for this modified implementation was 27.123 seconds - an improvement of 43% over the implementation with bounds checking.  While bounds checking was included in the initial version of Array2D<T>::operator() as a precaution, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing it was considered to be worthwhile.
 
-Checking the documentation for class std::vector revealed that element access with bounds checking is provided by the function std::vector<T>::at().  Replacing std::vector<T>::operator[] with this function resulted in a run time of 35.127 seconds, an improvement of 26% over the initial implementation but still considerably slower than with no bounds checking at all.  All three possibilites were left in the code with the unused options commented out.
+The reference documentation for class std::vector states that element access with bounds checking is provided by the function std::vector<T>::at().  A timing run was performed with std::vector<T>::operator[] replaced with std::vector<T>::at(), resulting in a run time of 35.127 seconds.  This was an improvement of 26% over the initial implementation but still considerably slower than with no bounds checking at all.  All three possibilites were left in the code in Landscape::Update() with the unused options commented out.
 
-Another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function Landscape::Update() could access a cell's neighbours with four fewer calls to Array2D::operator().  Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update.  However, there was insufficient time for this change to be implemented and tested.
+A second optimisation became apparent on examination of the for loops in Landscape::Update(): the code was iterating over the x-coordinate of a cell, then over its y-coordinate.  While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.  The order of the iterations was swapped, and a further profiling and timing run were performed.  
+
+	Flat profile:
+
+	Each sample counts as 0.01 seconds.
+	%	cumulative	self			self	total
+	time	seconds		seconds	calls		s/call s/call	name
+	48.54	59.65		59.65	1250		0.05	0.09	PsCourseworkI::Landscape::Update()
+	17.45	81.10		21.45	4806406416	0.00	0.00	PsCourseworkI::Array2D<PsCourseworkI::Cell>::operator()(unsigned int, unsigned int)
+	12.34	96.27		15.17	511439120	0.00	0.00	std::vector<PsCourseworkI::Cell, std::allocator<PsCourseworkI::Cell> >::operator[](unsigned long)
+
+	(figure n: output from gprof on 800x800 all-land array on CP Lab with previous optimisation and iteration order swapped in Landscape::Update())
+
+
+Run time with the order of iterations swapped was 12.366 seconds, a reduction of 54% from the previous implementation and a reduction of 74% from the original unoptimised implementation.
+
+Finally, another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function Landscape::Update() could access each cell's neighbours without calling Array2D::operator() four more times.  Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update, reducing the number of memory accesses to non-local parts of the array.  However, there was insufficient time for this change to be implemented and tested.
