@@ -96,9 +96,10 @@ TEST(Array2DElementAccess)
 	}
 
 	//  out-of-bounds tests
-	CHECK_THROW(array(given_size.m_x, 0), std::logic_error);
-	CHECK_THROW(array(0, given_size.m_y), std::logic_error);
-	CHECK_THROW(array(given_size.m_x, given_size.m_y), std::logic_error);
+//  array bounds checking removed for performance
+//	CHECK_THROW(array(given_size.m_x, 0), std::logic_error);
+//	CHECK_THROW(array(0, given_size.m_y), std::logic_error);
+//	CHECK_THROW(array(given_size.m_x, given_size.m_y), std::logic_error);
 }
 
 
