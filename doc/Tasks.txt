@@ -41,6 +41,7 @@ Test framework:
 
 I/O:
 	▪	Initial landscape - text file with dimensions and land/water mask.
+	▪	Initial distribution for Hares and Pumas: both even distributed, hares even pumas on 			random spots. Polish: Random spots of pumas with gaussian distribution of setable 			variance.
 	▪	Inversions! - landscape is indexed from bottom up.
 	▪	Appendices A & B have bits on generating your own land/water files.
 	▪	Subsequent steps as PPM image files.
