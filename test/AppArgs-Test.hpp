@@ -43,7 +43,7 @@ TEST(AppArgsConstruct)
 		//  remove const here to mimic what main() is given
 		AppArgs args(argc, (char**)argv);
 		CHECK(args.GetCfgFilename() == cfgfile);
-		CHECK(args.GetMapFilename() == mapfile);
+		CHECK(args.GetLwMaskFilename() == mapfile);
 	}
 	catch (...)
 	{
