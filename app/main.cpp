@@ -55,7 +55,9 @@ int main(int argc, char* argv[])
 		//  initialise the landscape
 		Landscape landscape(cfg);
 		landscape.ApplyLandWaterMask(land_water_mask.GetArray());
+
 		landscape.ApplyRandomPumas();
+		//landscape.ApplyPackPumas(1);
 		landscape.ApplyRandomHares();
 
 		//  initialise PPM file writer
