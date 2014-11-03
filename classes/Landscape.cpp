@@ -68,8 +68,6 @@ namespace PsCourseworkI
 	///
 	void Landscape::Update()
 	{	
-		std::cout << "updating landscape" << std::endl;
-		
 		m_bswap_arrays = !m_bswap_arrays;
 
 		LsArray& array_new = m_bswap_arrays ? m_array_new : m_array_old;		
@@ -77,13 +75,24 @@ namespace PsCourseworkI
 				
 		//  iterate over landscape rows and columns, converting landscape indices to array indices
 		//  as the landscape is offset by (1,1) in the array
-		for (unsigned int ls_i = 0; ls_i < m_landscape_size.m_x; ++ls_i)
-		{
-			unsigned int array_i = ls_i + 1; 
 
-			for (unsigned int ls_j = 0; ls_j < m_landscape_size.m_y; ++ls_j)
+//  (1 of 2) Iteration order of x and y were swapped for performance
+//		for (unsigned int ls_i = 0; ls_i < m_landscape_size.m_x; ++ls_i)
+//		{
+//			unsigned int array_i = ls_i + 1; 
+
+		for (unsigned int ls_j = 0; ls_j < m_landscape_size.m_y; ++ls_j)
+		{
+			unsigned int array_j = ls_j + 1;
+
+//  (2 of 2) Iteration order of x and y were swapped for performance
+//			for (unsigned int ls_j = 0; ls_j < m_landscape_size.m_y; ++ls_j)
+//			{
+//				unsigned int array_j = ls_j + 1;
+
+			for (unsigned int ls_i = 0; ls_i < m_landscape_size.m_x; ++ls_i)
 			{
-				unsigned int array_j = ls_j + 1;
+				unsigned int array_i = ls_i + 1; 
 
 				//  at this point, we're never in a halo cell, so we don't need to check array bounds 
 				//  when looking for neighbours, and neighbouring halo cells will have zero populations

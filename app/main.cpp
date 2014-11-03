@@ -20,10 +20,11 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <iomanip>
 #include <sys/time.h>
 
 
-//////////////////////////////////////////	////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 /// @brief      Program entry point.
 ///
 /// @details    Runs the simulation of puma and hare populations.
@@ -62,7 +63,6 @@ int main(int argc, char* argv[])
 		//  initialise PPM file writer
 		LandscapePpmWriter ls_writer(landscape);
 
-
 		//  run the simulation
         for (unsigned int i=0; i<cfg.GetTT(); ++i)
         {
@@ -71,15 +71,17 @@ int main(int argc, char* argv[])
 			{
 				//  create output filename
 				std::stringstream filename_ss;
-				filename_ss << "output/output" << i << ".ppm";
+				filename_ss << "output" << i << ".ppm";
 
 				//  write current state of the landscape to PPM file
 				ls_writer.Write(filename_ss.str());
 			}
 
+			//  do update and report time
 			landscape.Update();
+			double sim_time = i * cfg.Getdt();
+			std::cout << "landscape updated to time " << sim_time << " months" << std::endl;
         }
-
 
 		std::cout << "simulation complete" << std::endl;
 
@@ -99,10 +101,6 @@ int main(int argc, char* argv[])
 
         //timing output
         std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" sec "<<milliseconds<<" msec "<<microseconds<<" usec "<<std::endl;
-
-
-
-
     }
 	catch (std::exception const& e)
 	{

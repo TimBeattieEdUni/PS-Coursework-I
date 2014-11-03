@@ -137,7 +137,8 @@ namespace PsCourseworkI
 	template <typename T>
 	T& Array2D<T>::operator() (unsigned int x, unsigned int y)
 	{
-		if (x >= m_size.m_x)
+		//  the following lines have been commented out for performance.
+/*		if (x >= m_size.m_x)
 		{
 			throw std::logic_error("Array2D: x dimension out of bounds");
 		}
@@ -146,7 +147,12 @@ namespace PsCourseworkI
 		{
 			throw std::logic_error("Array2D: y dimension out of bounds");
 		}
-		
+*/		
+
+		//  the following line gives bounds checking with reasonable performance
+//		return m_array.at((y * m_size.m_x) + x);
+
+		//  this option has best performance but has undefined behaviour with out-of-bounds indices
 		return m_array[(y * m_size.m_x) + x];
 	}
 	
@@ -163,6 +169,8 @@ namespace PsCourseworkI
 	template <typename T>
 	T const& Array2D<T>::operator() (unsigned int x, unsigned int y) const
 	{
+
+/*		//  the following lines have been commented out for performance.
 		if (x >= m_size.m_x)
 		{
 			throw std::logic_error("Array2D: x dimension out of bounds");
@@ -172,7 +180,11 @@ namespace PsCourseworkI
 		{
 			throw std::logic_error("Array2D: y dimension out of bounds");
 		}
-		
+*/		
+		//  the following line gives bounds checking with reasonable performance
+//		return m_array.at((y * m_size.m_x) + x);
+
+		//  this option has best performance but has undefined behaviour with out-of-bounds indices
 		return m_array[(y * m_size.m_x) + x];
 	}
 	
