@@ -7,6 +7,7 @@ To get started, run "make" in the top-level directory.  This will perform the fo
 
 	Build the popsim class library: classes/libpopsim-classes.a.
 	Build the popsim application: app/popsim.
+	Unpack and build the unit test framework: UnitTest++.
 	Build the unit test application: test/popsim-test.
 	Run the unit test application.
 	Generate source code documentation: doc/doxygen/index.html.

@@ -132,7 +132,7 @@ namespace PsCourseworkI
 	/// @param        y  Y-index of array element.
 	/// @return       Reference to the requested array element.
 	///
-	/// @exception    std::logic_error Invalid array index.
+	/// @exception    std::logic_error (Removed for performance) Invalid array index.
 	///
 	template <typename T>
 	T& Array2D<T>::operator() (unsigned int x, unsigned int y)
@@ -164,14 +164,14 @@ namespace PsCourseworkI
 	/// @param        y  Y-index of array element.
 	/// @return       Reference to the requested array element.
 	///
-	/// @exception    std::logic_error Invalid array index.
+	/// @exception    std::logic_error (Removed for performance) Invalid array index.
 	///
 	template <typename T>
 	T const& Array2D<T>::operator() (unsigned int x, unsigned int y) const
 	{
 
-/*		//  the following lines have been commented out for performance.
-		if (x >= m_size.m_x)
+		//  the following lines have been commented out for performance.
+/*		if (x >= m_size.m_x)
 		{
 			throw std::logic_error("Array2D: x dimension out of bounds");
 		}
@@ -186,38 +186,6 @@ namespace PsCourseworkI
 
 		//  this option has best performance but has undefined behaviour with out-of-bounds indices
 		return m_array[(y * m_size.m_x) + x];
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Declared private to prevent use.
-	///
-	/// @param      rhs  Object to copy.
-	///
-	template <typename T>
-	Array2D<T>::Array2D(Array2D const& rhs)
-		: m_size()
-		, m_array()
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-		
-		(void) rhs;
-	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Declared private to prevent use.
-	///
-	/// @param      rhs  Object on the right-hand side of the assignment statement.
-	/// @return     Object which has been assigned.
-	///
-	template <typename T>
-	Array2D<T>& Array2D<T>::operator=(Array2D<T> const& rhs)
-	{
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-		
-		(void) rhs;
-		return *this;
 	}
 	
 }   //  namespace PsCourseworkI

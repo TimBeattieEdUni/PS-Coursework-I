@@ -43,7 +43,6 @@ namespace PsCourseworkI
 			void ApplyRandomHares();                      ///< Applies random hare population density.
 		
 		private:
-			Landscape();                                  ///< Default Constructor.
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
 				

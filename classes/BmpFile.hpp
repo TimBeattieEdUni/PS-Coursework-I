@@ -22,26 +22,24 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @brief
+	/// @brief      Bitmap ile.
 	///
-	/// @details
-	///
-	/// @invariant
+	/// @details    Provides reading of a bit map/mask from a file in the format
+	///             given in Section 4.2 of the Group Practical handout.
 	///
 	class BmpFile
 	{
 		public:
-			typedef Array2D<unsigned int> BmpArray;          ///< Saves typing.
+			typedef Array2D<unsigned int> BmpArray;                ///< Array type.
 		
-			BmpFile(std::string bmp_filename);               ///< Constructor from filename.
-
+			BmpFile(std::string bmp_filename);                     ///< Constructor from filename.
 			BmpArray const& GetArray() const { return m_array; }   ///< Getter.
 			
 		private:
-			BmpFile(BmpFile const& rhs);                     ///< Copy constructor.
-			BmpFile& operator=(BmpFile const& rhs);          ///< Assignment operator.
+			BmpFile(BmpFile const& rhs);              ///< Copy constructor.
+			BmpFile& operator=(BmpFile const& rhs);   ///< Assignment operator.
 		
-			BmpArray m_array;                                ///< Bitmap in memory.
+			BmpArray m_array;                         ///< Bitmap in memory.
 	};
 
 }   //  namespace PsCourseworkI

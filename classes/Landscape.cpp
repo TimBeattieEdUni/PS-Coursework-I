@@ -63,7 +63,6 @@ namespace PsCourseworkI
 	///             array is "old" and which is "new".  Data in "old"
 	///             is used to calculate values which are written to "new".
 	///
-	/// @todo       Performance improvement: store number of land neighbours in each cell at start-up.
 	/// @todo       Performance improvement: store pointers to neighbours in each cell at start-up.
 	///
 	void Landscape::Update()
@@ -143,9 +142,9 @@ namespace PsCourseworkI
 	/// @details      Reads the given land/water bitmap and applies it to the two
 	///               landscapes.  
 	///
-	/// @param        bmp  Land/water bitmap.
+	/// @param        bmp  Land/water bit mask.
 	///
-	/// @post         The given land/water bitmap has been applied to the landscape.
+	/// @post         The given land/water bit mask has been applied to the landscape.
 	///
 	void Landscape::ApplyLandWaterMask(BmpFile::BmpArray const& mask_array)
 	{

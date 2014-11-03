@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file       main.cpp
 ///
-/// @brief      Provides main() for Programming Skills Group Practical.
+/// @brief      Provides main() for Programming Skills Group Coursework.
 ///
 
 
@@ -41,8 +41,6 @@ int main(int argc, char* argv[])
 	//set starting time
 	gettimeofday(&t_start,NULL); // on windows OS use: GetSystemTime
 
-
-
 	try
 	{
 		//  parse command line
@@ -52,7 +50,7 @@ int main(int argc, char* argv[])
 		AppConfig cfg(args.GetCfgFilename());
 
 		//  load land/water map from file
-		BmpFile land_water_mask(args.GetMapFilename());
+		BmpFile land_water_mask(args.GetLwMaskFilename());
 
 		//  initialise the landscape
 		Landscape landscape(cfg);

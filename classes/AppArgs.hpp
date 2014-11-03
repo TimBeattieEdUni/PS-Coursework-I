@@ -27,7 +27,7 @@ namespace PsCourseworkI
 			AppArgs(int argc, char** argv);           ///< Constructor.
 		
 			std::string GetCfgFilename() const;       ///< Getter.
-			std::string GetMapFilename() const;       ///< Getter.
+			std::string GetLwMaskFilename() const;    ///< Getter.
 
 		private:
 			AppArgs(AppArgs const& rhs);              ///< Copy constructor.

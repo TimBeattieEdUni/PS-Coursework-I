@@ -57,9 +57,9 @@ namespace PsCourseworkI
 	//////////////////////////////////////////////////////////////////////////////
 	/// @return     Map file name.
 	///
-	/// @pre        Land/water map file name read from command line.
+	/// @pre        Land/water mask file name.
 	///
-	std::string AppArgs::GetMapFilename() const
+	std::string AppArgs::GetLwMaskFilename() const
 	{
 		return m_map_filename;
 	}

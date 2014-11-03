@@ -59,10 +59,21 @@ namespace PsCourseworkI
 			for (unsigned int i = 1; i < ls_size.m_x - 1; ++i)
 			{
 				Cell const& cell = ls_array(i, j);
-				unsigned char red_val    = static_cast<unsigned char>(cell.m_pumas * rgb_max);
-				unsigned char green_val  = static_cast<unsigned char>(cell.m_hares * rgb_max);
-				unsigned char blue_val   = cell.m_land ? 0 : rgb_max;
-				ppm_file.WritePixel(Pixel(red_val, green_val, blue_val));
+				unsigned int red_val = cell.m_pumas * rgb_max;
+				if (red_val > rgb_max) 
+				{
+					red_val = rgb_max;
+				}
+				
+				unsigned int green_val = cell.m_hares * rgb_max;
+				if (green_val > rgb_max) 
+				{
+					green_val = rgb_max;
+				}
+
+				unsigned char blue_val = cell.m_land ? 0 : rgb_max;
+				
+				ppm_file.WritePixel(Pixel(static_cast<unsigned char>(red_val), static_cast<unsigned char>(green_val), blue_val));
 			}
 		}
 
