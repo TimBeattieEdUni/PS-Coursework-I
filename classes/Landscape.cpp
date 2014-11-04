@@ -199,9 +199,9 @@ namespace PsCourseworkI
 
 
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details      Applies the given population of hares or pumas to the 
+	/// @details      Applies the given population of hares or pumas to the
 	///               landscape.  If the population map's dimensions don't match
-	///               the landscape, works on that part of the landscape which 
+	///               the landscape, works on that part of the landscape which
 	///               it has in common with the given map.
 	///
 	/// @param        population  Population density map of the given animal.
@@ -210,42 +210,45 @@ namespace PsCourseworkI
 	/// @post         The given population density map has been applied to the landscape.
 	///
 	/// @todo         Factor out getting the intersection of two Sizes.
+	///
 	void Landscape::ApplyPopulation(PopulationMap const& population, EPopulationType type)
 	{
 		unsigned int size_x = std::min(population.GetSize().m_x, m_landscape_size.m_x);
 		unsigned int size_y = std::min(population.GetSize().m_y, m_landscape_size.m_y);
 
-		//  offset by 1 because halos
-		for (unsigned int y = 1; y <= size_y; ++y)
+		for (unsigned int y = 0; y <= size_y; ++y)
 		{
-			for (unsigned int x = 1; x <= size_x; ++x)			
+			for (unsigned int x = 0; x <= size_x; ++x)
 			{
-				switch(type)
+				if (m_array_old(x + 1, y + 1).m_land)
 				{
-						
-					case ePumas:
+					switch(type)
 					{
-						m_array_old(x, y).m_pumas = population(x,y);
-						m_array_new(x, y).m_pumas = population(x,y);
-						break;
-					}
-					case eHares:
-					{
-						m_array_old(x, y).m_hares = population(x,y);
-						m_array_new(x, y).m_hares = population(x,y);
-						break;
-					}
-					default:
-					{
-						throw std::logic_error("invalid population type applied to landscape");
-						break;
+						case ePumas:
+						{
+							//  offset by 1 to account for halo
+							m_array_old(x + 1, y + 1).m_pumas = population(x,y);
+							m_array_new(x + 1, y + 1).m_pumas = population(x,y);
+							break;
+						}
+						case eHares:
+						{
+							m_array_old(x + 1, y + 1).m_hares = population(x,y);
+							m_array_new(x + 1, y + 1).m_hares = population(x,y);
+							break;
+						}
+						default:
+						{
+							throw std::logic_error("invalid population type applied to landscape");
+							break;
+						}
 					}
 				}
 			}
 		}
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Sets the population density of hares in each landscape cell
 	///               to a random value between 0 and 1.
