@@ -107,18 +107,18 @@ namespace PsCourseworkI
 				}
 
 				//  the same cell and its neighbours in the "old" array
-				Cell const& cell_old  = array_old(array_i, array_j);
-				Cell const& nbr_n     = array_old(array_i + 1, array_j);
-				Cell const& nbr_s     = array_old(array_i - 1, array_j);
-				Cell const& nbr_e     = array_old(array_i, array_j + 1);
-				Cell const& nbr_w     = array_old(array_i, array_j - 1);
+				Cell const& cell_old  = array_old(array_i    , array_j    );
+				Cell const& nbr_n     = array_old(array_i    , array_j - 1);
+				Cell const& nbr_s     = array_old(array_i    , array_j + 1);
+				Cell const& nbr_e     = array_old(array_i + 1, array_j    );
+				Cell const& nbr_w     = array_old(array_i - 1, array_j    );
 
 				//  number of neighbouring land cells
-				unsigned int land_nbrs = nbr_n.m_land ? 1 : 0
-				                       + nbr_s.m_land ? 1 : 0
-				                       + nbr_e.m_land ? 1 : 0
-				                       + nbr_w.m_land ? 1 : 0;
-
+				unsigned int land_nbrs = (nbr_n.m_land ? 1 : 0)
+				                       + (nbr_s.m_land ? 1 : 0)
+				                       + (nbr_e.m_land ? 1 : 0)
+				                       + (nbr_w.m_land ? 1 : 0);
+				
 				cell_new.m_hares = cell_old.m_hares + m_cfg.m_dt * ( m_cfg.m_r * cell_old.m_hares
 				                                                  - m_cfg.m_a * cell_old.m_hares * cell_old.m_pumas
 				                                                  + m_cfg.m_k   * ( nbr_n.m_hares

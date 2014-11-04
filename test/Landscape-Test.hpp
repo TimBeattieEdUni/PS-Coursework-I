@@ -148,9 +148,9 @@ void TestApplyPumas(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const
 	Landscape::PopulationMap puma_map(Size(cfg.m_Nx, cfg.m_Ny));
 	
 	puma_map(0, 0) = 1.0;
-	puma_map(0, 0) = 2.0;
-	puma_map(0, 0) = 3.0;
-	puma_map(0, 0) = 4.0;
+	puma_map(1, 0) = 2.0;
+	puma_map(0, 1) = 3.0;
+	puma_map(1, 1) = 4.0;
 	
 	ls.ApplyPopulation(puma_map, Landscape::ePumas);
 	
@@ -213,9 +213,9 @@ void TestApplyHares(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const
 	Landscape::PopulationMap hare_map(Size(cfg.m_Nx, cfg.m_Ny));
 	
 	hare_map(0, 0) = 5.0;
-	hare_map(0, 0) = 6.0;
-	hare_map(0, 0) = 7.0;
-	hare_map(0, 0) = 8.0;
+	hare_map(1, 0) = 6.0;
+	hare_map(0, 1) = 7.0;
+	hare_map(1, 1) = 8.0;
 	
 	ls.ApplyPopulation(hare_map, Landscape::eHares);
 	
@@ -309,13 +309,11 @@ void TestUpdate(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const& cf
 				if (copy(x + 1, y    ).m_land) { ++nb; }
 				if (copy(x    , y - 1).m_land) { ++nb; }
 				if (copy(x    , y + 1).m_land) { ++nb; }
-				
+
 				double expected_pumas = p_old_i_j + cfg.m_dt * (cfg.m_b * h_old_i_j * p_old_i_j - cfg.m_m * p_old_i_j + cfg.m_l * (p_old_im_j + p_old_ip_j + p_old_i_jm + p_old_i_jp - nb * p_old_i_j));
-				std::cout << "expected, actual: " << expected_pumas << "," << updated_array(x, y).m_pumas << std::endl;
 				CHECK(fabs(expected_pumas - updated_array(x, y).m_pumas) < epsilon);
 				
 				double expected_hares = h_old_i_j + cfg.m_dt * (cfg.m_r * h_old_i_j - cfg.m_a * h_old_i_j * p_old_i_j + cfg.m_k * (h_old_im_j + h_old_ip_j + h_old_i_jm + h_old_i_jp - nb * h_old_i_j));
-				std::cout << "expected, actual: " << expected_hares << "," << updated_array(x, y).m_hares << std::endl;
 				CHECK(fabs(expected_hares - updated_array(x, y).m_hares) < epsilon);
 			}
 			else
