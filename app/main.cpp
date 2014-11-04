@@ -47,8 +47,9 @@ int main(int argc, char* argv[])
 		AppArgs args(argc, argv);
 
 		//  load configuration from file
-		AppConfig cfg(args.GetCfgFilename());
-
+		AppConfigReader const cfg_reader(args.GetCfgFilename());
+		AppConfig const& cfg = cfg_reader.GetConfig();
+		
 		//  load land/water map from file
 		BmpFile land_water_mask(args.GetLwMaskFilename());
 
@@ -64,10 +65,10 @@ int main(int argc, char* argv[])
 		LandscapePpmWriter ls_writer(landscape);
 
 		//  run the simulation
-        for (unsigned int i=0; i<cfg.GetTT(); ++i)
+        for (unsigned int i=0; i<cfg.m_TT; ++i)
         {
 			//  write current state to PPM file regularly
-			if (0 == i % cfg.GetT())
+			if (0 == i % cfg.m_T)
 			{
 				//  create output filename
 				std::stringstream filename_ss;
@@ -79,7 +80,7 @@ int main(int argc, char* argv[])
 
 			//  do update and report time
 			landscape.Update();
-			double sim_time = i * cfg.Getdt();
+			double sim_time = i * cfg.m_dt;
 			std::cout << "landscape updated to time " << sim_time << " months" << std::endl;
         }
 

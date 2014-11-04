@@ -30,10 +30,10 @@ namespace PsCourseworkI
 	///
 	Landscape::Landscape(AppConfig const& cfg)
 		: m_bswap_arrays(false)
-		, m_landscape_size(cfg.GetNx(), cfg.GetNy())
+		, m_landscape_size(cfg.m_Nx, cfg.m_Ny)
 		, m_cfg(cfg)
-		, m_array_old(Size(cfg.GetNx() + 2, cfg.GetNy() + 2))
-		, m_array_new(Size(cfg.GetNx() + 2, cfg.GetNy() + 2))
+		, m_array_old(Size(cfg.m_Nx + 2, cfg.m_Ny + 2))
+		, m_array_new(Size(cfg.m_Nx + 2, cfg.m_Ny + 2))
 	{
 		std::cout << "landscape size: " << m_landscape_size.m_x << " x " << m_landscape_size.m_y << std::endl;
 
@@ -119,17 +119,17 @@ namespace PsCourseworkI
 				                       + nbr_e.m_land ? 1 : 0
 				                       + nbr_w.m_land ? 1 : 0;
 
-				cell_new.m_hares = cell_old.m_hares + m_cfg.Getdt() * ( m_cfg.Getr() * cell_old.m_hares
-				                                                  - m_cfg.Geta() * cell_old.m_hares * cell_old.m_pumas
-				                                                  + m_cfg.Getk()   * ( nbr_n.m_hares
+				cell_new.m_hares = cell_old.m_hares + m_cfg.m_dt * ( m_cfg.m_r * cell_old.m_hares
+				                                                  - m_cfg.m_a * cell_old.m_hares * cell_old.m_pumas
+				                                                  + m_cfg.m_k   * ( nbr_n.m_hares
 																			    + nbr_s.m_hares
 																			    + nbr_e.m_hares
 																			    + nbr_w.m_hares
 																			    - land_nbrs * cell_old.m_hares));
 
-				cell_new.m_pumas = cell_old.m_pumas + m_cfg.Getdt() * ( m_cfg.Getb() * cell_old.m_hares * cell_old.m_pumas
-															    - m_cfg.Getm() * cell_old.m_pumas
-															    + m_cfg.Getl() * ( nbr_n.m_pumas
+				cell_new.m_pumas = cell_old.m_pumas + m_cfg.m_dt * ( m_cfg.m_b * cell_old.m_hares * cell_old.m_pumas
+															    - m_cfg.m_m * cell_old.m_pumas
+															    + m_cfg.m_l * ( nbr_n.m_pumas
 																			  + nbr_s.m_pumas
 																			  + nbr_e.m_pumas
 																			  + nbr_w.m_pumas
@@ -199,46 +199,53 @@ namespace PsCourseworkI
 
 
 	//////////////////////////////////////////////////////////////////////////////
-	/// @details      Sets the population density of pumas to consist of a number of packs (puma density 2) of given size in random land places.
-	///               When the same grid point is randomed twice it is over ridden so it is not guaranteed that one gets exactly  the spezified number of Packs (especially relevant for very small landscapes and or landscapes with very few land points)
+	/// @details      Applies the given population of hares or pumas to the 
+	///               landscape.  If the population map's dimensions don't match
+	///               the landscape, works on that part of the landscape which 
+	///               it has in common with the given map.
 	///
-	///@param N_Packs   number of packs
+	/// @param        population  Population density map of the given animal.
+	/// @param        type        Type of animal - pumas or hares.
 	///
+	/// @post         The given population density map has been applied to the landscape.
 	///
-	void Landscape::ApplyPackPumas(unsigned int N_Packs)
+	/// @todo         Factor out getting the intersection of two Sizes.
+	void Landscape::ApplyPopulation(PopulationMap const& population, EPopulationType type)
 	{
-	    unsigned int Pack_Location, Pack_i, Pack_j;
+		unsigned int size_x = std::min(population.GetSize().m_x, m_landscape_size.m_x);
+		unsigned int size_y = std::min(population.GetSize().m_y, m_landscape_size.m_y);
 
-	    //searching for land
-	    std::vector<unsigned int> Land_sites;
-
-        for (unsigned int i = 0; i < m_landscape_size.m_x; ++i)
+		//  offset by 1 because halos
+		for (unsigned int y = 1; y <= size_y; ++y)
 		{
-			for (unsigned int j = 0; j < m_landscape_size.m_y; ++j)
+			for (unsigned int x = 1; x <= size_x; ++x)			
 			{
-				if (m_array_old(i + 1, j + 1).m_land)
+				switch(type)
 				{
-                    Land_sites.push_back(j*m_landscape_size.m_x+i);
+						
+					case ePumas:
+					{
+						m_array_old(x, y).m_pumas = population(x,y);
+						m_array_new(x, y).m_pumas = population(x,y);
+						break;
+					}
+					case eHares:
+					{
+						m_array_old(x, y).m_hares = population(x,y);
+						m_array_new(x, y).m_hares = population(x,y);
+						break;
+					}
+					default:
+					{
+						throw std::logic_error("invalid population type applied to landscape");
+						break;
+					}
 				}
 			}
 		}
-
-        for (unsigned int i = 0; i < N_Packs; ++i)
-        {
-            Pack_Location=static_cast<unsigned int>(static_cast<double>(rand()) / static_cast<double>(RAND_MAX)*Land_sites.size());
-            Pack_i = Pack_Location % m_landscape_size.m_x;
-            Pack_j = Pack_Location / m_landscape_size.m_x;
-
-            m_array_old(Pack_i + 1, Pack_j + 1).m_pumas = 2.0;
-            m_array_new(Pack_i + 1, Pack_j + 1).m_pumas = m_array_old(Pack_i + 1, Pack_j + 1).m_pumas;
-
-        }
-
 	}
-
-
-
-
+	
+	
 	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Sets the population density of hares in each landscape cell
 	///               to a random value between 0 and 1.

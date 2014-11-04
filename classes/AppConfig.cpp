@@ -22,6 +22,29 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Writes all configuration options to stdout.
+	///
+	/// @todo Ideally, this would be a stream operator.
+	///
+	void AppConfig::Print()
+	{
+		std::cout << "configuration:" << std::endl;
+		
+		std::cout << "  Nx = " << m_Nx << std::endl;
+		std::cout << "  Ny = " << m_Ny << std::endl;
+		std::cout << "   T = " << m_T  << std::endl;
+		std::cout << "  TT = " << m_TT << std::endl;
+		std::cout << "   r = " << m_r  << std::endl;
+		std::cout << "   a = " << m_a  << std::endl;
+		std::cout << "   b = " << m_b  << std::endl;
+		std::cout << "   m = " << m_m  << std::endl;
+		std::cout << "   k = " << m_k  << std::endl;
+		std::cout << "   l = " << m_l  << std::endl;
+		std::cout << "  dt = " << m_dt << std::endl;
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
 	/// @details    Constructor from configuration file name.
 	///
 	/// @param      cfg_filename  Configuration file name.
@@ -30,18 +53,8 @@ namespace PsCourseworkI
 	///
 	/// @exception  std::runtime_error  Configuration file could not be opened.
 	///
-	AppConfig::AppConfig(std::string const& cfg_filename)
-		: m_Nx(0)
-		, m_Ny(0)
-		, m_T(0)
-		, m_TT(0)
-		, m_r(0.0)
-		, m_a(0.0)
-		, m_b(0.0)
-		, m_m(0.0)
-		, m_k(0.0)
-		, m_l(0.0)
-		, m_dt(0.0)
+	AppConfigReader::AppConfigReader(std::string const& cfg_filename)
+		: m_cfg()
 	{
 		std::cout << "loading configuration from file \"" << cfg_filename << "\"" << std::endl;
 		
@@ -85,47 +98,47 @@ namespace PsCourseworkI
 			//  identify which key we've just read
 			if (key == "Nx")
 			{
-				m_Nx = StringToInt(value);
+				m_cfg.m_Nx = StringToInt(value);
 			}
 			else if (key == "Ny")
 			{
-				m_Ny = StringToInt(value);
+				m_cfg.m_Ny = StringToInt(value);
 			}
 			else if (key == "T")
 			{
-				m_T = StringToInt(value); 
+				m_cfg.m_T = StringToInt(value); 
 			}
 			else if (key == "TT")
 			{
-				m_TT = StringToInt(value);
+				m_cfg.m_TT = StringToInt(value);
 			}
 			else if (key == "r")
 			{
-				m_r = StringToDouble(value);
+				m_cfg.m_r = StringToDouble(value);
 			}
 			else if (key == "a")
 			{
-				m_a = StringToDouble(value);
+				m_cfg.m_a = StringToDouble(value);
 			}
 			else if (key == "b")
 			{
-				m_b = StringToDouble(value);
+				m_cfg.m_b = StringToDouble(value);
 			}
 			else if (key == "m")
 			{
-				m_m = StringToDouble(value);
+				m_cfg.m_m = StringToDouble(value);
 			}
 			else if (key == "k")
 			{
-				m_k = StringToDouble(value);
+				m_cfg.m_k = StringToDouble(value);
 			}
 			else if (key == "l")
 			{
-				m_l = StringToDouble(value);
+				m_cfg.m_l = StringToDouble(value);
 			}
 			else if (key == "dt")
 			{
-				m_dt = StringToDouble(value);
+				m_cfg.m_dt = StringToDouble(value);
 			}
 			else
 			{
@@ -134,42 +147,7 @@ namespace PsCourseworkI
 			}
 		}
 		
-		Print();
-	}
-
-	
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details    Describe object destruction here.
-	///
-	/// @exception  None; this is a destructor.
-	///
-	AppConfig::~AppConfig()
-	{
-		
-	}
-	
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details      Writes all configuration options to stdout.
-	///
-	/// @todo Ideally, this would be a stream operator.
-	///
-	void AppConfig::Print()
-	{
-		std::cout << "configuration:" << std::endl;
-		
-		std::cout << "  Nx = " << m_Nx << std::endl;
-		std::cout << "  Ny = " << m_Ny << std::endl;
-		std::cout << "   T = " << m_T  << std::endl;
-		std::cout << "  TT = " << m_TT << std::endl;
-		std::cout << "   r = " << m_r  << std::endl;
-		std::cout << "   a = " << m_a  << std::endl;
-		std::cout << "   b = " << m_b  << std::endl;
-		std::cout << "   m = " << m_m  << std::endl;
-		std::cout << "   k = " << m_k  << std::endl;
-		std::cout << "   l = " << m_l  << std::endl;
-		std::cout << "  dt = " << m_dt << std::endl;
+		m_cfg.Print();
 	}
 	
 	
@@ -179,7 +157,7 @@ namespace PsCourseworkI
 	/// @param        str  The given string
 	/// @return       Integer value read from the given string.
 	///
-	unsigned int AppConfig::StringToInt(std::string const& str)
+	unsigned int AppConfigReader::StringToInt(std::string const& str)
 	{
 		unsigned int value;
 		std::stringstream converter(str);
@@ -195,7 +173,7 @@ namespace PsCourseworkI
 	/// @param        str  The given string
 	/// @return       Double value read from the given string.
 	///
-	double AppConfig::StringToDouble(std::string const& str)
+	double AppConfigReader::StringToDouble(std::string const& str)
 	{
 		double value;
 		std::stringstream converter(str);
@@ -215,7 +193,7 @@ namespace PsCourseworkI
 	///
 	/// @exception    
 	///
-	void AppConfig::RemoveComment(std::string& line)
+	void AppConfigReader::RemoveComment(std::string& line)
 	{
 		line = line.substr(0, line.find('#'));
 	}

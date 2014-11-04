@@ -29,7 +29,16 @@ namespace PsCourseworkI
 	{
 		public:
 			typedef Array2D<Cell> LsArray;                ///< Type for the landscape array.
-
+			typedef Array2D<double> PopulationMap;        ///< Type for population arrays.
+		
+			//////////////////////////////////////////////////////////////////////////////
+			/// @brief      Types of animals.
+			enum EPopulationType
+			{
+				ePumas,   ///< Pumas.
+				eHares    ///< Hares.
+			};
+		
 			/// Constructor from configuration and land/water bitmask.
 			Landscape(AppConfig const& cfg);
 
@@ -39,10 +48,12 @@ namespace PsCourseworkI
 			///< Applies land/water bitmask.
 			void ApplyLandWaterMask(BmpFile::BmpArray const& bmp);
 
+			///< Applies puma or hare population.
+			void ApplyPopulation(PopulationMap const& population, EPopulationType type);  
+
 			void ApplyRandomPumas();                      ///< Applies random puma population density.
 			void ApplyRandomHares();                      ///< Applies random hare population density.
-			void ApplyPackPumas(unsigned int N_Packs);    ///< Applies a Puma distribution in packs of pumas
-
+		
 		private:
 			Landscape(Landscape const& rhs);              ///< Copy constructor.
 			Landscape& operator=(Landscape const& rhs);   ///< Assignment operator.
