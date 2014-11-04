@@ -17,7 +17,7 @@
 #include "Array2D-Test.hpp"
 #include "AppArgs-Test.hpp"
 #include "PpmFile-Test.hpp"
-//#include "Landscape-Test.hpp"
+#include "Landscape-Test.hpp"
 
 
 #endif  //  #ndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H

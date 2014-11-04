@@ -166,13 +166,13 @@ namespace PsCourseworkI
 		}
 
 		//  write land/water flags into landscape cells inside the halo
-		for (unsigned int j = 0; j < size_y; ++j)
+		for (unsigned int y = 0; y < size_y; ++y)
 		{
-			for (unsigned int i = 0; i < size_x; ++i)
+			for (unsigned int x = 0; x < size_x; ++x)
 			{
 				//  adjust i and j for landscape's 1x1 offset into the array
-				m_array_old(i + 1, j + 1).m_land = static_cast<bool>(mask_array(i, j));
-				m_array_new(i + 1, j + 1).m_land = static_cast<bool>(mask_array(i, j));
+				m_array_old(x + 1, y + 1).m_land = static_cast<bool>(mask_array(x, y));
+				m_array_new(x + 1, y + 1).m_land = static_cast<bool>(mask_array(x, y));
 			}
 		}
 	}

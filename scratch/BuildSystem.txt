@@ -1,0 +1,15 @@
+Work on Landscape with debugger & document this.
+Blurb about C++
+Once it's working, experiment with zero diffusion and other edge cases.
+
+Blurb: handout says y starts from the bottom - surely it doesn't matter if our image files start from the bottom?  X across, Y down matches .ppm file, so we chose that as our internal representation and went with it.  BmpFile needs to convert to this.
+
+The build system:
+
+The project's build system was implemented using GNU Make as several group members were already familiar with this tool.  Make was used to build the project's program, unit test, Doxygen documentation, report in LaTeX format, and unit testing framework (see section "Unit Testing"). 
+
+A top-level Make include file provided common settings for directory names, compiler options, 
+
+Measure performance difference between release and debug builds.
+
+
