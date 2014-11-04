@@ -199,6 +199,26 @@ namespace PsCourseworkI
 
 
 	//////////////////////////////////////////////////////////////////////////////
+	/// @details      Sets the population density of hares in each landscape cell
+	///               to a random value between 0 and 1.
+	///
+	void Landscape::ApplyRandomHares()
+	{
+		for (unsigned int i = 0; i < m_landscape_size.m_x; ++i)
+		{
+			for (unsigned int j = 0; j < m_landscape_size.m_y; ++j)
+			{
+				if (m_array_old(i + 1, j + 1).m_land)
+				{
+					m_array_old(i + 1, j + 1).m_hares = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+					m_array_new(i + 1, j + 1).m_hares = m_array_old(i + 1, j + 1).m_hares;
+				}
+			}
+		}
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
 	/// @details      Applies the given population of hares or pumas to the
 	///               landscape.  If the population map's dimensions don't match
 	///               the landscape, works on that part of the landscape which
@@ -243,26 +263,6 @@ namespace PsCourseworkI
 							break;
 						}
 					}
-				}
-			}
-		}
-	}
-
-
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details      Sets the population density of hares in each landscape cell
-	///               to a random value between 0 and 1.
-	///
-	void Landscape::ApplyRandomHares()
-	{
-		for (unsigned int i = 0; i < m_landscape_size.m_x; ++i)
-		{
-			for (unsigned int j = 0; j < m_landscape_size.m_y; ++j)
-			{
-				if (m_array_old(i + 1, j + 1).m_land)
-				{
-					m_array_old(i + 1, j + 1).m_hares = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
-					m_array_new(i + 1, j + 1).m_hares = m_array_old(i + 1, j + 1).m_hares;
 				}
 			}
 		}
