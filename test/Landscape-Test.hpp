@@ -28,35 +28,26 @@
 #include <iostream>
 
 
-////////////////////////////////////////////////////////////////////////////
-/// @brief  First test for class Landscape.
-///
-/// @test   Landscape can be constructed from valid arguments.
-///
-TEST(LandscapeApplyPumas)
-{
-	using PsCourseworkI:: Landscape;
-
-
-	CHECK(true);
-}
-
-
 //////////////////////////////////////////////////////////////////////////////
-/// @brief  Test landscape update.
+/// @brief  Test class Landscape.
 ///
+/// @test
 /// @test   Landscape::Update() assigns correct new values to all cells.
+///
+/// @note   This is indeed a big long monolith of a test; unfortunately every
+///         step depends on previous steps.
 ///
 TEST(LandscapeUpdate)
 {
 	using namespace PsCourseworkI;
 
-	// error tolerance for comparison
-	double epsilon = 0.00001; 
+	//  error tolerance for comparison
+	double epsilon = 0.00001;
 
+	//  these mustn't be changed - some tests assume a 2x2 landscape with all land except south-east corner water
 	unsigned int const ls_width  = 2;
 	unsigned int const ls_height = 2;
-	
+
 	//  2x2 configuration with defaults from handout
 	AppConfig cfg;
 	cfg.m_Nx = ls_width;
@@ -71,46 +62,108 @@ TEST(LandscapeUpdate)
 	cfg.m_l  = 0.2;
 	cfg.m_dt = 0.4;
 
-	//  prep all-land land/water mask
-	BmpFile::BmpArray lw_mask(Size(ls_width, ls_height));
-	for (unsigned int y = 0; y < ls_height; ++y)
+	//  create landscape and get its cell array info
+	Landscape ls(cfg);
+	Landscape::LsArray const& ls_array = ls.GetArray();
+	Size array_size = ls_array.GetSize();
+	unsigned int array_width   = array_size.m_x;
+	unsigned int array_height  = array_size.m_y;
+
+	//  array size
+	CHECK(array_width == ls_width + 2);
+	CHECK(array_height == ls_height + 2);
+
+	//  all cells zero after initialisation (this checks halo as well)
+	for (unsigned int y = 0; y < array_height; ++y)
 	{
-		for (unsigned int x = 0; x < ls_width; ++x)
+		for (unsigned int x = 0; x < array_width; ++x)
 		{
-			lw_mask(x, y) = 1;
+			Cell const& cell = ls_array(x, y);
+			CHECK(cell.m_land   == false);
+			CHECK(cell.m_pumas  == 0.0);
+			CHECK(cell.m_hares  == 0.0);
 		}
 	}
 
+	//  test applying land/water mask
+	BmpFile::BmpArray lw_mask(Size(ls_width, ls_height));
+
+	lw_mask(0, 0) = 1;
+	lw_mask(1, 0) = 1;
+	lw_mask(0, 1) = 1;
+	lw_mask(1, 1) = 0;
+
+	ls.ApplyLandWaterMask(lw_mask);
+
+	CHECK(ls_array(1, 1).m_land == true);
+	CHECK(ls_array(2, 1).m_land == true);
+	CHECK(ls_array(1, 2).m_land == true);
+	CHECK(ls_array(2, 2).m_land == false);
+
 	//  prep puma and hare populations
+	double pumas[ls_width * ls_height] = { 1.0, 2.0, 3.0, 4.0 };
+	double hares[ls_width * ls_height] = { 5.0, 6.0, 7.0, 8.0 };
 	Landscape::PopulationMap puma_map(Size(ls_width, ls_height));
 	Landscape::PopulationMap hare_map(Size(ls_width, ls_height));
 	for (unsigned int y = 0; y < ls_height; ++y)
 	{
 		for (unsigned int x = 0; x < ls_width; ++x)
 		{
-			puma_map(x, y) = 0.01 * (x + 1) * (y + 1);
-			hare_map(x, y) = 0.1  * (x + 1) * (y + 1);
+			puma_map(x, y) = pumas[y * ls_width + x];
+			hare_map(x, y) = hares[y * ls_width + x];
 		}
 	}
 
-	//  set up the landscape
-	Landscape ls(cfg);
-	ls.ApplyLandWaterMask(lw_mask);
+	//  test applying pumas
+	/// @todo check halos are still water
+	/// @todo check land/water flags haven't changed
+	/// @todo check hare densities haven't changed
 	ls.ApplyPopulation(puma_map, Landscape::ePumas);
-	ls.ApplyPopulation(hare_map, Landscape::eHares);
+	std::cout << ls_array(1, 1).m_pumas << "  " << puma_map(0,0) << std::endl;
+	CHECK(fabs(ls_array(1, 1).m_pumas - puma_map(0,0)) < epsilon);
 
-	Landscape::LsArray const& ls_array = ls.GetArray();
+	std::cout << ls_array(2, 1).m_pumas << "  " << puma_map(1,0) << std::endl;
+	CHECK(fabs(ls_array(2, 1).m_pumas - puma_map(1,0)) < epsilon);
+
+	std::cout << ls_array(1, 2).m_pumas << "  " << puma_map(0,1) << std::endl;
+	CHECK(fabs(ls_array(1, 2).m_pumas - puma_map(0,1)) < epsilon);
+
+	std::cout << ls_array(2, 2).m_pumas << "  " << puma_map(1,1) << std::endl;
+	CHECK(ls_array(2, 2).m_pumas == 0.0);
+
+	//  test applying hares
+	/// @todo check halos are still water
+	/// @todo check land/water flags haven't changed
+	/// @todo check puma densities haven't changed
+	ls.ApplyPopulation(hare_map, Landscape::eHares);
+	CHECK(fabs(ls_array(1, 1).m_hares - hare_map(0,0)) < epsilon);
+	CHECK(fabs(ls_array(2, 1).m_hares - hare_map(1,0)) < epsilon);
+	CHECK(fabs(ls_array(1, 2).m_hares - hare_map(0,1)) < epsilon);
+	CHECK(ls_array(2, 2).m_hares == 0.0);
+
+
+	std::cout << "\n\nbookmark\n\n"  << std::endl;
+
+
+	CHECK(ls_array(1, 1).m_land == true);
+	CHECK(ls_array(2, 1).m_land == true);
+	CHECK(ls_array(1, 2).m_land == true);
+	CHECK(ls_array(2, 2).m_land == false);
+
 
 	//  verify applied pumas and hares, adjusting indices for halo
 	for (unsigned int y = 0; y < ls_height; ++y)
 	{
 		for (unsigned int x = 0; x < ls_width; ++x)
 		{
-			CHECK(ls_array(x, y).m_pumas - (0.01 * (x + 1) * (y + 1)) < epsilon);
-			CHECK(ls_array(x, y).m_hares - (0.1  * (x + 1) * (y + 1)) < epsilon);
+			std::cout << "x, y:" << x << ", " << y << std::endl;
+			std::cout << "array pumas: " << ls_array(x + 1, y + 1).m_pumas << " given pumas: " << puma_map(x, y) << std::endl;
+			std::cout << "array hares: " << ls_array(x + 1, y + 1).m_hares << " given hares: " << hare_map(x, y) << std::endl;
+			CHECK(fabs(ls_array(x + 1, y + 1).m_pumas - puma_map(x, y)) < epsilon);
+			CHECK(fabs(ls_array(x + 1, y + 1).m_hares - hare_map(x, y)) < epsilon);
 		}
 	}
-	
+
 	//  take a copy of the entire array before the update
 	Landscape::LsArray ls_array_copy(ls.GetArray().GetSize());
 	unsigned int ls_array_width   = ls_array.GetSize().m_x;
@@ -123,28 +176,28 @@ TEST(LandscapeUpdate)
 			ls_array_copy(i, j) = ls_array(i, j);
 		}
 	}
-	
+
 	ls.Update();
-	
+
 	//  check halo cells are water and have no population: top and bottom edges
 	for (unsigned int x = 0; x < ls_array_width; ++x)
 	{
 		CHECK(ls_array(x, 0).m_land   == false);
 		CHECK(ls_array(x, 0).m_pumas  == 0.0);
 		CHECK(ls_array(x, 0).m_hares  == 0.0);
-		
+
 		CHECK(ls_array(x, ls_array_width - 1).m_land   == false);
 		CHECK(ls_array(x, ls_array_width - 1).m_pumas  == 0.0);
 		CHECK(ls_array(x, ls_array_width - 1).m_hares  == 0.0);
 	}
-	
+
 	//  left and right edges
 	for (unsigned int y = 0; y < ls_array_height; ++y)
 	{
 		CHECK(ls_array(0, y).m_land   == false);
 		CHECK(ls_array(0, y).m_pumas  == 0.0);
 		CHECK(ls_array(0, y).m_hares  == 0.0);
-		
+
 		CHECK(ls_array(ls_array_height - 1, y).m_land   == false);
 		CHECK(ls_array(ls_array_height - 1, y).m_pumas  == 0.0);
 		CHECK(ls_array(ls_array_height - 1, y).m_hares  == 0.0);
@@ -164,7 +217,7 @@ TEST(LandscapeUpdate)
 			{
 				//  independent implementation of the equations; if implementations agree,
 				//  we can have confidence in the result
-				
+
 				//  read old values from the arrays we applied
 				double h_old_i_j  = ls_array_copy(x    , y    ).m_hares;
 				double h_old_im_j = ls_array_copy(x - 1, y    ).m_hares;
@@ -188,7 +241,7 @@ TEST(LandscapeUpdate)
 				std::cout << "expected, actual: " << expected_pumas << "," << ls_array(x, y).m_pumas << std::endl;
 //				CHECK(fabs(expected_pumas - ls_array(x, y).m_pumas) < epsilon);
 
-				double expected_hares = h_old_i_j + cfg.m_dt * (cfg.m_r * h_old_i_j - cfg.m_a * h_old_i_j * p_old_i_j + cfg.m_k * (h_old_im_j + h_old_ip_j + h_old_i_jm + h_old_i_jp - nb * h_old_i_j));				
+				double expected_hares = h_old_i_j + cfg.m_dt * (cfg.m_r * h_old_i_j - cfg.m_a * h_old_i_j * p_old_i_j + cfg.m_k * (h_old_im_j + h_old_ip_j + h_old_i_jm + h_old_i_jp - nb * h_old_i_j));
 				std::cout << "expected, actual: " << expected_hares << "," << ls_array(x, y).m_hares << std::endl;
 //				CHECK(fabs(expected_hares - ls_array(x, y).m_hares) < epsilon);
 			}
@@ -196,7 +249,7 @@ TEST(LandscapeUpdate)
 			{
 				//  water cells should remain at zero
 				CHECK(ls_array(x, y).m_pumas  == 0.0);
-				CHECK(ls_array(x, y).m_hares  == 0.0);				
+				CHECK(ls_array(x, y).m_hares  == 0.0);
 			}
 		}
 	}
