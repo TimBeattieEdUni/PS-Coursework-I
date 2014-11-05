@@ -1,0 +1,26 @@
+Assignment of Tasks:
+
+Tim:
+	Set up Git repository.
+	Create build system.
+	Set up unit testing framework.
+	Set up Doxygen documentation.
+	Application and class design.
+	Review and tidy source code.
+	Implement configuration in text file.	
+	Implement landscape generator tool.
+	Profiling and optimisation.
+	Proofread group report.
+
+Marton:
+	Implement population update equations.
+	Implement population averager.
+
+Max:
+	Review and tidy LaTeX source for group report.
+	Implement timing.
+
+David:
+	Implement bitmask file loader.
+	Implement PPM file writer.
+	Write skeleton LaTeX source for group report.
