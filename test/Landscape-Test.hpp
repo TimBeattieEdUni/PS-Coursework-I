@@ -254,6 +254,12 @@ void TestApplyHares(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const
 //////////////////////////////////////////////////////////////////////////////
 /// @brief  Tests updating the landscape
 ///
+/// @note: The test for Lansdcape::Update() relies on two independent 
+///        implementations of the equations in the coursework handout: one in 
+///        the test, and one in the class being tested.  It is possible that 
+///        both could be wrong in the same way, producing a test which 
+///        succeeds despite code which produces incorrect results.
+///
 void TestUpdate(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const& cfg)
 {
 	using namespace PsCourseworkI;
@@ -287,10 +293,7 @@ void TestUpdate(PsCourseworkI::Landscape& ls, PsCourseworkI::AppConfig const& cf
 			
 			//  check puma and hare densities
 			if (updated_array(x, y).m_land)
-			{
-				//  independent implementation of the equations; if implementations agree,
-				//  we can have confidence in the result
-				
+			{				
 				//  read old values from the arrays we applied
 				double h_old_i_j  = copy(x    , y    ).m_hares;
 				double h_old_im_j = copy(x - 1, y    ).m_hares;

@@ -119,6 +119,7 @@ namespace PsCourseworkI
 				                       + (nbr_e.m_land ? 1 : 0)
 				                       + (nbr_w.m_land ? 1 : 0);
 				
+				//  implements the hare population update equation as per section 2.1 in the Group Practical handout
 				cell_new.m_hares = cell_old.m_hares + m_cfg.m_dt * ( m_cfg.m_r * cell_old.m_hares
 				                                                  - m_cfg.m_a * cell_old.m_hares * cell_old.m_pumas
 				                                                  + m_cfg.m_k   * ( nbr_n.m_hares
@@ -127,6 +128,7 @@ namespace PsCourseworkI
 																			    + nbr_w.m_hares
 																			    - land_nbrs * cell_old.m_hares));
 				
+				//  implements the puma population update equation as per section 2.1 in the Group Practical handout
 				cell_new.m_pumas = cell_old.m_pumas + m_cfg.m_dt * ( m_cfg.m_b * cell_old.m_hares * cell_old.m_pumas
 															    - m_cfg.m_m * cell_old.m_pumas
 															    + m_cfg.m_l * ( nbr_n.m_pumas

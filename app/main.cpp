@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
 		//  run the simulation
         for (unsigned int i=0; i<cfg.m_TT; ++i)
         {
-			//  write current state to PPM file regularly
+			//  regular outputs: populations as PPM and averages
 			if (0 == i % cfg.m_T)
 			{
 				//  create output filename
@@ -97,6 +97,9 @@ int main(int argc, char* argv[])
 
 				//  write current state of the landscape to PPM file
 				ls_writer.Write(filename_ss.str());
+				
+				PopulationAverager pa(landscape.GetArray());
+				std::cout << "average populations: hares: " << pa.GetAvgHares() << "  pumas: " << pa.GetAvgPumas() << std::endl;
 			}
 
 			//  do update and report time

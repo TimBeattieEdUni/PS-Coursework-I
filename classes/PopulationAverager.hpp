@@ -28,18 +28,19 @@ namespace PsCourseworkI
 	class PopulationAverager
 	{
 		public:
-			PopulationAverager(Landscape::LsArray& population);    ///< Constructor.
-			
-			void Write(double& totalPuma, double& totalHare);     ///< Returns Cell's population.
+			PopulationAverager(Landscape::LsArray const& population);       ///< Constructor.
+
+			double GetAvgHares() { return m_avg_hares; }   ///< Getter.
+			double GetAvgPumas() { return m_avg_pumas; }   ///< Getter.
 
 		private:
 			PopulationAverager(PopulationAverager const& rhs);              ///< Copy constructor.
 			PopulationAverager& operator=(PopulationAverager const& rhs);   ///< Assignment operator.
-					
-			Landscape::LsArray& m_population;   ///< The population to be stored.
 
+			double m_avg_hares;   ///< Average hare population.
+			double m_avg_pumas;   ///< Average puma population.
 	};
-	
+
 }   //  namespace PsCourseworkI
 
 

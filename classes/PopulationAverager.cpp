@@ -15,7 +15,7 @@
 //#include <iostream>
 //#include <fstream>
 
-	
+
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
@@ -23,64 +23,42 @@ namespace PsCourseworkI
 	///
 	/// @param      The population to be calculated/returned.
 	///
-	PopulationAverager::PopulationAverager(Landscape::LsArray& population)
-		: m_population(population)
+	PopulationAverager::PopulationAverager(Landscape::LsArray const& population)
+		: m_avg_hares(0.0)
+		, m_avg_pumas(0.0)
 	{
-		
-	}
-
-	
-	//////////////////////////////////////////////////////////////////////////////
-	/// @details      Calculates and returns the average population.
-	///
-	/// @param        double puma/hare by ref, thus can be stored 
-	///
-	/// @post         
-	///
-	/// @exception    
-	///
-	/// 
-	///
-	void PopulationAverager::Write(double& totalPuma, double&totalHare)
-	{
-		std::cout << std::endl; 
-
-		
-		//Landscape::LsArray const& ls_array = m_population.GetArray();
-		//Landscape::LsArray const& ls_array
-
-		
-		Size ls_size = m_population.GetSize();
-		totalHare = 0.0;
-		totalPuma = 0.0;
+		Size ls_size = population.GetSize();
+		double totalHares = 0.0;
+		double totalPumas = 0.0;
 		
 		unsigned int cell_counter = 0;
-			
+		
+		//  sum all hare and puma values
 		for (unsigned int j = 0; j < ls_size.m_y; ++j)
 		{
 			for (unsigned int i = 0; i < ls_size.m_x; ++i)
-			{
-
-				if(m_population(i,j).m_land)
-				{// the avarage population does not take into account the unpopulatable regions, i.e. water
-					totalHare += m_population(i,j).m_hares;
-					totalPuma += m_population(i,j).m_pumas;
+			{				
+				// ignore water
+				if (population(i, j).m_land)
+				{
+					totalHares += population(i, j).m_hares;
+					totalPumas += population(i, j).m_pumas;
 					cell_counter++;
-				}
-				
+				}				
 			}
 		}
-		if(cell_counter > 0)
+
+		//  ignore rounding errors; values tend to stay within one order of magnitude
+		if (cell_counter > 0)
 		{
-			totalPuma = totalPuma/(double)cell_counter;
-			totalHare = totalHare/(double)cell_counter;
-		
-			//std::cout << "The avarage number of pumas per cell is: "<< totalPuma << std::endl; 
-			//std::cout << "The avarage number of hares per cell is: "<< totalHare << std::endl;
-		} 
+			m_avg_pumas = totalPumas / (double)cell_counter;
+			m_avg_hares = totalHares / (double)cell_counter;
+		}
 		else
 		{
-			std::cout << "There is no land to calulate on. " << std::endl;
+			//  handle special case of all-water landscape with values of zero
+			m_avg_pumas = 0.0;
+			m_avg_hares = 0.0;
 		}
 	}
 
