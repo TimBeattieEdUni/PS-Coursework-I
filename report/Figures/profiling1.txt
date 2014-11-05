@@ -1,0 +1,30 @@
+
+1st profile: output from gprof on 800x800 all-land array on CP Lab
+-----------------------------------------------------------------------------------------
+Each sample counts as 0.01 seconds.
+%	cumulative	self			self	total	
+time	seconds		seconds	calls		s/call	s/call	name	
+47.00	58.77		58.77	1250		0.05	0.09	Landscape::Update()
+24.30	89.15		30.38	4806406416	0.00	0.00	Array2D<Cell>::operator()
+10.75	102.59		13.44	511439120	0.00	0.00	std::vector<>::operator[]
+------------------------------------------------------------------------------------------
+
+2nd profile: after removing bounds checking from Array2D<T>::operator()
+------------------------------------------------------------------------------------------
+Each sample counts as 0.01 seconds.
+%	cumulative	self			self	total	
+time	seconds		seconds	calls		s/call	s/call	name	
+50.30	58.25		58.25	1250		0.05	0.09	Landscape::Update()
+15.18	75.83		17.58	4806406416	0.00	0.00	Array2D<Cell>::operator()
+13.72	91.71		15.89	511439120	0.00	0.00	std::vector<>::operator[]
+------------------------------------------------------------------------------------------
+
+3rd profile: array bounds checking disabled and iteration order swapped in Landscape::Update()
+----------------------------------------------------------------------------------------------
+Each sample counts as 0.01 seconds.
+%	cumulative	self			self	total
+time	seconds		seconds	calls		s/call s/call	name
+48.54	59.65		59.65	1250		0.05	0.09	Landscape::Update()
+17.45	81.10		21.45	4806406416	0.00	0.00	Array2D<Cell>::operator()
+12.34	96.27		15.17	511439120	0.00	0.00	std::vector<>::operator[]
+----------------------------------------------------------------------------------------------
