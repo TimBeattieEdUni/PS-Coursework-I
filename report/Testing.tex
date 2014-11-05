@@ -1,0 +1,32 @@
+% Description of what testing you did and any test frameworks that were used
+\section{Testing}
+\label{Testing}
+
+\subsection{Unit testing}
+\label{unittesting}
+
+The project's unit testing was done with UnitTest++, available at
+\begin{center}
+ http://unittest-cpp.sourceforge.net
+\end{center}
+Quote from this page:
+\begin{center}
+ \textit{"UnitTest++ is a lightweight unit testing framework for C++.  It was designed to do test-driven development on a wide variety of platforms. Simplicity, portability, speed, and small footprint are all very important aspects of UnitTest++."}
+\end{center}
+
+UnitTest++ was chosen because it was freely available, cross-platform, simple to set up and use, and equipped with a small but effective set of unit testing features. 
+%Documentation for UnitTest++ can be found either on the UnitTest++ home page or in the following file in the project (once the project has been built):
+%UnitTest++/docs/UnitTest++.html
+\subsubsection{Implementation of the unittest framework}
+UnitTest++ was downloaded as a .zip file and added to the project's Git repository in the "downloads" directory.
+UnitTest++ was then integrated into the project's build system. Running "make test" in the project's top-level directory will unzip the downloaded file to the directory "UnitTest++", call UnitTest++'s makefile to build the UnitTest++ static library, run its self-tests and build plus run the project's unit tests which link in that library.
+To ensure that the binary code being unit tested was the same code included in the popsim program, the project's build system was configured to build all C++ classes into a static library which was then linked into both the popsim program and the unit test program. This avoided problems which can occur when compiler or linker settings differ between multiple builds of the same source code.
+The project's unit test program was implemented in a small C++ implementation file which provided main() and included test headers for the project's C++ classes.  Each class's test header contained one or more UnitTest++ "TEST" macros which implemented unit tests for that class.  The main() function simply contained a call to UnitTest::RunAllTests(). All test code was placed in the "test" directory.
+
+\subsubsection{Unit tests for specific classes}
+The project was begun with the firm intention of writing each class's unit tests during the development of that class, ensuring that every feature of every class would be robust and dependable before being used by the popsim program.  However, as the deadline approached, pressure was felt and several key classes were written without tests, with the intention to write tests later.
+Due to this short comming, the team then lost considerable time on bug fixing, see sec.(\ref{Debugging}).
+%a bug in the ordering of pixels in PPM and bitmask files and cells in the lanscape array: pixels in files were written by iterating over rows before columns, but elements in the array were being accessed by iterating over columns first, then rows.  The bug was present in several different classes, all of which did not yet have unit tests.
+%The bug - and the loss of a day - could have been prevented by writing even basic unit tests of the affected classes before using them in the program.  Unit tests were then immediately written for all classes.
+%
+
