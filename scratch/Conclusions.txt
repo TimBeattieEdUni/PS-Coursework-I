@@ -1,0 +1,8 @@
+Conclusions:
+
+The build system enabled programmers to work on classes, tests, and the application effectively with an edit-build-test cycle of only a few seconds.  
+
+Class Landscape was conceptually very simple - maintain a landscape and update it - but it grew into the largest and most complicated class by far.  It could be improved by creating separate classes for each task - a LandMaskApplier class to apply a land/water bitmask to the Landscape's Cell array, for example, or a PopulationApplier class to apply a population of pumas or hares. 
+
+Unit testing, if the group had done it rigorously from the start on all classes, would probably have saved the group two days lost to bugs in array-image conversion and neighbour calculation in the final week before the deadline.
+

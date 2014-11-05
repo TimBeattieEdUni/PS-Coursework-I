@@ -12,7 +12,7 @@ UnitTest++ was chosen because it was freely available, cross-platform, simple to
 
 	UnitTest++/docs/UnitTest++.html
 
-UnitTest++ was downloaded as a .zip file and added to the project's Git repository in the "downloads" directory.  UnitTest++ was then integrated into the project's build system.  Running "make test" in the project's top-level directory will unzip the downloaded file to the directory "UnitTest++", call UnitTest++'s makefile to build the UnitTest++ static library and run its self-tests, then build and run the project's unit tests which link in that library.
+UnitTest++ was downloaded as a .zip file and added to the project's Git repository in the "downloads" directory.  UnitTest++ was then integrated into the project's build system by adding it as dependency of the "test" target in the top-level Makefile, with rules which unzipped the downloaded file to the directory "UnitTest++", called UnitTest++'s Makefile to build the UnitTest++ static library and run its self-tests, and built and run the project's unit tests which linked in UnitTest++'s library.
 
 To ensure that the binary code being unit tested was the same code included in the popsim program, the project's build system was configured to build all C++ classes into a static library which was then linked into both the popsim program and the unit test program.  This avoided problems which can occur when compiler or linker settings differ between multiple builds of the same source code.
 

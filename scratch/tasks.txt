@@ -113,4 +113,48 @@ Investigate the performance of different sizes of landscapes
 
 Graphical presentation of results is strongly encouraged
 
+Still to do:
+
+See how we submit - should I make a "make tar" target?  If so, document it.
+
+Write introduction saying to unpack the tarball and run "make".
+
+Write blurb on Doxygen.
+
+Group report should present:
+	design
+	implementation
+	results of experiments
+
+design:
+	C++ classes
+
+implementation:
+	C++ main with classes
+	writing ppm files - scaling factor hard to determine
+
+experiments:
+	profiling
+	behaviour	- island with north/south divide
+			- diffusion rates set to 0
+			- max out hares
+			- bottleneck with hares on one side & pumas on the other
+			- increase hare density - pumas die out on the island - do a binary search
+
+Make ApplyRandom take a density factor.
+
+Review Doxygen comments.
+
+Do runs with different compiler flags - O4, O5, etc
+I optimised out calculations for water; investigate proportions with circular landscapes - lsgen tool can take a landscape size and a circle proportional size.
+
+Test with "arbitrary" water squares
+
+Handle negative populations - set them to zero.
+
+Explain the output files - rgb etc.
+
+Repeat timing runs on CP Labs machines
+
+If there's time: timing runs on all-land landscapes and "lots of little islands" ones to test the effect of branch prediction.
 	

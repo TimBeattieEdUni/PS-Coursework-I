@@ -1,6 +1,6 @@
 Profiling:
 
-Profiling runs were done using gprof on the CP Labs machines with an all-land 800x800 cell landscape for all runs of the program.  To save time, timing runs were done on a faster machine: a core i7 laptop with a solid-state hard drive. 
+Profiling runs were done on the CP Lab machines with an all-land 800x800 cell landscape for all runs of the program.  The CP Lab machines were chosen because of the availability of a working version of gprof, which was not present on all of the group's own computers.  Timing runs were done on a faster machine: a core i7 laptop with a solid-state hard drive.  This machine was chosen in order to save time as the CP Labs machines were considerably slower.  It was assumed that since the program's work was primarily calculation and memory access that profiling would produce reliable results even if timings were done on a different machine.
 
 For reference an initial run of the program was done and was found to take 47.437 seconds.  Profiling the the first implementation of the popsim program revealed that three functions accounted for approximately 80% of the run time:
 
@@ -51,3 +51,5 @@ A second optimisation became apparent on examination of the for loops in Landsca
 Run time with the order of iterations swapped was 12.366 seconds, a reduction of 54% from the previous implementation and a reduction of 74% from the original unoptimised implementation.
 
 Finally, another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function Landscape::Update() could access each cell's neighbours without calling Array2D::operator() four times.  Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update, reducing the number of memory accesses to non-local parts of the array.  However, there was insufficient time for this change to be implemented and tested.
+
+It would also have been interesting to see if any difference in performance could be found between runs on landscapes with different arrangements of land and water due to branch prediction as the Landscape class verifies that cell is land before performing the calculation for that cell.  A landscape consisting entirely of islands of one cell would cause the branch prediction to be wrong most if not all of the time, which would presumably reduce performance compared to a landscape with the same number of land cells arranged at the top or bottom of the landscape, corresponding to the beginning or end of the landscape array.
