@@ -1,0 +1,33 @@
+rm -f *.ppm
+echo "200"
+(time app/popsim config/perf-test-200x200.cfg landscapes/all-land-200x200.dat) > timing-run-200x200.log 2>&1
+rm -f *.ppm
+echo "400"
+(time app/popsim config/perf-test-400x400.cfg landscapes/all-land-400x400.dat) > timing-run-400x400.log 2>&1 
+rm -f *.ppm
+echo "600"
+(time app/popsim config/perf-test-600x600.cfg landscapes/all-land-600x600.dat) > timing-run-600x600.log 2>&1
+rm -f *.ppm
+echo "800"
+(time app/popsim config/perf-test-800x800.cfg landscapes/all-land-800x800.dat) > timing-run-800x800.log 2>&1
+rm -f *.ppm
+echo "1000"
+(time app/popsim config/perf-test-1000x1000.cfg landscapes/all-land-1000x1000.dat) > timing-run-1000x1000.log 2>&1
+rm -f *.ppm
+echo "1200"
+(time app/popsim config/perf-test-1200x1200.cfg landscapes/all-land-1200x1200.dat) > timing-run-1200x1200.log 2>&1
+rm -f *.ppm
+echo "1400"
+(time app/popsim config/perf-test-1400x1400.cfg landscapes/all-land-1400x1400.dat) > timing-run-1400x1400.log 2>&1
+rm -f *.ppm
+echo "1600"
+(time app/popsim config/perf-test-1600x1600.cfg landscapes/all-land-1600x1600.dat) > timing-run-1600x1600.log 2>&1
+rm -f *.ppm
+echo "1800"
+(time app/popsim config/perf-test-1800x1800.cfg landscapes/all-land-1800x1800.dat) > timing-run-1800x1800.log 2>&1
+rm -f *.ppm
+echo "2000"
+(time app/popsim config/perf-test-2000x2000.cfg landscapes/all-land-2000x2000.dat) > timing-run-2000x2000.log 2>&1
+rm -f *.ppm
+echo "timing runs complete"
+
