@@ -126,7 +126,7 @@ namespace PsCourseworkI
 																			    + nbr_e.m_hares
 																			    + nbr_w.m_hares
 																			    - land_nbrs * cell_old.m_hares));
-
+				
 				cell_new.m_pumas = cell_old.m_pumas + m_cfg.m_dt * ( m_cfg.m_b * cell_old.m_hares * cell_old.m_pumas
 															    - m_cfg.m_m * cell_old.m_pumas
 															    + m_cfg.m_l * ( nbr_n.m_pumas
@@ -134,6 +134,16 @@ namespace PsCourseworkI
 																			  + nbr_e.m_pumas
 																			  + nbr_w.m_pumas
 																			  - land_nbrs * cell_old.m_pumas));
+
+				//  assume negative values simulate a population reducing to zero
+				if (cell_new.m_hares < 0.0)
+				{
+					cell_new.m_hares = 0.0;
+				}
+				if (cell_new.m_pumas < 0.0)
+				{
+					cell_new.m_pumas = 0.0;
+				}
 			}
 		}
 	}
@@ -182,7 +192,7 @@ namespace PsCourseworkI
 	/// @details      Sets the population density of pumas in each landscape cell
 	///               to a random value between 0 and 1.
 	///
-	void Landscape::ApplyRandomPumas()
+	void Landscape::ApplyRandomPumas(double const density)
 	{
 		for (unsigned int i = 0; i < m_landscape_size.m_x; ++i)
 		{
@@ -190,7 +200,7 @@ namespace PsCourseworkI
 			{
 				if (m_array_old(i + 1, j + 1).m_land)
 				{
-					m_array_old(i + 1, j + 1).m_pumas = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+					m_array_old(i + 1, j + 1).m_pumas = density * static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
 					m_array_new(i + 1, j + 1).m_pumas = m_array_old(i + 1, j + 1).m_pumas;
 				}
 			}
@@ -202,7 +212,7 @@ namespace PsCourseworkI
 	/// @details      Sets the population density of hares in each landscape cell
 	///               to a random value between 0 and 1.
 	///
-	void Landscape::ApplyRandomHares()
+	void Landscape::ApplyRandomHares(double const density)
 	{
 		for (unsigned int i = 0; i < m_landscape_size.m_x; ++i)
 		{
@@ -210,7 +220,7 @@ namespace PsCourseworkI
 			{
 				if (m_array_old(i + 1, j + 1).m_land)
 				{
-					m_array_old(i + 1, j + 1).m_hares = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+					m_array_old(i + 1, j + 1).m_hares = density * static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
 					m_array_new(i + 1, j + 1).m_hares = m_array_old(i + 1, j + 1).m_hares;
 				}
 			}

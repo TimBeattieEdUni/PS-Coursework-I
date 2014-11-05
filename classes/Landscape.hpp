@@ -51,8 +51,8 @@ namespace PsCourseworkI
 			///< Applies puma or hare population.
 			void ApplyPopulation(PopulationMap const& population, EPopulationType type);  
 
-			void ApplyRandomPumas();                      ///< Applies random puma population density.
-			void ApplyRandomHares();                      ///< Applies random hare population density.
+			void ApplyRandomPumas(double const density);  ///< Applies random puma population density.
+			void ApplyRandomHares(double const density);  ///< Applies random hare population density.
 		
 		private:
 			Landscape(Landscape const& rhs);              ///< Copy constructor.

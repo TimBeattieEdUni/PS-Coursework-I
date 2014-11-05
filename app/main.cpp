@@ -57,10 +57,31 @@ int main(int argc, char* argv[])
 		Landscape landscape(cfg);
 		landscape.ApplyLandWaterMask(land_water_mask.GetArray());
 
-		landscape.ApplyRandomPumas();
-		//landscape.ApplyPackPumas(1);
-		landscape.ApplyRandomHares();
+		landscape.ApplyRandomPumas(2.0);
+		landscape.ApplyRandomHares(4.0);
 
+		//  fill top half of map with pumas and bottom with hares
+//		Landscape::PopulationMap pumas(Size(cfg.m_Nx, cfg.m_Ny));
+//		Landscape::PopulationMap hares(Size(cfg.m_Nx, cfg.m_Ny));
+//		for (unsigned int x = 0; x < cfg.m_Nx; ++x)
+//		{
+//			for (unsigned int y = 0; y < cfg.m_Ny; ++y)
+//			{
+//				if (y < cfg.m_Ny / 2)
+//				{
+//					pumas(x, y) = 0.5;
+//					hares(x, y) = 0.0;
+//				}
+//				else
+//				{
+//					pumas(x, y) = 0.0;
+//					hares(x, y) = 0.5;					
+//				}
+//			}
+//		}
+//		landscape.ApplyPopulation(pumas, Landscape::ePumas);
+//		landscape.ApplyPopulation(hares, Landscape::eHares);
+		
 		//  initialise PPM file writer
 		LandscapePpmWriter ls_writer(landscape);
 
