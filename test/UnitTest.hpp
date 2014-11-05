@@ -18,6 +18,6 @@
 #include "AppArgs-Test.hpp"
 #include "PpmFile-Test.hpp"
 #include "Landscape-Test.hpp"
-
+#include "PopulationAverager-test.hpp"
 
 #endif  //  #ndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H
