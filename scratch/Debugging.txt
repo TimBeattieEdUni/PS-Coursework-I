@@ -1,6 +1,6 @@
 Debugging:
 
-The "gdb" debugger was only used infrequently to ensure correct flow through the program, but one occasion it proved to be essential: class "Landscape" had a subtle coding error in its calculation of the number of land neighbours for each cell, and this caused the calculation of both hare and puma populations to be incorrect.  This was a seemingly-trivial part of the code, and as such it was overlooked as a possible source of the error.  Originally, the code was as follows:
+The "gdb" debugger was only used infrequently to ensure correct flow through of the program, but one occasion it proved to be essential: class "Landscape" had a subtle coding error in its calculation of the number of land neighbours for each cell, and this caused the calculation of both hare and puma populations to be incorrect.  This was a seemingly-trivial part of the code, and as such it was overlooked as a possible source of the error.  Originally, the code was as follows:
 
 	//  number of neighbouring land cells
 	unsigned int land_nbrs = nbr_n.m_land ? 1 : 0
