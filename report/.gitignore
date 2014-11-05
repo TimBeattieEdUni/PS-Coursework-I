@@ -4,6 +4,8 @@
 *.aux
 *.log
 *.toc
+*.tex.backup
+*.pdf
 
 
 # Output from Makefile.
