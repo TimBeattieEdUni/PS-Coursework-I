@@ -29,7 +29,6 @@ profile: TARGET=profile
 
 release: doc report app test
 debug:   doc report app test
-profile: app
 
 clean:
 	$(MAKE) -C app      clean
@@ -60,6 +59,12 @@ test: classes testlib
 classes:
 	$(MAKE) -C classes $(TARGET)
 
+profile:
+	$(MAKE) -C classes clean
+	$(MAKE) -C app clean
+	$(MAKE) -C classes $(TARGET)
+	$(MAKE) -C app $(TARGET)
+	
 
 ##############################################################################
 #  3rd-party unit test library.
