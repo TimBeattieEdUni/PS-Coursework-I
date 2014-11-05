@@ -1,6 +1,9 @@
 # Git ignore for directory "report".
 
 # Output from pdflatex.
+*.aux
+*.log
+*.toc
 
 
 # Output from Makefile.
