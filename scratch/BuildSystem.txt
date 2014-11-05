@@ -1,15 +1,21 @@
-Work on Landscape with debugger & document this.
-Blurb about C++
-Once it's working, experiment with zero diffusion and other edge cases.
-
-Blurb: handout says y starts from the bottom - surely it doesn't matter if our image files start from the bottom?  X across, Y down matches .ppm file, so we chose that as our internal representation and went with it.  BmpFile needs to convert to this.
-
 The build system:
 
-The project's build system was implemented using GNU Make as several group members were already familiar with this tool.  Make was used to build the project's program, unit test, Doxygen documentation, report in LaTeX format, and unit testing framework (see section "Unit Testing"). 
+The project's build system was implemented using GNU Make since several group members were already familiar with this tool.  The project's source code was separated into three directories: "classes", "app", and "test", which contained the project's C++ classes, main application program, and unit test program, respectively.  Separate directories were also created for building the project's Doxygen documentation and for compiling the group report from LaTeX source.  A set of recursive Makefiles was set up to perform the following tasks:
 
-A top-level Make include file provided common settings for directory names, compiler options, 
+	Build the C++ classes into a static library.
+	Build the application, linking in the class library.
+	Unpack and build the unit test framework (see section "Unit Testing").
+	Build the unit test program, linking in the class library.
+	Run the unit test program.
+	Compile the group report LaTeX source into a PDF document.
+	Generate Doxygen documentation for all source code.
 
-Measure performance difference between release and debug builds.
+For an explanation of the reasons for using a static library, see section "Unit Testing".  
 
+The main goals of the build system were to save programmer time and reduce errors, and to this end every task which could reasonably be automated was added to the build system.  Where possible, dependencies between tasks were implemented.  For example, the "test" target was made to depend on the "classes" directory and the UnitTest++ library, ensuring that these were built if necessary before building and running the unit test program.  As another example, the "doc" target was made to depend on all three directories which contained C++ source code, ensuring that the Doxygen generated documentation would be rebuilt if any source had been modified.
 
+Common settings for C++ compilation and linking were placed in a top-level Make include file which was included by the three subdirectory Makefiles which built source code.  These settings included directory and file names and the selection of compiler, linker, and library archiver with their command-line options.  This enabled these settings to be changed in one place for all source code.  
+
+The default target in the top-level Makefile was "release", which performed all tasks in the list above.  Following a common pattern, a second target "debug" was added which differed from "release" only in its compiler settings: release builds were optimised with the "-O3" compiler flag, and debug builds were compiled with debug symbols using "-g" and had the "_DEBUG" macro defined with "-D_DEBUG".
+
+For profiling the application, a third top-level target was added: "profile".  This target ran "make clean" on the directories "app" and "classes" and rebuilt both with profiling enabled using the "-pg" compiler flag.  To build the application again without profiling support, it was first necessary to run "make clean" manually either at the top level or in both the "app" and "classes" directories.  As with all manual tasks, it would have been beneficial to automate this, but the group did not find a way to cause "make" to clean and rebuild the application and classes if and only if the previous build had been a profiling build.
