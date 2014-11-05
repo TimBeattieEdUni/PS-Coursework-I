@@ -27,8 +27,8 @@ release: TARGET=release
 debug:   TARGET=debug
 profile: TARGET=profile
 
-release: doc app test
-debug:   doc app test
+release: doc report app test
+debug:   doc report app test
 profile: app
 
 clean:
@@ -43,13 +43,15 @@ clean:
 ##############################################################################
 #  Dependencies.
 
-.PHONY: doc classes app test
+.PHONY: doc report classes app test
 
 app: classes
 	$(MAKE) -C app $(TARGET)
 
 doc: classes app test
 	$(MAKE) -C doc
+
+report:
 	$(MAKE) -C report
 
 test: classes testlib

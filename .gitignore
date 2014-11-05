@@ -16,6 +16,10 @@ classes/libpopsim-classes.a
 *.d
 
 
+# App output
+*.ppm
+
+
 # Profiling output
 gmon.out
 
