@@ -2,46 +2,49 @@
 \section{Assignment of tasks to group members}
 \label{Assignment of tasks to group members}
 
-At the start of the project there was no strict assignemt of tasks but rather, as mentioned in sec.(\ref{Planning}), a task list. It was agreed upon that one plainly picks a task to work on, starting with the ones needed for the basic implementation, and writes an email to the group members about what he is working on to prevent two people working on the same item.
-As the deadline approached tasks where assigned mainly on the basis of each persons skills and knowlegde of the allready existing parts of the programm in order to get the best performance. This led to the fact that as time went on and the programm code got more involved it was increasingly difficult for groupmembers who had not previously worked on the code to contribute much to the programms development.
-The following is a crude listing of tasks with respect to the group members.
+Tasks were assigned to group members according to their skills and experience taking into account the need for some tasks, such as setting up revision control and creating a build system, to be done first.  
+The group was evenly divided between those with strong skills in C++ and LaTex.  
+These were considered equally important due to the division of marks between the code and the report.
 
+Once the essentials were in place, the division of tasks was driven by the task list (see sec.(\ref{Planning})).  
+Each group member chose a task which was both high-priority and suited to their skills, informed the group that they were working on that specific task, completed the task, updated the task list, and repeated the process.  
+This process kept all group members busy throughout the project's progress.
+
+The resulting division of labour was as follows:
+
+Tim Beattie:
 \begin{itemize}
- \item Tim:
-  \begin{itemize}
-        \item Set up Git repository
-	\item Create build system
-	\item Set up unit testing framework
-	\item Set up Doxygen documentation
-	\item Application and class design
-	\item Review and tidy source code
-	\item Implement configuration in text file
-	\item Implement landscape generator tool
-	\item Profiling and optimisation
-	\item 
-   \end{itemize}
-
-  \item Marton:
-    \begin{itemize}
-	\item Implement population update equations
-	\item Implement population averager
-    \end{itemize}
-
- \item Max:
-  \begin{itemize}
-        \item Review and tidy LaTeX source for group report
-	\item Implement timing
-	\item create bitmap-files for testing
-   \end{itemize}
-
-\item David:
-  \begin{itemize}
-	\item Implement bitmask file loader
-	\item Implement PPM file writer
-	\item Write skeleton LaTeX source for group report
-  \end{itemize}
-
-
-
+	\item Set up repository on GitHub.
+	\item Create build system.
+	\item Set up unit testing framework.
+	\item Set up Doxygen.
+	\item Design of C++ classes.
+	\item Implement configuration file reader.
+	\item Profiling and optimisation.
+	\item Review and tidy C++ source code.
 \end{itemize}
- 
+
+David Canning:
+\begin{itemize}
+	\item Implement bitmask file reader.
+	\item Implement PPM file writer.
+	\item Create initial LaTex framework for group report.
+\end{itemize}
+
+
+Marton Feigl:
+\begin{itemize}
+	\item Implement population density calculation.
+	\item Implement population average calculation.
+\end{itemize}
+
+Max Sorantin:
+\begin{itemize}
+	\item Implement timing measurement.
+	\item Create land/water bitmask files for testing.
+	\item Create graphs for group report.
+	\item Review and tidy LaTeX source for group report.
+\end{itemize}
+
+The top-level design of the program was worked on by the group together.  Each group member wrote text for the group report and reviewed text written by others.
+

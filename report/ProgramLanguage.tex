@@ -1,6 +1,17 @@
 % Description of the programming language you used and how useful it was
 \section{Programming Language}
 \label{Programming Language}
-The project's source code was written in C++ which is a general purpose, object-oriented programming language. The group members were all familiar with the functionalities the language can provide, and thus development of the project artefact was created with relative ease. The main usefulness of the language was its object orientation, which easily enabled modular programming, with the use of classes and Abstract Data Types. 
-As described in Revision Control, and Unit Testing chapters of this report, modular programming created a very effective development structure. Each programmer was able to code separate sections of the project, along with related unit tests, and then add that section to the main structure of the program. Changes added to classes by different programmers didn't affect other regions of the code. Continuous development was achieved with a fair number of programming tasks divided between the programmers and carried out in a relatively independent work cycle.
-Each class was within the PsCourseworkI namespace to allow easy and transparent access of different objects within the project. Due to the use of abstraction and object-orientation the produced code was easily readable and understandable by the group. The program itself became self-documented as the low level implementations were hidden, and \textit{real-world} objects were used during coding (e.g. PsCourseworkI::Landscape, PsCourseworkI::Cell).
+
+The project's source code was written in C++ which is a general purpose, object-oriented programming language. 
+The group members were all familiar with the language's features, and this made development of the popsim program relatively straightforward. 
+C++'s Object Oriented features easily enabled modular programming with program implementation details abstracted away behind interfaces.
+
+As described in Section~\ref{Revision Control} and Section~\ref{Testing} this modularity lent itself well to a "many small tasks" approach to working as a group.  
+Each group member was able to work on separate parts of the program and add their work to the Git repository with minimal impact on the work of others.
+
+Using C++ classes to create objects with both names and behaviours enabled a short $main.cpp$ which described what the program should do rather than exposing the details of how it was done.  
+For example, the landscape was updated by calling $Landscape::Update()$ and .ppm files were written by calling LandscapePpmWriter::Write().
+
+Finally, C++'s common RAII idiom meant that very little work had to be done to release resources when the program no longer needed them.  
+For example, using a $std::vector$ in class $Array2D$ meant that the dynamically-allocated array was automatically freed from the heap and opened files were automatically closed by class std::fstream. 
+No code was required in the destructor of any class written by the group.

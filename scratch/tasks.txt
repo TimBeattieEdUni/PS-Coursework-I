@@ -2,12 +2,7 @@ Still to do, in order of priority
 	Graphs of performance - must include definitions of terms or formulas to define them.
 	Performance text should "justify choice of metrics when investigating performance."
 	Spaces between paragraphs in report - can this be a global setting?
-	Add dependencies to report build.
 	Ensure all code is tested - make sure #included in UnitTest.hpp.
-	Text about design of application.
-	Text about implementation.
-	Reduce detail in timing output - nanoseconds aren't useful.
-	Explanation of .ppm files - scaling of values and what each color represents.
 	Fix scaling factor - apply densities between 0 and 5 and make scaling 10
 	Contribution questionnaire.
 	Text about compiler warning flags.
@@ -19,7 +14,6 @@ Still to do, in order of priority
 	Mention astyle for code clean-up.
 	Investigation with north pumas and south hares - shows border between them blurring.
 	Investigation on island - what density of hares allows pumas to survive?
-	Ability to set up initial population densities.
 	Investigation with packs of pumas.
 	Test performance as land/water ratio changes.
 	Test performance as land varies from one continent to many small islands - branch prediction should be killed by this.
