@@ -20,5 +20,6 @@
 #include "Landscape-Test.hpp"
 #include "PopulationAverager-Test.hpp"
 #include "AppConfig-Test.hpp"
+#include "BmpFile-Test.hpp"
 
 #endif  //  #ndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H
