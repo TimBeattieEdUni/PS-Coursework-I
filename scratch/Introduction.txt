@@ -1,0 +1,8 @@
+Introduction
+
+Unpack tarball with tar -xvf popsim.tar
+cd popsim and run "make"
+doxygen documentation in doc/doxygen/index.html
+output: blue for water, red for pumas, green for hares
+command line options - have a landscape file and population files ready to run
+

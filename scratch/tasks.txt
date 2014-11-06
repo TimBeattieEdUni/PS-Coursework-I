@@ -1,167 +1,31 @@
-Contribution questionnaire.
-
-Add a "make tarball" step for handing it in!
-
-
-Tasks with breakdown:
-
-Set up version control:
-	▪	Github, users, permissions
-	▪	Git ignore file
-	▪	Rules - only buildable, working, tested, commented code goes in, everyone updates every day, commit every day, make commits atomic, if you break it you fix it straight away, etc.
-
-Build system:
-	▪	Point is to turn the repository into the binary in one easy step.
-	▪	Compiler options - all warnings, warnings as errors.
-	▪	(Polish) Separate directories with recursive makefiles and intermediate libraries built.
-	▪	Build-from-clean tests so we know the prof can build it.
-	▪	Top-level make all should build everything and run tests - encourages everyone to test every time they build.  Make check should be a top-level target that just runs the binary.
-
-Test framework:
-	▪	UnitTest++ - using a test framework is okay.
-	▪	Directory structure - app, test, classes, doc, with classes built into a library which app and tests link in.
-	▪	Add UnitTest++ to source tree and build system.
-	▪	Test every public function on every class.
-	▪	Into makefiles as "make check".
-	▪	Test everything with 2Kx2K landscapes plus halo.
-	▪	Performance testing - timing with UnitTest++?
-
-"Computational kernel":
-	▪	Equations in handout implemented in code - "discrete versions will be given?"
-	▪	Class to represent the state of the landscape.
-	▪	Class to represent a single grid cell.
-	▪	Water cells with 0 populations.
-	▪	Halo of cells with 0 - make them water.
-	▪	Run sim from t=0 to t=500.
-
-I/O:
-	▪	Initial landscape - text file with dimensions and land/water mask.
-	▪	Initial distribution for Hares and Pumas: both even distributed, hares even pumas on 			random spots. Polish: Random spots of pumas with gaussian distribution of setable 			variance.
-	▪	Inversions! - landscape is indexed from bottom up.
-	▪	Appendices A & B have bits on generating your own land/water files.
-	▪	Subsequent steps as PPM image files.
-	▪	(Polish) Ability to store initial populations in a file and load it - then set any pops in water to zero and issue a warning.
-	▪	(Polish) Config file for parameters.
-	▪	(Polish) Initial distribution of pumas - "large group of pumas are placed in a confined area, with a uniform distribution of hares."
-	▪	(Polish) Random initial config.
-
-Performance tests:
-	▪	Choose a simple method for timing - doesn't matter what - so all runs are handled the same way.
-	▪	Always print the time taken by each run.
-	▪	Optimisation compiler flags.
-	▪	Profiling to find the 80/20.
-	▪	Scaling as landscape grows.
-	▪	Scaling as water/land ratio decreases.
-	▪	Analysis and thought are what will get points, not raw data.
-	▪	Document optimisation - do some dumb code first so we can optimise it easily?
-	▪	Graphs of performance characteristics.
-
-Validation of results:
-	▪	(Polish) compare results with an analytical solution if we can come up with one.
-
-(Polish) Coding standard:
-	▪	Pick one and go with it.
-	▪	Use astyle to apply it.
-
-Report:
-	▪	In version control so we can all add to it as we go.
-	▪	David to show us all a little LaTeX?
-	▪	Introduction.
-	▪	Planning.
-	▪	What who did.
-	▪	Design.
-	▪	How C++ was useful & how we used it.
-	▪	How Git and GitHub were useful & how we used them.
-	▪	Build tools.
-	▪	Testing.
-	▪	Debugging.
-	▪	Performance testing & analysis.
-	▪	Conclusions.
-	▪	8-12 pages.
-
-(Polish) Optimisation:
-
-(Polish) User Interface:
-	▪	Minimum is batch mode - what else could we do aside from a full-blown GUI?
-
-
-Extra bits:
-
-deltaX = deltaY = 1; 1<=Nx<=2000; 1<=Ny<=2000; 0<= r, a, b, m, k, l, deltaT <=1;
-has to be settable by user.
-
-Everyone has coding/development work
-
-Carry out Experiments/Investigations/Analysis of:
-Investigate the effects of compiler optimisation flags
-Identify and quantify the main sources of overhead
-Investigate the effects of landscapes with different proportions of land and water
-Investigate the performance of different sizes of landscapes
-	All of these are not required, nor we are restricted to only these.
-
-	Credit will be given for intelligent and insightful analysis of both results and performance
-
-	Minimum: working implementation; Extra: performance analysis, optimisation, and investigations;
-
-Graphical presentation of results is strongly encouraged
-
-Still to do:
-
-See how we submit - should I make a "make tar" target?  If so, document it.
-
-Write introduction saying to unpack the tarball and run "make".
-
-Write blurb on Doxygen.
-
-Group report should present:
-	design
-	implementation
-	results of experiments
-
-design:
-	C++ classes
-
-implementation:
-	C++ main with classes
-	writing ppm files - scaling factor hard to determine
-
-experiments:
-	profiling
-	behaviour	- island with north/south divide
-			- diffusion rates set to 0
-			- max out hares
-			- bottleneck with hares on one side & pumas on the other
-			- increase hare density - pumas die out on the island - do a binary search
-
-Explain the output files - rgb etc.
-Debugging
-Tarball
-Graph: timing runs on cp labs and get them to Max - performance as N increased on:
-	- original code
-	- without bounds checking
-	- with for loops reversed
-	- then -O4
-	- then -O5
-Explain Doxygen use.
-Explain compiler flags.
-Include formula for calculating every graph axis's values - "performance".
-Mention timing runs were done piped to file, may affect performance.
-All classes tested and included in UnitTest.hpp.
-Run simple map and watch border between hares & pumas.
-Run the island and get populations right so pumas survive.
-Simulation visually verified using small.dat; pumas die out unless hare density is increased to…?
-Write up landscape generation tool.
-
-Review Doxygen comments.
-
-I optimised out calculations for water; investigate proportions with circular landscapes - lsgen tool can take a landscape size and a circle proportional size.
-
-Test with "arbitrary" water squares
-
-Add link to GitHub project to report.
-
-If there's time: timing runs on all-land landscapes and "lots of little islands" ones to test the effect of branch prediction.
-Tidy up the timing code at the end.
-Design: Landscape swapping its arrays meant that you had to get a new one every time you wanted to use it.  This made its interface "easy to use wrong."
-Test population averager handles all water/zero population
-Mention raw data in directory "performance".
+Still to do, in order of priority
+	Add a "make tarball" step for handing it in.
+	Test what we're going to submit - unpack, make, and run on a fresh new copy.
+	Introduction to say how to unpack the tarball and build the project.
+	Graphs of performance - must include definitions of terms or formulas to define them.
+	Performance text should "justify choice of metrics when investigating performance."
+	Ensure all code is tested - make sure #included in UnitTest.hpp.
+	Text about design of application.
+	Text about implementation.
+	Reduce detail in timing output - nanoseconds aren't useful.
+	Explanation of .ppm files - scaling of values and what each color represents.  
+	Fix scaling factor - apply densities between 0 and 5 and make scaling 10
+	Contribution questionnaire.
+	Text about compiler warning flags.
+	Remove unused constructors and assignment operators.
+	Remove unused constructors and assignment operators.
+	Performance text: timing runs were piped to file, which may have improved speed.
+	Add link to GitHub project to report.
+	Text about Doxygen why everything is commented even if obvious.  Where to put this?
+	Mention astyle for code clean-up.
+	Investigation with north pumas and south hares - shows border between them blurring.
+	Investigation on island - what density of hares allows pumas to survive?
+	Ability to set up initial population densities.
+	Investigation with packs of pumas.
+	Test performance as land/water ratio changes.
+	Test performance as land varies from one continent to many small islands - branch prediction should be killed by this.
+	Further investigations island with ithsmus between large areas of pumas on one side and hares on the other
+	Further investigation: diffusion rates set to 0. 
+	Write up landscape generation tool.
+	Test population averager handles all water/zero population
+	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
