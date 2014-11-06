@@ -28,3 +28,4 @@ Still to do, in order of priority
 	Write up landscape generation tool.
 	Test population averager handles all water/zero population
 	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
+	Should "Figures" directory be in report or in scratch?
