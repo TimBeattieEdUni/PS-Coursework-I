@@ -4,7 +4,7 @@ PS-Coursework-I
 Programming Skills Coursework I
 
 
-To get started, run "make" in the top-level directory.  If you just want to run the application, type the following command, still in the top-level directory:
+To get started, run "make" in the top-level directory.  Once make has completed, if you just want to run the application, type the following command, still in the top-level directory:
 
 	app/popsim config/popsim.cfg landscapes/small.dat
 
