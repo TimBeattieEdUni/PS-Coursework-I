@@ -30,3 +30,7 @@ gmon.out
 
 # OS X workings
 .DS_Store
+
+
+# Tarball
+*.tar.gz

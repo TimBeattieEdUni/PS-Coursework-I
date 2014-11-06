@@ -1,7 +1,4 @@
 Still to do, in order of priority
-	Add a "make tarball" step for handing it in.
-	Test what we're going to submit - unpack, make, and run on a fresh new copy.
-	Introduction to say how to unpack the tarball and build the project.
 	Graphs of performance - must include definitions of terms or formulas to define them.
 	Performance text should "justify choice of metrics when investigating performance."
 	Spaces between paragraphs in report - can this be a global setting?
@@ -10,7 +7,7 @@ Still to do, in order of priority
 	Text about design of application.
 	Text about implementation.
 	Reduce detail in timing output - nanoseconds aren't useful.
-	Explanation of .ppm files - scaling of values and what each color represents.  
+	Explanation of .ppm files - scaling of values and what each color represents.
 	Fix scaling factor - apply densities between 0 and 5 and make scaling 10
 	Contribution questionnaire.
 	Text about compiler warning flags.
@@ -27,8 +24,10 @@ Still to do, in order of priority
 	Test performance as land/water ratio changes.
 	Test performance as land varies from one continent to many small islands - branch prediction should be killed by this.
 	Further investigations island with ithsmus between large areas of pumas on one side and hares on the other
-	Further investigation: diffusion rates set to 0. 
+	Further investigation: diffusion rates set to 0.
 	Write up landscape generation tool.
 	Test population averager handles all water/zero population
 	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
 	There's an umlaut over the U in UnitTest++ - why?
+	Should "Figures" directory be in report or in scratch?
+	Pad output file names with zeroes so they list in order.

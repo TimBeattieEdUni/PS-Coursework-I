@@ -52,3 +52,10 @@ LIBS      =
 DOWNLOADDIR   = downloads
 TESTLIBZIP    = $(DOWNLOADDIR)/unittest-cpp-1.4.zip
 TESTLIBDIR    = UnitTest++
+
+
+##############################################################################
+#  Tarball for submission.
+
+TARFILE = popsim.tar.gz
+TARBITS = app classes doc downloads Makefile Makefile.inc README.md report test
