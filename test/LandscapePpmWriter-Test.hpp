@@ -126,6 +126,12 @@ TEST(LandscapePpmWriter)
 	CHECK(0 == value);
 	ppm_file >> value;
 	CHECK(255 == value);
+	
+	if (remove(filename.c_str()))
+	{
+		std::cout << "warning: failed to remove LandscapePpmWriter test output file \"" << filename << "\" after test" ;
+		std::cout << "File should be removed manually" << std::endl;
+	}
 }
 
 
