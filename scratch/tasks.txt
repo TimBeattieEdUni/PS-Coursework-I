@@ -1,12 +1,4 @@
-Task design and breakdown - list deliverables, then break them down as much as possible.
-Write code.
-Do experiments to analyse its performance.
-Write group report - describes design & implementation, and presents results of experiments.
 Contribution questionnaire.
-
-Equations - discrete versions we can use will be given?
-Indexing is by column, then by row, from the bottom-left.
-
 
 Add a "make tarball" step for handing it in!
 
@@ -141,20 +133,35 @@ experiments:
 			- bottleneck with hares on one side & pumas on the other
 			- increase hare density - pumas die out on the island - do a binary search
 
-Make ApplyRandom take a density factor.
+Explain the output files - rgb etc.
+Debugging
+Tarball
+Graph: timing runs on cp labs and get them to Max - performance as N increased on:
+	- original code
+	- without bounds checking
+	- with for loops reversed
+	- then -O4
+	- then -O5
+Explain Doxygen use.
+Explain compiler flags.
+Include formula for calculating every graph axis's values - "performance".
+Mention timing runs were done piped to file, may affect performance.
+All classes tested and included in UnitTest.hpp.
+Run simple map and watch border between hares & pumas.
+Run the island and get populations right so pumas survive.
+Simulation visually verified using small.dat; pumas die out unless hare density is increased to…?
+Write up landscape generation tool.
 
 Review Doxygen comments.
 
-Do runs with different compiler flags - O4, O5, etc
 I optimised out calculations for water; investigate proportions with circular landscapes - lsgen tool can take a landscape size and a circle proportional size.
 
 Test with "arbitrary" water squares
 
-Handle negative populations - set them to zero.
-
-Explain the output files - rgb etc.
-
-Repeat timing runs on CP Labs machines
+Add link to GitHub project to report.
 
 If there's time: timing runs on all-land landscapes and "lots of little islands" ones to test the effect of branch prediction.
-	
+Tidy up the timing code at the end.
+Design: Landscape swapping its arrays meant that you had to get a new one every time you wanted to use it.  This made its interface "easy to use wrong."
+Test population averager handles all water/zero population
+Mention raw data in directory "performance".
