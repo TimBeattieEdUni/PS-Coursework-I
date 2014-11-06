@@ -6,8 +6,10 @@
 #
 #  Default target: release.
 #
-#  To do: switching between release and debug builds requires a "make clean"
-#  first.
+#  To do: Switching between release and debug builds requires a "make clean" in
+#         between, as does switching from a profiling build to a release or
+#         debug build.
+#
 
 
 ##############################################################################
@@ -21,7 +23,7 @@ include Makefile.inc
 
 default: release
 
-.PHONY: release debug clean doc profile
+.PHONY: release debug clean doc profile tar
 
 release: TARGET=release
 debug:   TARGET=debug
@@ -30,12 +32,16 @@ profile: TARGET=profile
 release: doc report app test
 debug:   doc report app test
 
+tar: clean
+	tar -cvzf $(TARFILE) $(TARBITS)
+
 clean:
 	$(MAKE) -C app      clean
 	$(MAKE) -C test     clean
 	$(MAKE) -C classes  clean
 	$(MAKE) -C doc      clean
 	$(MAKE) -C report   clean
+	rm -rf $(TARFILE)
 	rm -rf $(TESTLIBDIR)
 
 
@@ -64,7 +70,7 @@ profile:
 	$(MAKE) -C app clean
 	$(MAKE) -C classes $(TARGET)
 	$(MAKE) -C app $(TARGET)
-	
+
 
 ##############################################################################
 #  3rd-party unit test library.
