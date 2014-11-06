@@ -3,17 +3,21 @@ PS-Coursework-I
 
 Programming Skills Coursework I
 
-To get started, run "make" in the top-level directory.  This will perform the following steps:
 
-	Build the popsim class library: classes/libpopsim-classes.a.
-	Build the popsim application: app/popsim.
-	Unpack and build the unit test framework: UnitTest++.
-	Build the unit test application: test/popsim-test.
-	Run the unit test application.
-	Generate source code documentation: doc/doxygen/index.html.
-	Generate the LaTeX group coursework report: report/report.pdf.	
+To get started, run "make" in the top-level directory.  If you just want to run the application, type the following command, still in the top-level directory:
 
-Failure at any stage will halt the make process.
+	app/popsim config/popsim.cfg landscapes/small.dat
+
+
+To use an alternative configuration and land bitmask, type:
+
+	app/popsim <cfgfile> <mapfile>
+
+where:
+
+	<cfgfile> is a suitable configuration file (examples can be found in directory "config")
+	<mapfile> is a land/water bitmask file (examples can be found in directory "landscapes")
+
 
 For faster builds, set the environment variable MAKEFLAGS as follows:
 
