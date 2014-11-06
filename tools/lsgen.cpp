@@ -19,8 +19,6 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @brief      Program entry point.
 ///
-/// @details    
-///
 /// @param      argc Standard argument count.
 /// @param      argv Standard argument list.
 ///
