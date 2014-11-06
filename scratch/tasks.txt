@@ -1,6 +1,4 @@
 Still to do, in order of priority
-	Test what we're going to submit - unpack, make, and run on a fresh new copy.
-	Introduction to say how to unpack the tarball and build the project.
 	Graphs of performance - must include definitions of terms or formulas to define them.
 	Performance text should "justify choice of metrics when investigating performance."
 	Ensure all code is tested - make sure #included in UnitTest.hpp.
@@ -29,3 +27,4 @@ Still to do, in order of priority
 	Test population averager handles all water/zero population
 	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
 	Should "Figures" directory be in report or in scratch?
+	Pad output file names with zeroes so they list in order.

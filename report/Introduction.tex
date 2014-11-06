@@ -1,2 +1,33 @@
 % Short Introduction
 \section{Introduction}
+\label{Introduction}
+This report describes a group project to develop a program which simulated puma and hare populations in a landscape.  The software development process from planning to documentation is covered, as is a brief investigation into the behaviour of the simulation.
+
+The project was submitted as a compressed tar file, "popsim.tar.gz" which can be unpacked with the following command:
+
+\begin{lstlisting}
+	tar -xvzf popsim.tar.gz
+\end{lstlisting}
+
+Once the tar file is unpacked in the current directory the project can be built with:
+
+\begin{lstlisting}
+	make
+\end{lstlisting}
+
+This will build the program, build and run the project's unit tests, generate Doxygen documentation for all source code in the project, and compile this report document from LaTeX source.  The program is called "popsim" and can be found in the directory "app" in the directory where the tar file was unzipped.  An example configuration file and landscape bitmask are also included in the "app" directory.  The program can be run using these files as follows:
+
+\begin{lstlisting}
+	cd app
+	./popsim popsim.cfg small.dat
+\end{lstlisting}
+
+Running the program without any arguments will print a short "usage" message.
+
+Documentation generated from the project's source code can be found in the following file:
+
+\begin{lstlisting}
+	doc/doxygen/index.html
+\end{lstlisting}
+
+There follows a description of each stage of the project's development.
