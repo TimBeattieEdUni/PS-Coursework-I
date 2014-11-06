@@ -18,15 +18,19 @@ FLAGS  = -halt-on-error
 #  Source and output.
 
 SRC    = report.tex
-OUT    = $(SRC:.tex=.pdf)
-TOC    = $(SRC:.tex=.toc)
-AUX    = $(SRC:.tex=.aux)
+REPORT = $(SRC:.tex=.pdf)
 
-#  pdflatex writes its own log as well as lots of output, so we have two logs
+DEP    = BuildTools.tex Conclusion.tex Debugging.tex Design.tex FurtherWork.tex Introduction.tex Performance.tex Planning.tex ProgramLanguage.tex RevisionControl.tex Taskassignment.tex Testing.tex
+TOC    = $(wildcard *.toc)
+AUX    = $(wildcard *.aux)
+
+#  two logs because pdflatex writes its own log as well as lots of output
 LLOG   = $(SRC:.tex=.log)
 MLOG   = make.log
 
-CLEANFILES = $(OUT) $(TOC) $(AUX) $(LLOG) $(MLOG)
+#  pdflatex writes errors to individual file logs
+ALLLOG = $(wildcard *.log)
+CLEANFILES = $(REPORT) $(TOC) $(AUX) $(LLOG) $(MLOG) $(ALLLOG) *.backup *~
 
 
 ##############################################################################
@@ -36,9 +40,9 @@ default: report
 
 .PHONY: report clean
 
-report: $(OUT)
+report: $(REPORT)
 
-$(OUT) : $(SRC)
+$(REPORT) : $(SRC) $(DEP)
 	$(LTX) $(FLAGS) $(SRC) > $(MLOG) 2>&1
 
 clean:
