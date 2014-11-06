@@ -2,7 +2,7 @@
 \section{Performance Tests and Analysis}
 \label{Performance Tests and Analysis}
 
-\subection{Profiling and optimisation}
+\subsection{Profiling and optimisation}
 \label{Profiling and optimisation}
 
 Profiling runs were done on the CP Lab machines with an all-land 800x800 cell landscape for all runs of the program.  The CP Lab machines were chosen because of the availability of a working version of gprof, which was not present on all of the group's own computers. 
@@ -62,7 +62,7 @@ All three options were left in the code in $Landscape::Update()$ with the unused
 
 A second optimisation became apparent on examination of the for loops in $Landscape::Update()$. The code was iterating over the x-coordinate of a cell, then over its y-coordinate.
 While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.
-The order of the iterations was swapped, and another profiling and timing run were performed leading to output shown in tab.(\ref{ profile 3})
+The order of the iterations was swapped, and another profiling and timing run were performed leading to output shown in tab.(\ref{tab: profile 3})
 
 
 \begin{table}
@@ -95,10 +95,10 @@ A landscape consisting entirely of islands of one cell would cause the branch pr
 
 
 
-\subection{Performance of the optimised code}
+\subsection{Performance of the optimised code}
 \label{performance of the optimied code}
 
-TODO: add text 
+The performance of the optimsed code was tested on all land maps of different sizes (
 
 \begin{table}
 \caption{Timing for increasing landscape sizes}

@@ -1,3 +1,35 @@
 % Description of hw you did any debugging any any tools that were used       
 \section{Debugging}
 \label{Debugging}
+The most coding errors where picked up by the compiler and therefore the need of a debugging tool, such as "gdb", was furtunatelly very limited.
+However, it proved to be essential in finding a persistend bug as is described in the following.\\
+
+The class "Landscape" had a subtle coding error in its calculation of the number of land neighbours for each cell, and this caused the calculation of both hare and puma populations to be incorrect.
+This was a seemingly-trivial part of the code, and as such it was overlooked as a possible source of the error.
+Originally, the code was
+
+\begin{lstlisting}
+ //  number of neighbouring land cells
+	unsigned int land_nbrs = nbr_n.m_land ? 1 : 0
+		                       + nbr_s.m_land ? 1 : 0
+		                       + nbr_e.m_land ? 1 : 0
+		                       + nbr_w.m_land ? 1 : 0;
+\end{lstlisting}
+
+This appeared to be checking each neighbouring cell's "land" flag and adding 1 to the number of neighbours if the flag was "true".
+However, after checking the first cell's "land" flag, if that flag was "true", the code returned 1 for the entire expression as everything after the first ":" would simply not be evaluated in that case.
+Only if the first neighbour's flag was "true" would the second neighbour's flag be checked, and each subsequent expression had the same problem as the first.
+The error was only detected when stepping through the code with the help of "gdb". This made apperent that the program flow was jumping to the next line of code immediately after finding that the first neighbour's "land" flag was "true".
+Checking the value of "land\_nbrs" revealed that it was incorrect after the expression had been evaluated.
+Once discovered, the bug was trivial to fix, and the code worked correctly once parentheses were added to force each neighbour's flag to be checked before performing the additions, resulting in
+
+\begin{lstlisting}
+//  number of neighbouring land cells
+	unsigned int land_nbrs = (nbr_n.m_land ? 1 : 0)
+		                       + (nbr_s.m_land ? 1 : 0)
+		                       + (nbr_e.m_land ? 1 : 0)
+		                       + (nbr_w.m_land ? 1 : 0);
+\end{lstlisting}
+
+This simple coding mistake was made by the team's most experienced C++ programmer, emphasising the fact that all human beings make mistakes  and should therefore be expected and planned for. In turn, this suggests that code should be tested and peer reviewed whenever possible.
+
