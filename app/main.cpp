@@ -12,6 +12,7 @@
 #include "Landscape.hpp"
 #include "LandscapePpmWriter.hpp"
 #include "BmpFile.hpp"
+#include "PopulationAverager.hpp"
 #include "PpmFile.hpp"
 
 
