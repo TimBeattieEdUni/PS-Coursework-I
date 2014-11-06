@@ -2,71 +2,85 @@
 \section{Performance Tests and Analysis}
 \label{Performance Tests and Analysis}
 
-\subsection{Profiling and optimisation}
-\label{Profiling and optimisation}
+Timing and profiling runs were performed on the CP Lab machines due to the availability of a working version of gprof, which was not present on all of the group's own computers.
+Optimisation was performed in two stages: changes to the code, and changes to the compiler optimisation flags.  For the first stage the $-O3$ flag was used for all runs.  The second stage chose the best-performing version of the program from the first stage and observed the effects of compiling with the $-O4$ and $-O5$ flags.
+Run time of the program was measured over a series of square landscapes with sizes ranging from 200x200 to 2000x2000.
+Profiling runs were performed using an 800x800 landscape.
+All timing runs were configured to perform 1250 time steps with PPM file output every 100 time steps.
+Program speedup \textit{S} for subsequent runs was calculated with the following equation:
 
-Profiling runs were done on the CP Lab machines with an all-land 800x800 cell landscape for all runs of the program.  The CP Lab machines were chosen because of the availability of a working version of gprof, which was not present on all of the group's own computers. 
-Timing runs were done on a faster machine: a core i7 laptop with a solid-state hard drive. 
-This machine was chosen in order to save time as the CP Labs machines were considerably slower. 
-It was assumed that since the program's work was primarily calculation and memory access that profiling would produce reliable results even if timings were done on a different machine.\\
+\begin{equation} 
+S = T_{ref} / T 
+\label{equation:speedup}
+\end{equation}
 
-For reference an initial run of the program was done and was found to take 47.437 seconds.  Profiling the first implementation of the popsim program revealed that three functions accounted for approximately 80\% of the run time, see tab.(\ref{tab: profile 1}).
+...where $T_{ref}$  was the time taken by the initial reference run and ${T}$ was the time taken by the run for which speedup was being calculated.
 
 
-\begin{table}
-\caption{Output from gprof on 800x800 all-land array on CP Lab}
-\label{tab: profile 1}
- \begin{center}
+PUT 1ST GRAPH HERE?
+
+
+\subsection{Code optimisation}
+\label{Code optimisation}
+
+\begin{table}[h!]
+\caption{Tabulated partial output from gprof on first profiled version of popsim.}
+\label{tab:profile1}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-name & time [\%] & time [s] & sef time [s] & calls\\
+time [\%] & time [s] & self time [s] & calls & name\\
 \hline
-$Landscape::Update()$ & 47.00 & 58.77 & 58.77 & 1250\\
+47.00 & 58.77 & 58.77 & 1250 & $Landscape::Update()$\\
 \hline
-$Array2D::operator()$& 24.30 & 89.15 & 30.38& 4806406416\\
+24.30 & 89.15 & 30.38& 4806406416 & $Array2D::operator()$\\
 \hline
-$std::vector::operator[]$& 10.75& 102.59 & 13.44 & 511439120\\
+10.75& 102.59 & 13.44 & 511439120 & $std::vector::operator[]$\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
+Table \ref{tab:profile1} shows partial output from gprof for the initial version of the code.
+Three functions accounted for approximately 82\% of the run time, with nearly half of the run time spent in $Landscape::Update()$.
+This was to be expected as the bulk of the program's work was done in this function.
+However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in $Array2D<T>::operator()$. 
+This change was made and a second timing run and profiling run were done.
 
-The program spent more time in $Landscape::Update()$ than any other function.
-This was to be expected as all of the calculation was done there. However, one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification which improved performance significantly.
-The removal of the bounds checking on every element access in $Array2D<T>::operator()$. This change was made and the profiling run was redone, producing the results presented in tab.(\ref{tab: profile 2}).
-
-\begin{table}
-\caption{second profile.}
-\label{tab: profile 2}
- \begin{center}
+\begin{table}[h!]
+\caption{Tabulated partial output from gprof after array bounds checking removal.}
+\label{tab:profile2}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-name & time [\%] & time [s] & sef time [s] & calls\\
+time [\%] & time [s] & sef time [s] & calls & name\\
 \hline
-$Landscape::Update()$ & 50.30 & 58.25 & 58.25 & 1250\\
+50.30 & 58.25 & 58.25 & 1250 & $Landscape::Update()$\\
 \hline
-$Array2D::operator()$& 15.18 & 75.83& 17.58 & 4806406416\\
+15.18 & 75.83 & 17.58 & 4806406416 & $Array2D::operator()$\\
 \hline
-$std::vector::operator[]$&13.72& 91.71 &15.89 & 511439120\\
+13.72 & 91.71 & 15.89 & 511439120 & $std::vector::operator[]$\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-Run time for this modified implementation was 27.123 seconds which means an improvement of 43\% over the implementation with bounds checking.
-While bounds checking was included in the initial version of $Array2D<T>::operator()$ as a precaution, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing it was considered to be worthwhile.\\
-The reference documentation for class $std::vector$ states that element access with bounds checking is provided by the function $std::vector<T>::at()$.  A timing run was performed with $std::vector<T>::operator[]$ replaced with $std::vector<T>::at()$, resulting in a run time of 35.127 seconds.
-This was an improvement of 26\% over the initial implementation but still considerably slower than with no bounds checking at all. 
-All three options were left in the code in $Landscape::Update()$ with the unused options commented out.\\
+Table \ref{tab:profile2} shows partial output from gprof for the version of the code with array bounds removed.  
+The time spent in $Array2D::operator()$ was significantly reduced compared to the first profiling run.  
+While bounds checking was included in the initial version of $Array2D<T>::operator()$ for safety, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing bounds checking was considered to be worthwhile.
+The reference documentation for class $std::vector$ states that element access with bounds checking is provided by the function $std::vector<T>::at()$.
+A timing run was performed with $std::vector<T>::operator[]$ replaced with $std::vector<T>::at()$, resulting in a run time of 45.721 seconds, representing a program speedup of 1.28.
+This was an improvement but still considerably slower than with no bounds checking at all. 
+All three options were left in the code in $Landscape::Update()$ with the unused options commented out.
 
-A second optimisation became apparent on examination of the for loops in $Landscape::Update()$. The code was iterating over the x-coordinate of a cell, then over its y-coordinate.
+A second optimisation became apparent on examination of the for loops in $Landscape::Update()$.
+The code was iterating over the x-coordinate of a cell, then over its y-coordinate.
 While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.
-The order of the iterations was swapped, and another profiling and timing run were performed leading to output shown in tab.(\ref{tab: profile 3})
+The order of the iterations was swapped, and another profiling and timing run were performed.
+Run time with the order of iterations swapped was 36.48 seconds, representing a program speedup of 1.60.
 
-
-\begin{table}
-\caption{second profile.}
+\begin{table}[h!]
+\caption{Tabulated partial output from gprof after iteration order swap.}
 \label{tab: profile 3}
  \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -83,22 +97,26 @@ $std::vector::operator[]$& 12.34& 96.27 &15.17 &511439120\\
 \end{center}
 \end{table}
 
-Run time with the order of iterations swapped was 12.366 seconds, a reduction of 54\% from the previous implementation and a reduction of 74\% from the original unoptimised implementation.\\
+Table \ref{tab:profile3} shows partial output from gprof for the version of the code with array bounds removed and with iteration order reversed.
+This version spent a slightly lower percentage of its run time in function Landscape::Update().
+The improvement in performance was less than expected given that memory loading into cache was theoretically optimised.
 
-Finally, another optimisation was considered: making every landscape cell store pointers to its neighbours to the north, south, east, and west, so that function $Landscape::Update()$ could access each cell's neighbours without calling $Array2D::operator()$ four times.
-Neighbours would be stored during initialisation of the array, meaning the array accesses would be done just once instead of once per update, reducing the number of memory accesses to non-local parts of the array.
+A further optimisation was considered but not implemented due to time constraints: storing pointers to cell neighbours in each cell so that function $Landscape::Update()$ could access each cell's neighbours without calling $Array2D::operator()$ four times.
+These pointers would be initialised at program startup meaning the array accesses would be done just once instead of once per update and reducing the number of memory accesses to non-local parts of the array.
 However, there was insufficient time for this change to be implemented and tested.\\
 
-It would also have been interesting to see if any difference in performance could be found between runs on landscapes with different arrangements of land and water due to branch prediction as the Landscape class verifies that cell is land before performing the calculation for that cell.
-A landscape consisting entirely of islands of one cell would cause the branch prediction to be wrong most if not all of the time, which would presumably reduce performance compared to a landscape with the same number of land cells arranged at the top or bottom of the landscape, corresponding to the beginning or end of the landscape array.
+The group also considered checking whether any difference in performance could be found between runs on landscapes with different arrangements of land and water due to branch prediction as the Landscape class verifies that cell is land before performing the calculation for that cell.
+A landscape consisting entirely of islands of one cell would presumably cause the branch prediction to be wrong most if not all of the time, which would presumably reduce performance compared to a landscape with the same number of land cells arranged at the top or bottom of the landscape, corresponding to the beginning or end of the landscape array.
 
 
+\subsection{Compiler optimisation.}
+\label{Compiler optimisation}
 
+With array bounds checking removed and iteration order swapped, two more versions of the program were built with the compiler optimisation flag set to $-O4$ and $-O5$.
+Timing runs were then performed and are compared to the version compiled with $-O3$ in graph REFERENCE HERE.
 
-\subsection{Performance of the optimised code}
-\label{performance of the optimied code}
+It was found that the various compiler optimisation flags made only a slight improvement for some landscape sizes and actually reduced performance in some cases.
 
-The performance of the optimsed code was tested on all land maps of different sizes (
 
 \begin{table}
 \caption{Timing for increasing landscape sizes}

@@ -117,16 +117,14 @@ int main(int argc, char* argv[])
         unsigned int seconds_diff=(t_end.tv_sec - t_start.tv_sec);
         unsigned int microseconds_diff=(t_end.tv_usec - t_start.tv_usec);
 
-        //transforming the seconds and microseconds output in usaual format (h,min,sec,msec,usec)
+        //  transforming the seconds and microseconds output in usaual format (h,min,sec,msec,usec)
         unsigned int hours=(seconds_diff/3600);
-        unsigned int minutes=(seconds_diff/60);
-        unsigned int seconds=seconds_diff-hours*3600-minutes*60;
+        unsigned int minutes = seconds_diff / 60;
+        unsigned int seconds = seconds_diff - (hours * 3600) - (minutes * 60);
+        unsigned int milliseconds = microseconds_diff / 1000;
 
-        unsigned int milliseconds=(microseconds_diff/1000);
-        unsigned int microseconds=microseconds_diff-1000*milliseconds;
-
-        //timing output
-        std::cout << "Elapsed time= "<<hours<<" h "<<minutes<<" min "<<seconds<<" sec "<<milliseconds<<" msec "<<microseconds<<" usec "<<std::endl;
+        //  timing output
+        std::cout << "Elapsed time: " << minutes << "m " << seconds << "." << milliseconds << "s" << std::endl;
     }
 	catch (std::exception const& e)
 	{
