@@ -3,21 +3,18 @@
 \label{Performance Tests and Analysis}
 
 Timing and profiling runs were performed on the CP Lab machines due to the availability of a working version of gprof, which was not present on all of the group's own computers.
-Optimisation was performed in two stages: changes to the code, and changes to the compiler optimisation flags.  For the first stage the $-O3$ flag was used for all runs.  The second stage chose the best-performing version of the program from the first stage and observed the effects of compiling with the $-O4$ and $-O5$ flags.
+Optimisation was performed in two stages: changes to the code, and changes to the compiler optimisation flags.  For the first stage the \texttt{-O3} flag was used for all runs.  The second stage chose the best-performing version of the program from the first stage and observed the effects of compiling with the \texttt{-O4} and \texttt{-O5} flags.
 Run time of the program was measured over a series of square landscapes with sizes ranging from 200x200 to 2000x2000.
 Profiling runs were performed using an 800x800 landscape.
 All timing runs were configured to perform 1250 time steps with PPM file output every 100 time steps.
-Program speedup \textit{S} for subsequent runs was calculated with the following equation:
+Program speedup \textit{S} for subsequent runs was calculated with the following formula
 
 \begin{equation} 
 S = T_{ref} / T 
 \label{equation:speedup}
 \end{equation}
 
-...where $T_{ref}$  was the time taken by the initial reference run and ${T}$ was the time taken by the run for which speedup was being calculated.
-
-
-PUT 1ST GRAPH HERE?
+where $T_{ref}$ is the time taken by the initial reference run and ${T}$ was the time taken by the run for which speedup was being calculated.
 
 
 \subsection{Code optimisation}
@@ -42,9 +39,9 @@ time [\%] & time [s] & self time [s] & calls & name\\
 \end{table}
 
 Table \ref{tab:profile1} shows partial output from gprof for the initial version of the code.
-Three functions accounted for approximately 82\% of the run time, with nearly half of the run time spent in $Landscape::Update()$.
+Three functions accounted for approximately 82\% of the run time, with nearly half of the run time spent in \texttt{Landscape::Update()}.
 This was to be expected as the bulk of the program's work was done in this function.
-However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in $Array2D<T>::operator()$. 
+However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in \texttt{Array2D<T>::operator()}. 
 This change was made and a second timing run and profiling run were done.
 
 \begin{table}[h!]
@@ -66,14 +63,14 @@ time [\%] & time [s] & sef time [s] & calls & name\\
 \end{table}
 
 Table \ref{tab:profile2} shows partial output from gprof for the version of the code with array bounds removed.  
-The time spent in $Array2D::operator()$ was significantly reduced compared to the first profiling run.  
-While bounds checking was included in the initial version of $Array2D<T>::operator()$ for safety, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing bounds checking was considered to be worthwhile.
-The reference documentation for class $std::vector$ states that element access with bounds checking is provided by the function $std::vector<T>::at()$.
-A timing run was performed with $std::vector<T>::operator[]$ replaced with $std::vector<T>::at()$, resulting in a run time of 45.721 seconds, representing a program speedup of 1.28.
+The time spent in \texttt{Array2D::operator()} was significantly reduced compared to the first profiling run.  
+While bounds checking was included in the initial version of \texttt{Array2D<T>::operator()} for safety, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing bounds checking was considered to be worthwhile.
+The reference documentation for class \texttt{std::vector} states that element access with bounds checking is provided by the function \texttt{std::vector<T>::at()}.
+A timing run was performed with \texttt{std::vector<T>::operator[]} replaced with \texttt{std::vector<T>::at()}, resulting in a run time of 45.721 seconds, representing a program speedup of 1.28.
 This was an improvement but still considerably slower than with no bounds checking at all. 
-All three options were left in the code in $Landscape::Update()$ with the unused options commented out.
+All three options were left in the code in \texttt{Landscape::Update()} with the unused options commented out.
 
-A second optimisation became apparent on examination of the for loops in $Landscape::Update()$.
+A second optimisation became apparent on examination of the for loops in \texttt{Landscape::Update()}.
 The code was iterating over the x-coordinate of a cell, then over its y-coordinate.
 While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.
 The order of the iterations was swapped, and another profiling and timing run were performed.
@@ -97,11 +94,20 @@ $std::vector::operator[]$& 12.34& 96.27 &15.17 &511439120\\
 \end{center}
 \end{table}
 
-Table \ref{tab:profile3} shows partial output from gprof for the version of the code with array bounds removed and with iteration order reversed.
-This version spent a slightly lower percentage of its run time in function Landscape::Update().
-The improvement in performance was less than expected given that memory loading into cache was theoretically optimised.
+Table \ref{tab: profile 3} shows partial output from gprof for the version of the code with array bounds removed and with iteration order reversed.
+This version spent a slightly lower percentage of its run time in function \texttt{Landscape::Update()}.
+The improvement in performance was less than expected given that memory loading into cache was theoretically optimised. Fig.(\ref{fig:Optimisation}) shows the performance gain for the different optimisation steps.
 
-A further optimisation was considered but not implemented due to time constraints: storing pointers to cell neighbours in each cell so that function $Landscape::Update()$ could access each cell's neighbours without calling $Array2D::operator()$ four times.
+\begin{figure}
+\begin{center}
+  \includegraphics[scale=0.7]{Figures/TimingsOptimisation.pdf}
+\caption{A comparison of timings for the different optimasation stages.}
+\label{fig:Optimisation}
+\end{center}
+\end{figure}
+
+
+A further optimisation was considered but not implemented due to time constraints: storing pointers to cell neighbours in each cell so that function \texttt{Landscape::Update()} could access each cell's neighbours without calling \texttt{Array2D::operator()} four times.
 These pointers would be initialised at program startup meaning the array accesses would be done just once instead of once per update and reducing the number of memory accesses to non-local parts of the array.
 However, there was insufficient time for this change to be implemented and tested.\\
 
@@ -112,8 +118,14 @@ A landscape consisting entirely of islands of one cell would presumably cause th
 \subsection{Compiler optimisation.}
 \label{Compiler optimisation}
 
-With array bounds checking removed and iteration order swapped, two more versions of the program were built with the compiler optimisation flag set to $-O4$ and $-O5$.
-Timing runs were then performed and are compared to the version compiled with $-O3$ in graph REFERENCE HERE.
+With array bounds checking removed and iteration order swapped, two more versions of the program were built with the compiler optimisation flag set to \texttt{-4} and \texttt{-O5}.
+Timing runs were then performed and are compared to the version compiled with \texttt{-O3} in fig.(\ref{fig: Comp flags bahart}).
+
+\begin{figure}
+ \includegraphics[scale=0.8]{Figures/Timing_Barchart_compflags.pdf}
+\caption{The effect of compiler flags in percentage of the \texttt{-O3} timings.}
+\label{fig: Comp flags bahart}
+\end{figure}
 
 It was found that the various compiler optimisation flags made only a slight improvement for some landscape sizes and actually reduced performance in some cases.
 
@@ -150,6 +162,32 @@ Ladscape Size & run time [s] & delta run time[s]\\
 \end{center}
 \end{table}
 
+\subsection{Scaling perfomance}
+\label{subsec:scaling pefomance}
+
+To investigate the progamms performance, its time scaling with increased landscape size was investigated.
+To this end, the timing data, with the compiler flag  \texttt{-O5}, was fitted to the expected quadratic behaviour
+
+\begin{equation}
+ T(N)=a+bN^2
+\label{eq:fitting curve}
+\end{equation}
+
+where a constant term $a$ was included to substract a possibly unifom system overhead common to all sizes.
+The fit was performed with a nonlinear regression model using least squares, yielding the optimal parameters $a=2.36 [s]$ and $b=5.29*10^{-6} [s/N^2]$.
+As can be seen from fig.(\ref{fig:fitting curve}) the fit matches very well to the data points which is confirmed by an R-squared value $R=0.999$ characterising the fit.
+This suggests that the pogram's perfomance scales quadratically as is to be expected for a problem defined on a two dimensional grid. 
+
+\begin{figure}
+ \includegraphics{Figures/TimingFitO5.pdf}
+\caption{A quadratic fit, see eq.(\ref{fig:fitting curve}), for the program perfomance.}
+\label{fig:fitting curve}
+\end{figure}
+
+
+
+
+ 
 
 
 
