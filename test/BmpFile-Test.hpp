@@ -13,7 +13,6 @@
 //  Header for class being tested.
 #include "BmpFile.hpp"
 
-
 //////////////////////////////////////////////////////////////////////////////
 /// @brief  First test for class BmpFile.
 ///
@@ -23,7 +22,11 @@ TEST(BmpFile)
 {
 	using PsCourseworkI::BmpFile;
 
-	CHECK(false);
+	BmpFile bmp("inputs/BmpFile-Test.dat");
+	CHECK(bmp.GetArray()(0,0) == 1);
+	CHECK(bmp.GetArray()(1,0) == 23);
+	CHECK(bmp.GetArray()(0,1) == 0);
+	CHECK(bmp.GetArray()(1,1) == 4);
 }
 
 
