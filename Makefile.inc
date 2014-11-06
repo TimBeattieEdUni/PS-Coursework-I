@@ -58,4 +58,4 @@ TESTLIBDIR    = UnitTest++
 #  Tarball for submission.
 
 TARFILE = popsim.tar.gz
-TARBITS = app classes doc downloads Makefile Makefile.inc README.md report test
+TARBITS = app classes doc downloads Makefile Makefile.inc README.md report test test/inputs

@@ -31,7 +31,7 @@ default: doc
 
 doc: $(OUTDIR) 
 
-$(OUTDIR): $(CFG) ../app ../classes ../test
+$(OUTDIR): $(CFG) ../app ../classes
 	$(BIN) $(CFG) > $(LOG) 2>&1
 
 clean:

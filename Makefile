@@ -53,7 +53,7 @@ clean:
 app: classes
 	$(MAKE) -C app $(TARGET)
 
-doc: classes app test
+doc: classes app
 	$(MAKE) -C doc
 
 report:
