@@ -18,7 +18,9 @@
 #include "AppConfig-Test.hpp"
 #include "Array2D-Test.hpp"
 #include "BmpFile-Test.hpp"
+#include "Cell-Test.hpp"
 #include "Landscape-Test.hpp"
+#include "LandscapePpmWriter-Test.hpp"
 #include "PopulationAverager-Test.hpp"
 #include "PpmFile-Test.hpp"
 

@@ -21,7 +21,7 @@
 ///
 TEST(Cell)
 {
-	using repo::classes::Cell;
+	using PsCourseworkI::Cell;
 
 	CHECK(true);
 }

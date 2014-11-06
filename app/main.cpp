@@ -61,9 +61,6 @@ int main(int argc, char* argv[])
 		landscape.ApplyRandomPumas(2.0);
 		landscape.ApplyRandomHares(4.0);
 		
-		//  initialise PPM file writer
-		LandscapePpmWriter ls_writer(landscape);
-
 		//  run the simulation
         for (unsigned int i=0; i<cfg.m_TT; ++i)
         {
@@ -75,6 +72,7 @@ int main(int argc, char* argv[])
 				filename_ss << "output" << i << ".ppm";
 
 				//  write current state of the landscape to PPM file
+				LandscapePpmWriter ls_writer(landscape.GetArray());
 				ls_writer.Write(filename_ss.str());
 				
 				PopulationAverager pa(landscape.GetArray());

@@ -23,8 +23,8 @@ namespace PsCourseworkI
 	///
 	/// @param      The landscape to be written.
 	///
-	LandscapePpmWriter::LandscapePpmWriter(Landscape& landscape)
-		: m_landscape(landscape)
+	LandscapePpmWriter::LandscapePpmWriter(Landscape::LsArray const& array)
+		: m_array(array)
 	{
 
 	}
@@ -48,8 +48,7 @@ namespace PsCourseworkI
 
 		unsigned int const rgb_max = 255;
 		
-		Landscape::LsArray const& ls_array = m_landscape.GetArray();
-		Size ls_size = ls_array.GetSize();
+		Size ls_size = m_array.GetSize();
 		
 		Size size_nohalo(ls_size.m_x - 2, ls_size.m_y - 2);
 		
@@ -58,7 +57,7 @@ namespace PsCourseworkI
 		{
 			for (unsigned int i = 1; i < ls_size.m_x - 1; ++i)
 			{
-				Cell const& cell = ls_array(i, j);
+				Cell const& cell = m_array(i, j);
 				unsigned int red_val = cell.m_pumas * rgb_max;
 				if (red_val > rgb_max) 
 				{

@@ -30,15 +30,15 @@ namespace PsCourseworkI
 	class LandscapePpmWriter
 	{
 		public:
-			LandscapePpmWriter(Landscape& landscape);    ///< Constructor.
+			LandscapePpmWriter(Landscape::LsArray const& array);    ///< Constructor.
 			
-			void Write(std::string const& filename);     ///< Writes Cells to PPM file.
+			void Write(std::string const& filename);                ///< Writes Cells to PPM file.
 
 		private:
 			LandscapePpmWriter(LandscapePpmWriter const& rhs);              ///< Copy constructor.
 			LandscapePpmWriter& operator=(LandscapePpmWriter const& rhs);   ///< Assignment operator.
 		
-			Landscape& m_landscape;   ///< The landscape to be written.
+			Landscape::LsArray const& m_array;   ///< The landscape to be written.
 	};
 	
 }   //  namespace PsCourseworkI
