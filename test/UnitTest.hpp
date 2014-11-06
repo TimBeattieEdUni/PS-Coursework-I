@@ -14,12 +14,13 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //  Class test headers.
-#include "Array2D-Test.hpp"
 #include "AppArgs-Test.hpp"
-#include "PpmFile-Test.hpp"
+#include "AppConfig-Test.hpp"
+#include "Array2D-Test.hpp"
+#include "BmpFile-Test.hpp"
 #include "Landscape-Test.hpp"
 #include "PopulationAverager-Test.hpp"
-#include "AppConfig-Test.hpp"
-#include "BmpFile-Test.hpp"
+#include "PpmFile-Test.hpp"
+
 
 #endif  //  #ndef PSCOURSEWORKI_UNIT_TEST_HEADERS_H

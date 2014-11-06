@@ -1,12 +1,11 @@
 Still to do, in order of priority
-	Graphs of performance - must include definitions of terms or formulas to define them.
+	Unit test for class LandscapePpmWriter.
 	Performance text should "justify choice of metrics when investigating performance."
 	Spaces between paragraphs in report - can this be a global setting?
 	Ensure all code is tested - make sure #included in UnitTest.hpp.
 	Fix scaling factor - apply densities between 0 and 5 and make scaling 10
 	Contribution questionnaire.
 	Text about compiler warning flags.
-	Remove unused constructors and assignment operators.
 	Remove unused constructors and assignment operators.
 	Performance text: timing runs were piped to file, which may have improved speed.
 	Add link to GitHub project to report.

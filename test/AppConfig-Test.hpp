@@ -3,7 +3,8 @@
 ///
 /// @brief    Unit test for class AppConfig.
 ///
-
+/// @todo     Test failure modes for class AppConfig.
+///
 
 #ifndef PSCOURSEWORKI_APPCONFIG_TEST_HPP
 #define PSCOURSEWORKI_APPCONFIG_TEST_HPP
@@ -21,14 +22,12 @@
 ///
 TEST(AppConfig)
 {
-	//using repo::classes::AppConfig;
 	using namespace PsCourseworkI;
 
 	AppConfigReader appConfig("inputs/AppConfig-Test.cfg");
 	AppConfig testConfig;
 
-    // The hardcoded numbers below and the context in the "AppConfig-Test.cfg" are the same
-    // they are not to be altered, otherwise the program fails the test
+    //  these must match "inputs/AppConfig-Test.cfg"
 	testConfig.m_Nx = 200;
 	testConfig.m_Ny = 200;
 	testConfig.m_T  = 50;
@@ -40,8 +39,6 @@ TEST(AppConfig)
 	testConfig.m_k  = 0.2;
 	testConfig.m_l  = 0.2;
 	testConfig.m_dt = 0.4;
-
-
 
 	CHECK(appConfig.GetConfig().m_Nx    == testConfig.m_Nx);
 	CHECK(appConfig.GetConfig().m_Ny    == testConfig.m_Ny);
@@ -55,7 +52,5 @@ TEST(AppConfig)
 	CHECK(appConfig.GetConfig().m_dt    == testConfig.m_dt);
 }
 
-
-//  test handling duplicate entries in config file
 
 #endif  //  #ndef PSCOURSEWORKI_APPCONFIG_TEST_HPP

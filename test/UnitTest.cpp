@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file     test/UnitTest.cpp
 ///
-/// @brief    Unit test for Programming Skills Group Coursework classes.
+/// @brief    Unit test for classes in Programming Skills Group Coursework.
 ///
 
 

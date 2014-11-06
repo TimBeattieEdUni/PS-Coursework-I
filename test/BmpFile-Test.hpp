@@ -3,6 +3,8 @@
 ///
 /// @brief    Unit test for class BmpFile.
 ///
+/// @todo     Test failure modes for class BmpFile.
+///
 
 
 #ifndef PSCOURSEWORKI_BMPFILE_TEST_HPP

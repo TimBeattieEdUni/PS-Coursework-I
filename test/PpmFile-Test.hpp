@@ -26,6 +26,7 @@
 /// @brief  Tests writing a ppm file.
 ///
 /// @test   PgmFile can be constructed from valid arguments.
+/// @test   PgmFile writes correct values to file.
 ///
 TEST(PgmFileConstruct)
 {

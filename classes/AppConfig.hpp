@@ -53,7 +53,6 @@ namespace PsCourseworkI
 	{
 		public:
 			AppConfigReader(std::string const& cfg_filename);         ///< Constructor from config file name.
-			AppConfigReader();                                        ///< Destructor.
 		
 			AppConfig const& GetConfig() const { return m_cfg; }      ///< Getter.
 			
