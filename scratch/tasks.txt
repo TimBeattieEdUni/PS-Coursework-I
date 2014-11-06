@@ -4,6 +4,8 @@ Still to do, in order of priority
 	Introduction to say how to unpack the tarball and build the project.
 	Graphs of performance - must include definitions of terms or formulas to define them.
 	Performance text should "justify choice of metrics when investigating performance."
+	Spaces between paragraphs in report - can this be a global setting?
+	Add dependencies to report build.
 	Ensure all code is tested - make sure #included in UnitTest.hpp.
 	Text about design of application.
 	Text about implementation.
@@ -29,3 +31,4 @@ Still to do, in order of priority
 	Write up landscape generation tool.
 	Test population averager handles all water/zero population
 	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
+	There's an umlaut over the U in UnitTest++ - why?
