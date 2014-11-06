@@ -24,21 +24,22 @@ TEST(BmpFile)
 
 	BmpFile bmp("inputs/BmpFile-Test.dat");
 
-   for ( int i=0; i<2; i++)
+   for ( int j=0; j<2; j++)
    {
-      for (int j=0; j<3; j++)
+      for (int i=0; i<3; i++)
       {
          std::cout << "bmp.GetArray(" <<i << "," << j << ") = " << bmp.GetArray()(i,j) << std::endl; 
       }
    }
-
-   CHECK(bmp.GetArray()(0,0) == 1);
+   // the numbers below are from: "inputs/BmpFile-Test.dat"
+   // they must not be altered!
+    CHECK(bmp.GetArray()(0,0) == 1);
 	CHECK(bmp.GetArray()(1,0) == 23);
+	CHECK(bmp.GetArray()(2,0) == 5);
+
 	CHECK(bmp.GetArray()(0,1) == 0);
 	CHECK(bmp.GetArray()(1,1) == 4);
-	
-   CHECK(bmp.GetArray()(0,2) == 5);
-	CHECK(bmp.GetArray()(1,2) == 6);
+	CHECK(bmp.GetArray()(2,1) == 6);
 }
 
 
