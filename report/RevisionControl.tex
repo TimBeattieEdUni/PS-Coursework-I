@@ -2,7 +2,7 @@
 \section{Revision Control}
 \label{Revision Control}
 
-The group was unanimous that revision control should be used. Git was chosen, both because several team members had used it before and because GitHub's free service represented an ready and simple option for hosting the "origin" repository.
+The group was unanimous that revision control should be used. Git was chosen, both because several team members had used it before and because GitHub's free service represented a ready and simple option for hosting the "origin" repository.
 Subversion was considered for its greater ease of use, but the team decided that Git's ability to function in the absence of a network connection outweighed its steeper learning curve.\\
 
 Using a central repository encouraged the group to make both the code and the group report modular, separating each into as many separate sub-tasks as possible in order to enable any group member to work on any task in isolation without interfering with the work of other group members.
@@ -12,15 +12,15 @@ The build system's one-step build process encouraged the habit of building and t
 The group had a working rule that changes should only be pushed to the Git repository if the following conditions were met:
 
 \begin{itemize}
-  \item The application would still build.
-  \item The unit tests would still build and pass.
+  \item The application would build successfully.
+  \item The unit tests would build and run successfully.
   \item The code had a good level of readability and tidiness.
   \item All classes, functions, and parameters were annotated with Doxygen comments.
 \end{itemize}
 
 If a change broke the ability to build the project, the group member who pushed the change was responsible for fixing the repository immediately.
-This ensured that the most recent revision could always be worked on by everyone in the group. Every member of the group did break the repository at least once, but fixes were applied quickly, and the ability of the group to work on the project was maintained.\\
+This ensured that the most recent revision could always be worked on by everyone in the group. Every member of the group did break the repository at least once, but fixes were applied quickly, and the ability of the group to work on the project was maintained consistently.\\
 
 A separate "scratch" directory was created in the repository for sharing code and ideas which weren't ready to go into the main project, and this was used to exchange task lists, first drafts of report text, and code about which the writer had questions for the other members of the group.\\
 
-In summary, the Revision Controll system proved to be a powerful and yet easy to use tool as besides the usual benefits of backup and common availability of the recent version, it also led to high standard of tidyness in the repository, due to the imposed rules, as highlighted above.
+In summary, the group's use of revision control provided the benefits of backups, availability, communication, and quality while adding only minimal overhead to the group's work load.  
