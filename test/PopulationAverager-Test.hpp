@@ -57,7 +57,7 @@ TEST(PopulationAverager)
 
 	double pop_hare_external = pa.GetAvgHares();
 	double pop_puma_external = pa.GetAvgPumas();
-	
+
 	//  calculate our own values
 	double pop_puma_local = 0.0;
 	double pop_hare_local = 0.0;
@@ -68,6 +68,28 @@ TEST(PopulationAverager)
 	double epsilon = 0.0000001;
 	CHECK(fabs(pop_puma_local - pop_puma_external) < epsilon);
 	CHECK(fabs(pop_hare_local - pop_hare_external) < epsilon);
+
+	//  prep landscape with known populations
+	ls_geography(0, 0).m_land = false;
+	ls_geography(0, 1).m_land = false;
+	ls_geography(1, 0).m_land = false;
+	ls_geography(1, 1).m_land = false;
+
+	//  let population averager calculate its values
+	PopulationAverager paZeroLand(ls_geography);
+
+	pop_hare_external = paZeroLand.GetAvgHares();
+	pop_puma_external = paZeroLand.GetAvgPumas();
+
+	//  calculate our own values
+	pop_puma_local = 0.0;
+	pop_hare_local = 0.0;
+
+	//  Test population averager handles all water/zero population
+	CHECK(fabs(pop_puma_local - pop_puma_external) < epsilon);
+	CHECK(fabs(pop_hare_local - pop_hare_external) < epsilon);
+
+
 }
 
 
