@@ -31,6 +31,8 @@ default: doc
 
 doc: $(OUTDIR) 
 
+#  Dependency on tests removed as tests now write files, which modifies the date on the test directory.
+# $(OUTDIR): $(CFG) ../app ../classes ../test
 $(OUTDIR): $(CFG) ../app ../classes
 	$(BIN) $(CFG) > $(LOG) 2>&1
 
