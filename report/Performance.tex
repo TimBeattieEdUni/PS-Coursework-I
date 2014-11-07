@@ -9,8 +9,8 @@ Profiling runs were performed using an 800x800 landscape.
 All timing runs were configured to perform 1250 time steps with PPM file output every 100 time steps.
 Program speedup \textit{S} for subsequent runs was calculated with the following formula
 
-\begin{equation} 
-S = T_{ref} / T 
+\begin{equation}
+S = T_{ref} / T
 \label{equation:speedup}
 \end{equation}
 
@@ -41,7 +41,7 @@ time [\%] & time [s] & self time [s] & calls & name\\
 Table \ref{tab:profile1} shows partial output from gprof for the initial version of the code.
 Three functions accounted for approximately 82\% of the run time, with nearly half of the run time spent in \texttt{Landscape::Update()}.
 This was to be expected as the bulk of the program's work was done in this function.
-However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in \texttt{Array2D<T>::operator()}. 
+However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in \texttt{Array2D<T>::operator()}.
 This change was made and a second timing run and profiling run were done.
 
 \begin{table}[h!]
@@ -62,19 +62,18 @@ time [\%] & time [s] & sef time [s] & calls & name\\
 \end{center}
 \end{table}
 
-Table \ref{tab:profile2} shows partial output from gprof for the version of the code with array bounds removed.  
-The time spent in \texttt{Array2D::operator()} was significantly reduced compared to the first profiling run.  
+Table \ref{tab:profile2} shows partial output from gprof for the version of the code with array bounds removed.
+The time spent in \texttt{Array2D::operator()} was significantly reduced compared to the first profiling run.
 While bounds checking was included in the initial version of \texttt{Array2D<T>::operator()} for safety, once the program had been demonstrated to work correctly, the considerable performance improvement achieved by removing bounds checking was considered to be worthwhile.
-The reference documentation for class \texttt{std::vector} states that element access with bounds checking is provided by the function \texttt{std::vector<T>::at()}.
-A timing run was performed with \texttt{std::vector<T>::operator[]} replaced with \texttt{std::vector<T>::at()}, resulting in a run time of 45.721 seconds, representing a program speedup of 1.28.
-This was an improvement but still considerably slower than with no bounds checking at all. 
-All three options were left in the code in \texttt{Landscape::Update()} with the unused options commented out.
+
+The group later learned from the reference documentation for class \texttt{std::vector} that element access with bounds checking is provided by the function \texttt{std::vector<T>::at()}.
+However, it was assumed that even bounds checking performed by the standard library which is typically very well optimised would be slower than no bounds checking at all.
+Code for all three options was left in the code in \texttt{Array2D::operator()()} with the unused options commented out.
 
 A second optimisation became apparent on examination of the for loops in \texttt{Landscape::Update()}.
 The code was iterating over the x-coordinate of a cell, then over its y-coordinate.
 While this was the intuitive order, it caused the code to stride through the array of cells by a distance proportional to the width of the landscape array instead of accessing the next cell in memory each time.
 The order of the iterations was swapped, and another profiling and timing run were performed.
-Run time with the order of iterations swapped was 36.48 seconds, representing a program speedup of 1.60.
 
 \begin{table}[h!]
 \caption{Tabulated partial output from gprof after iteration order swap.}
@@ -178,7 +177,7 @@ To this end, the timing data, with the compiler flag  \texttt{-O5}, was fitted t
 where a constant term $a$ was included to substract a possibly unifom system overhead common to all sizes.
 The fit was performed with a nonlinear regression model using least squares, yielding the optimal parameters $a=2.36 [s]$ and $b=5.29*10^{-6} [s/N^2]$.
 As can be seen from fig.(\ref{fig:fitting curve}) the fit matches very well to the data points which is confirmed by an R-squared value $R=0.999$ characterising the fit.
-This suggests that the pogram's perfomance scales quadratically as is to be expected for a problem defined on a two dimensional grid. 
+This suggests that the pogram's perfomance scales quadratically as is to be expected for a problem defined on a two dimensional grid.
 
 \begin{figure}
  \includegraphics{Figures/TimingFitO5.pdf}
@@ -189,7 +188,7 @@ This suggests that the pogram's perfomance scales quadratically as is to be expe
 
 
 
- 
+
 
 
 
