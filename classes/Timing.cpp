@@ -54,9 +54,10 @@ namespace PsCourseworkI
 
         //uncommend if you want hours
         //hours=(seconds_diff/3600);
+        //seconds = seconds_diff - (hours * 3600) - (minutes * 60);
 
         minutes = seconds_diff / 60;
-        seconds = seconds_diff - (hours * 3600) - (minutes * 60);
+        seconds = seconds_diff - (minutes * 60);
         milliseconds = microseconds_diff / 1000;
 
 
