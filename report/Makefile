@@ -42,7 +42,9 @@ default: report
 
 report: $(REPORT)
 
+#  run it twice to help pdflatex find all its references
 $(REPORT) : $(SRC) $(DEP)
+	$(LTX) $(FLAGS) $(SRC) > $(MLOG) 2>&1
 	$(LTX) $(FLAGS) $(SRC) > $(MLOG) 2>&1
 
 clean:

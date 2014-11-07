@@ -2,16 +2,18 @@
 \section{Programming Language}
 \label{Programming Language}
 
-The project's source code was written in C++ which is a general purpose, object-oriented programming language. 
-The group members were all familiar with the language's features, and this made development of the popsim program relatively straightforward. 
+The project's source code was written in C++ which is a general purpose, object-oriented programming language.
+The group members were all familiar with the language's features, and this made development of the popsim program relatively straightforward.
 C++'s Object Oriented features easily enabled modular programming with program implementation details abstracted away behind interfaces.
 
-As described in Sections ~\ref{Revision Control} and ~\ref{Testing} this modularity lent itself well to a ``many small tasks'' approach to working as a group.  
+As described in Sections ~\ref{Revision Control} and ~\ref{Testing} this modularity lent itself well to a ``many small tasks'' approach to working as a group.
 Each group member was able to work on separate parts of the program and add their work to the Git repository with minimal impact on the work of others.
 
-Using C++ classes to create objects with both names and behaviours enabled a short $main.cpp$ which described what the program should do rather than exposing the details of how it was done.  
+Using C++ classes to create objects with both names and behaviours enabled a short $main.cpp$ which described what the program should do rather than exposing the details of how it was done.
 For example, the landscape was updated by calling \texttt{Landscape::Update()} and .ppm files were written by calling \texttt{LandscapePpmWriter::Write()}.
 
-Finally, C++'s common RAII idiom meant that very little work had to be done to release resources when the program no longer needed them.  
-For example, using a \texttt{std::vector} in class \texttt{Array2D} meant that the dynamically-allocated array was automatically freed from the heap and opened files were automatically closed by class \texttt{std::fstream}. 
+C++'s common RAII idiom meant that very little work had to be done to release resources when the program no longer needed them.
+For example, using a \texttt{std::vector} in class \texttt{Array2D} meant that the dynamically-allocated array was automatically freed from the heap and opened files were automatically closed by class \texttt{std::fstream}.
 No code was required in the destructor of any class written by the group.
+
+To improve the quality of the code, a set of compiler warning flags was applied to all code.  These turned on many extra warnings and treated all warnings as errors.
