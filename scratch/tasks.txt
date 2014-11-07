@@ -15,7 +15,6 @@ Still to do, in order of priority
 	Further investigations island with ithsmus between large areas of pumas on one side and hares on the other
 	Further investigation: diffusion rates set to 0.
 	Write up landscape generation tool.
-	Test population averager handles all water/zero population
 	Text about Landscape swapping its arrays - made its interface easy to use "wrong".
 	There's an umlaut over the U in UnitTest++ - why?
 	Should "Figures" directory be in report or in scratch?
