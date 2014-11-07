@@ -21,9 +21,7 @@
 //  Standard headers.
 #include <iostream>
 #include <sstream>
-#include <ctime>
 #include <iomanip>
-#include <sys/time.h>
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -38,15 +36,9 @@ int main(int argc, char* argv[])
 {
 	using namespace PsCourseworkI;
 
-	//fields for timing
-	//timeval t_start,t_end;
-	//set starting time
-	//gettimeofday(&t_start,NULL); // on windows OS use: GetSystemTime
-
 	//start the timer
 	Timing timer;
 	timer.ResetTiming();
-
 
 	try
 	{
@@ -101,9 +93,6 @@ int main(int argc, char* argv[])
 
         //  timing output
         std::cout << "Elapsed time: " << minutes << "m " << seconds << "." << milliseconds << "s" << std::endl;
-
-
-
     }
 	catch (std::exception const& e)
 	{
