@@ -1,6 +1,5 @@
 Still to do, in order of priority
 	Performance text should "justify choice of metrics when investigating performance."
-	Spaces between paragraphs in report - can this be a global setting?
 	Fix scaling factor - apply densities between 0 and 5 and make scaling 10
 	Contribution questionnaire.
 	Text about compiler warning flags.
