@@ -23,7 +23,7 @@ nlf=NonLinearModel.fit(lenghts, O5,@(b,x) b(1)+b(2)*x.^2, [0,1])
 q=@(b,x) b(1)+b(2)*x.^2;
 
 A=nlinfit(lenghts, O5,q, [0,1])
-xfit=linspace(0,2000,1000)
+xfit=linspace(0,2000,1000);
 yfit=q(A,xfit);
 
 figure(1)
@@ -41,5 +41,5 @@ figure(3)
 bar(lenghts,[DO4,DO5])
 
 figure(4)
-plot(lenghts, O5,'r x',lenghts,yfit)
+plot(lenghts, O5,'r x',xfit,yfit)
 

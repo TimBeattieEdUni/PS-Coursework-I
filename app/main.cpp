@@ -14,6 +14,7 @@
 #include "BmpFile.hpp"
 #include "PopulationAverager.hpp"
 #include "PpmFile.hpp"
+#include "Timing.hpp"
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -38,9 +39,14 @@ int main(int argc, char* argv[])
 	using namespace PsCourseworkI;
 
 	//fields for timing
-	timeval t_start,t_end;
+	//timeval t_start,t_end;
 	//set starting time
-	gettimeofday(&t_start,NULL); // on windows OS use: GetSystemTime
+	//gettimeofday(&t_start,NULL); // on windows OS use: GetSystemTime
+
+	//start the timer
+	Timing timer;
+	timer.ResetTiming();
+
 
 	try
 	{
@@ -50,7 +56,7 @@ int main(int argc, char* argv[])
 		//  load configuration from file
 		AppConfigReader const cfg_reader(args.GetCfgFilename());
 		AppConfig const& cfg = cfg_reader.GetConfig();
-		
+
 		//  load land/water map from file
 		BmpFile land_water_mask(args.GetLwMaskFilename());
 
@@ -60,7 +66,7 @@ int main(int argc, char* argv[])
 
 		landscape.ApplyRandomPumas(2.0);
 		landscape.ApplyRandomHares(4.0);
-		
+
 		//  run the simulation
         for (unsigned int i=0; i<cfg.m_TT; ++i)
         {
@@ -74,7 +80,7 @@ int main(int argc, char* argv[])
 				//  write current state of the landscape to PPM file
 				LandscapePpmWriter ls_writer(landscape.GetArray());
 				ls_writer.Write(filename_ss.str());
-				
+
 				PopulationAverager pa(landscape.GetArray());
 				std::cout << "average populations: hares: " << pa.GetAvgHares() << "  pumas: " << pa.GetAvgPumas() << std::endl;
 			}
@@ -87,20 +93,17 @@ int main(int argc, char* argv[])
 
 		std::cout << "simulation complete" << std::endl;
 
-        // timing:
-        gettimeofday(&t_end,NULL);
+        //define timing output variables
+        unsigned int minutes, seconds, milliseconds;
 
-        unsigned int seconds_diff=(t_end.tv_sec - t_start.tv_sec);
-        unsigned int microseconds_diff=(t_end.tv_usec - t_start.tv_usec);
-
-        //  transforming the seconds and microseconds output in usaual format (h,min,sec,msec,usec)
-        unsigned int hours=(seconds_diff/3600);
-        unsigned int minutes = seconds_diff / 60;
-        unsigned int seconds = seconds_diff - (hours * 3600) - (minutes * 60);
-        unsigned int milliseconds = microseconds_diff / 1000;
+        //getting timing
+        timer.ReportTiming(minutes, seconds, milliseconds);
 
         //  timing output
         std::cout << "Elapsed time: " << minutes << "m " << seconds << "." << milliseconds << "s" << std::endl;
+
+
+
     }
 	catch (std::exception const& e)
 	{
