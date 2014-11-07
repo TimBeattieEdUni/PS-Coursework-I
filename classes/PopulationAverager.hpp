@@ -5,8 +5,8 @@
 ///
 
 
-#ifndef PSCOURSEWORKI_PopulationAverager_HPP
-#define PSCOURSEWORKI_PopulationAverager_HPP
+#ifndef PSCOURSEWORKI_POPULATIONAVERAGER_HPP
+#define PSCOURSEWORKI_POPULATIONAVERAGER_HPP
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -44,4 +44,4 @@ namespace PsCourseworkI
 }   //  namespace PsCourseworkI
 
 
-#endif  //  #ndef PSCOURSEWORKI_PopulationAverager_HPP
+#endif  //  #ndef PSCOURSEWORKI_POPULATIONAVERAGER_HPP
