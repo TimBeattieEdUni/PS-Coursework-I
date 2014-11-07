@@ -7,14 +7,6 @@ Optimisation was performed in two stages: changes to the code, and changes to th
 Run time of the program was measured over a series of square landscapes with sizes ranging from 200x200 to 2000x2000.
 Profiling runs were performed using an 800x800 landscape.
 All timing runs were configured to perform 1250 time steps with PPM file output every 100 time steps.
-Program speedup \textit{S} for subsequent runs was calculated with the following formula
-
-\begin{equation}
-S = T_{ref} / T
-\label{equation:speedup}
-\end{equation}
-
-where $T_{ref}$ is the time taken by the initial reference run and ${T}$ was the time taken by the run for which speedup was being calculated.
 
 
 \subsection{Code optimisation}
@@ -95,7 +87,7 @@ $std::vector::operator[]$& 12.34& 96.27 &15.17 &511439120\\
 
 Table \ref{tab: profile 3} shows partial output from gprof for the version of the code with array bounds removed and with iteration order reversed.
 This version spent a slightly lower percentage of its run time in function \texttt{Landscape::Update()}.
-The improvement in performance was less than expected given that memory loading into cache was theoretically optimised. Fig.(\ref{fig:Optimisation}) shows the performance gain for the different optimisation steps.
+The improvement in performance was less than expected given that memory loading into cache was theoretically optimised. Fig.(\ref{fig:Optimisation}) shows the timing for the different optimisation steps.
 
 \begin{figure}
 \begin{center}
@@ -117,8 +109,16 @@ A landscape consisting entirely of islands of one cell would presumably cause th
 \subsection{Compiler optimisation.}
 \label{Compiler optimisation}
 
-With array bounds checking removed and iteration order swapped, two more versions of the program were built with the compiler optimisation flag set to \texttt{-4} and \texttt{-O5}.
-Timing runs were then performed and are compared to the version compiled with \texttt{-O3} in fig.(\ref{fig: Comp flags bahart}).
+To compare program timings we define the pogram speedup as
+
+\begin{equation}
+S = 1-T/ T_{ref}
+\label{equation:speedup}
+\end{equation}
+
+where $T_{ref}$ is the time taken by an initial reference run and ${T}$ is the time taken by a run for which the speedup is being calculated. This provides an adequate messure since it is positive if the new run is faster than the reference run and vice versa. 
+
+Fig.(\ref{fig: Comp flags bahart}) shows a comparison of builds with different compiler optimisation flags \texttt{-O4}/\texttt{-O5} with reference to the \texttt{-O3} optimised version using the speed up defined in eq.(\ref{equation:speedup}).
 
 \begin{figure}
 \begin{center}
@@ -130,38 +130,6 @@ Timing runs were then performed and are compared to the version compiled with \t
 
 It was found that the various compiler optimisation flags made only a slight improvement for some landscape sizes and actually reduced performance in some cases.
 
-
-\begin{table}
-\caption{Timing for increasing landscape sizes}
-\label{tab: Size timing}
- \begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-Ladscape Size & run time [s] & delta run time[s]\\
-\hline
-200 & 1.8722 & ×\\
-\hline
-400 & 11.662 & 9.7898\\
-\hline
-600 & 25.526 & 13.864\\
-\hline
-800 & 48.755 & 23.229\\
-\hline
-1000 & 81.310 & 32.555\\
-\hline
-1200 & 97.364 & 16.054\\
-\hline
-1400 & 145.020 & 47.656\\
-\hline
-1600 & 220.000 & 74.98\\
-\hline
-1800 & 277.366 & 57.366\\
-\hline
-200 & 346.391 & 69.025\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
 
 \subsection{Scaling perfomance}
 \label{subsec:scaling pefomance}
@@ -181,7 +149,7 @@ This suggests that the pogram's perfomance scales quadratically as is to be expe
 
 \begin{figure}
  \includegraphics{Figures/TimingFitO5.pdf}
-\caption{A quadratic fit, see eq.(\ref{fig:fitting curve}), for the program perfomance.}
+\caption{A quadratic fit, see eq.(\ref{eq:fitting curve}), for the program perfomance.}
 \label{fig:fitting curve}
 \end{figure}
 

@@ -10,7 +10,6 @@
 #include "Timing.hpp"
 
 
-
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
@@ -20,10 +19,12 @@ namespace PsCourseworkI
 	Timing::Timing()
 	: m_start(), m_end()
 	{
+
 	}
 
+
     //////////////////////////////////////////////////////////////////////////////
-	/// @details    Resets starting timestamp to current time
+	/// @details    Sets starting timestamp to current time.
 	///
 	///
 	void Timing::ResetTiming()
@@ -35,7 +36,7 @@ namespace PsCourseworkI
 
 
     //////////////////////////////////////////////////////////////////////////////
-	/// @details    Reports the time difference since last reset
+	/// @details    Reports the time difference since last reset.
 	///
 	///
 	void Timing::ReportTiming(
@@ -59,9 +60,6 @@ namespace PsCourseworkI
         minutes = seconds_diff / 60;
         seconds = seconds_diff - (minutes * 60);
         milliseconds = microseconds_diff / 1000;
-
-
 	}
-
 
 }   //  namespace PsCourseworkI

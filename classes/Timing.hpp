@@ -24,9 +24,9 @@
 namespace PsCourseworkI
 {
 	//////////////////////////////////////////////////////////////////////////////
-	/// @brief      Stopper watch: class for timing
+	/// @brief      Stopwatch class for timing.
 	///
-	/// @details    Start and report elapsed time
+	/// @details    Start and report elapsed time.
 	///
 	class Timing
 	{
