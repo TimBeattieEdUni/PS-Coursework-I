@@ -33,7 +33,7 @@ time [\%] & time [s] & self time [s] & calls & name\\
 Table \ref{tab:profile1} shows partial output from gprof for the initial version of the code.
 Three functions accounted for approximately 82\% of the run time, with nearly half of the run time spent in \texttt{Landscape::Update()}.
 This was to be expected as the bulk of the program's work was done in this function.
-However, nearly one quarter of the run time was spent accessing elements of the landscape array, and this suggested a simple modification: removing the bounds checking on every element access in \texttt{Array2D<T>::operator()}.
+However there were six orders of magnitude more calls to Array2D::operator() than to \texttt{Landscape::Update()} consuming nearly one quarter of the run time.  This suggested a simple modification: removing the bounds checking on every element access in \texttt{Array2D<T>::operator()}.
 This change was made and a second timing run and profiling run were done.
 
 \begin{table}[h!]
