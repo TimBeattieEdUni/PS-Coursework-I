@@ -23,7 +23,7 @@ namespace PsCourseworkI
 	}
 
     //////////////////////////////////////////////////////////////////////////////
-	/// @details    Starts the timing
+	/// @details    Resets starting timestamp to current time
 	///
 	///
 	void Timing::ResetTiming()
@@ -35,7 +35,7 @@ namespace PsCourseworkI
 
 
     //////////////////////////////////////////////////////////////////////////////
-	/// @details    Rports the time difference since last reset
+	/// @details    Reports the time difference since last reset
 	///
 	///
 	void Timing::ReportTiming(

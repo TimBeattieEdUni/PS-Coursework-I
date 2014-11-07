@@ -26,7 +26,7 @@ namespace PsCourseworkI
 	//////////////////////////////////////////////////////////////////////////////
 	/// @brief      Stopper watch: class for timing
 	///
-	/// @details    Start, finish and report elapsed time
+	/// @details    Start and report elapsed time
 	///
 	class Timing
 	{
@@ -37,7 +37,7 @@ namespace PsCourseworkI
             void ReportTiming(unsigned int &hours,
                               unsigned int &minutes,
                               unsigned int &seconds,
-                              unsigned int &milliseconds);  /// Getter
+                              unsigned int &milliseconds);  ///< Getter
 
 		private:
             timeval m_start,m_end;                          ///< Time stamps
