@@ -34,8 +34,7 @@ namespace PsCourseworkI
             Timing();                                        ///< Constructor.
 
             void ResetTiming();                              ///< Setter
-            void ReportTiming(unsigned int &hours,
-                              unsigned int &minutes,
+            void ReportTiming(unsigned int &minutes,
                               unsigned int &seconds,
                               unsigned int &milliseconds);  ///< Getter
 
